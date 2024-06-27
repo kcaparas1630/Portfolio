@@ -1,11 +1,13 @@
-import './App.css'
-import Header from './Components/Header'
-
-function App() {
+import Header from './Commons/Header'
+import ContactDetailsCard from './Commons/ContactDetailsCard'
 
 
+const App = () => {
   return (
-    <Header/>
+    <>
+      <Header/>
+      <ContactDetailsCard />
+    </>
   )
 }
 
