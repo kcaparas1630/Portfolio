@@ -46,6 +46,7 @@ const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode }) => {
       </StyledUl>
       <StyledIconButton
         type="button"
+        isDarkMode={isDarkMode}
         onClick={clickWrapper}
       >
         <FontAwesomeIcon icon={faMoon} />
