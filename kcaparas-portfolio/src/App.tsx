@@ -1,14 +1,12 @@
-import Header from './Commons/Header'
-import ContactDetailsCard from './Commons/ContactDetailsCard'
-
+import Homepage from './Views/Homepage';
+import '@fontsource/playfair-display';
 
 const App = () => {
   return (
     <>
-      <Header/>
-      <ContactDetailsCard />
+      <Homepage />
     </>
-  )
-}
+  );
+};
 
 export default App;
