@@ -13,7 +13,8 @@ const pullUp = keyframes`
 `;
 
 type HeaderProps = {
-    isDarkMode: boolean;
+    isDarkMode?: boolean;
+    isOpen?: boolean;
 };
 
 const StyledHeader = styled.div<HeaderProps>`
@@ -38,13 +39,29 @@ const StyledHeader = styled.div<HeaderProps>`
     font-weight: 700;
   }
 `;
+const HamburgerIcon = styled.div<HeaderProps>`
+  cursor: pointer;
+  font-size: 24px;
+  color: ${(props) => (props.isDarkMode ? '#fff' : '#e68369')};
+  position: absolute;
+  right: 50px;
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
 
-const StyledUl = styled.ul`
-  display: flex;
+const StyledUl = styled.ul<HeaderProps>`
+  display: ${(props) => (props.isOpen ? 'flex' : 'none')};
+  flex-direction: column;
   gap: 60px;
   position: absolute;
+  margin-top: 350px;
   left: 45%;
   transform: translateX(-45%);
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 const StyledListItem = styled.li`
@@ -89,4 +106,4 @@ const StyledIconButton = styled.button<HeaderProps>`
   }
 `;
 
-export { StyledHeader, StyledUl, StyledListItem, StyledIconButton };
+export { StyledHeader, StyledUl, StyledListItem, StyledIconButton, HamburgerIcon };
