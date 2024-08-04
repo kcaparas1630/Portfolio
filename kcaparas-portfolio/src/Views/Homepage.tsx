@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Header from '../Commons/Header';
 import StyledView from './Homepage.styles';
+import Banner from '../Commons/Banner';
 
 const Homepage = () => {
   const [isDarkMode, setDarkMode] = useState<boolean>(true);
@@ -10,6 +11,7 @@ const Homepage = () => {
         isDarkMode={isDarkMode}
         setDarkMode={setDarkMode}
       />
+      <Banner isDarkMode={isDarkMode} />
     </StyledView>
   );
 };

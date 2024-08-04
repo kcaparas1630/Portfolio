@@ -31,13 +31,16 @@ const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode }) => {
       <h2>
         <NavLink to="/">Kcaparas</NavLink>
       </h2>
-      <StyledIconButton onClick={toggleMenu}>
-        <HamburgerIcon isOpen={isMenuOpen} isDarkMode={isDarkMode}>
-          <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
-        </HamburgerIcon>
-      </StyledIconButton>
+      <HamburgerIcon
+        type="button"
+        onClick={toggleMenu}
+        isOpen={isMenuOpen}
+        isDarkMode={isDarkMode}
+      >
+        <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
+      </HamburgerIcon>
       <StyledUl isOpen={isMenuOpen}>
-        <StyledListItem>
+        <StyledListItem isDarkMode={isDarkMode}>
           <NavLink
             to="/about"
             className={({ isActive }) => (isActive ? 'active-link' : '')}
@@ -45,7 +48,7 @@ const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode }) => {
             About
           </NavLink>
         </StyledListItem>
-        <StyledListItem>
+        <StyledListItem isDarkMode={isDarkMode}>
           <NavLink
             to="/projects"
             className={({ isActive }) => (isActive ? 'active-link' : '')}
@@ -53,7 +56,7 @@ const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode }) => {
             Projects
           </NavLink>
         </StyledListItem>
-        <StyledListItem>
+        <StyledListItem isDarkMode={isDarkMode}>
           <NavLink
             to="/contact"
             className={({ isActive }) => (isActive ? 'active-link' : '')}
@@ -61,10 +64,19 @@ const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode }) => {
             Contact
           </NavLink>
         </StyledListItem>
+        <StyledIconButton
+          type="button"
+          isDarkMode={isDarkMode}
+          isMobile
+          onClick={toggleModeWrapper}
+        >
+          <FontAwesomeIcon icon={faMoon} />
+        </StyledIconButton>
       </StyledUl>
       <StyledIconButton
         type="button"
         isDarkMode={isDarkMode}
+        isMobile={false}
         onClick={toggleModeWrapper}
       >
         <FontAwesomeIcon icon={faMoon} />
