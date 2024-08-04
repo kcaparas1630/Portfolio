@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import BoxReveal from '../Animation/Box-Reveal';
+import Picture from '../Assets/kent-cropped.webp';
 import {
   BannerView,
   LeftView,
@@ -7,6 +8,9 @@ import {
   StyledName,
   StyledDesignation,
   StyledSummary,
+  RightView,
+  TopDiv,
+  BottomDiv,
 } from './Styled-Commons/Banner';
 
 interface BannerProps {
@@ -46,6 +50,16 @@ const Banner: FC<BannerProps> = ({ isDarkMode }) => (
         </StyledSummary>
       </BoxReveal>
     </LeftView>
+    <RightView>
+      <BottomDiv>
+        <TopDiv>
+          <img
+            src={Picture}
+            alt="Top Div"
+          />
+        </TopDiv>
+      </BottomDiv>
+    </RightView>
   </BannerView>
 );
 

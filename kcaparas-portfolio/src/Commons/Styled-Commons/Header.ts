@@ -62,6 +62,7 @@ const StyledUl = styled.ul<HeaderProps>`
   gap: 20px;
   align-items: center;
   position: absolute;
+  background-color: ${(props) => (props.isDarkMode ? '#131842' : '#fbf6e2')};
   width: 100%;
   max-height: ${(props) => (props.isOpen ? '50vh' : '0')};
   transition: max-height 0.5s ease-in-out;
