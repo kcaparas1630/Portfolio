@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import Header from '../Commons/Header';
 import StyledView from './Homepage.styles';
 import Banner from '../Commons/Banner';
-import Meteors from '../Animation/Meteor';
 
 const Homepage = () => {
   const [isDarkMode, setDarkMode] = useState<boolean>(() => {
@@ -19,9 +18,6 @@ const Homepage = () => {
         isDarkMode={isDarkMode}
         setDarkMode={setDarkMode}
       />
-      { isDarkMode && (
-        <Meteors number={20} />
-      )}
       <Banner isDarkMode={isDarkMode} />
     </StyledView>
   );

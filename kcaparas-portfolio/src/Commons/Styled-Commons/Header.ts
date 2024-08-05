@@ -26,7 +26,7 @@ const StyledHeader = styled.div<HeaderProps>`
   justify-content: space-between;
   position: relative;
   box-shadow: ${(props) =>
-    props.isDarkMode ? '-10px 15px 10px -15px #FBF6E2' : '-15px 15px 10px -15px #111'};
+    props.isDarkMode ? '-10px 15px 10px -15px #E68369' : '-15px 15px 10px -15px #111'};
   h2,
   a {
     text-decoration: none;
@@ -93,12 +93,12 @@ const StyledListItem = styled.li<HeaderProps>`
   width: 90%;
   cursor: pointer;
   box-shadow: ${(props) =>
-    props.isDarkMode ? '-10px 15px 10px -15px #FBF6E2' : '-15px 15px 10px -15px #111'};
+    props.isDarkMode ? '-10px 15px 10px -15px #E68369' : '-15px 15px 10px -15px #111'};
   transition: box-shadow 0.3s ease-in-out;
 
   &:hover {
     box-shadow: ${(props) =>
-      props.isDarkMode ? '15px 15px 10px -15px #FBF6E2' : '-15px 15px 10px -15px #111'};
+      props.isDarkMode ? '15px 15px 10px -15px #E68369' : '-15px 15px 10px -15px #111'};
   }
 
   a {

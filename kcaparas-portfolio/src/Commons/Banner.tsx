@@ -45,7 +45,7 @@ const Banner: FC<BannerProps> = ({ isDarkMode }) => (
       >
         <StyledSummary isDarkMode={isDarkMode}>
           I&apos;m a full-stack developer and a recent graduate of Camosun College. With a passion
-          for building innovative and impactful solutions, I&apos;m is eager to develop something
+          for building innovative and impactful solutions, I&apos;m eager to develop something
           great and contribute to the tech community.
         </StyledSummary>
       </BoxReveal>

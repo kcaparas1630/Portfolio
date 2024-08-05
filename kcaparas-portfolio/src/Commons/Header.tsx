@@ -39,7 +39,18 @@ const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode }) => {
       >
         <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
       </HamburgerIcon>
-      <StyledUl isDarkMode={isDarkMode} isOpen={isMenuOpen}>
+      <StyledUl
+        isDarkMode={isDarkMode}
+        isOpen={isMenuOpen}
+      >
+        <StyledListItem isDarkMode={isDarkMode}>
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? 'active-link' : '')}
+          >
+            Home
+          </NavLink>
+        </StyledListItem>
         <StyledListItem isDarkMode={isDarkMode}>
           <NavLink
             to="/about"
