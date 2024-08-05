@@ -1,4 +1,8 @@
 import { FC } from 'react';
+import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { OuterIcon, InnerIcon, SolidBackground } from './Styled-Commons/FontAwesomeIcon';
 import BoxReveal from '../Animation/Box-Reveal';
 import Picture from '../Assets/kent-cropped.webp';
 import {
@@ -11,9 +15,8 @@ import {
   RightView,
   TopDiv,
   BottomDiv,
-  ButtonContainer,
+  IconContainer,
 } from './Styled-Commons/Banner';
-import Button from './Button';
 
 interface BannerProps {
   isDarkMode: boolean;
@@ -55,13 +58,32 @@ const Banner: FC<BannerProps> = ({ isDarkMode }) => (
         boxColor="#e68369"
         duration={0.5}
       >
-        <ButtonContainer>
-          <Button
-            type="button"
-            text="Hire me!"
-            isDarkMode={isDarkMode}
-          />
-        </ButtonContainer>
+        <IconContainer>
+          <NavLink to="https://github.com/kcaparas1630">
+            <OuterIcon>
+              <SolidBackground />
+              <InnerIcon isDarkMode={isDarkMode}>
+                <FontAwesomeIcon icon={faGithub} />
+              </InnerIcon>
+            </OuterIcon>
+          </NavLink>
+          <NavLink to="https://www.facebook.com/Mr.Yosong.Gwapo12/">
+            <OuterIcon>
+              <SolidBackground />
+              <InnerIcon isDarkMode={isDarkMode}>
+                <FontAwesomeIcon icon={faFacebook} />
+              </InnerIcon>
+            </OuterIcon>
+          </NavLink>
+          <NavLink to="https://www.linkedin.com/in/kcaparas-1630/">
+            <OuterIcon>
+              <SolidBackground />
+              <InnerIcon isDarkMode={isDarkMode}>
+                <FontAwesomeIcon icon={faLinkedin} />
+              </InnerIcon>
+            </OuterIcon>
+          </NavLink>
+        </IconContainer>
       </BoxReveal>
     </LeftView>
     <RightView>

@@ -129,13 +129,15 @@ const TopDiv = styled.div`
   }
 `;
 
-const ButtonContainer = styled.div`
+const IconContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 90vw;
+  flex-direction: row;
+  width: 85%;
   gap: 20px;
+  margin-top: 25px;
 
   @media (min-width: 768px) {
+    margin-top: 0;
     flex-direction: row;
     width: 100%;
   }
@@ -150,5 +152,5 @@ export {
   RightView,
   BottomDiv,
   TopDiv,
-  ButtonContainer,
+  IconContainer,
 };
