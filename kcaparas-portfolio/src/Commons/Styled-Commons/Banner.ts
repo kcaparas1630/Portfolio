@@ -129,6 +129,17 @@ const TopDiv = styled.div`
   }
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  gap: 20px;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    width: 100%;
+  }
+`;
 export {
   BannerView,
   LeftView,
@@ -139,4 +150,5 @@ export {
   RightView,
   BottomDiv,
   TopDiv,
+  ButtonContainer,
 };

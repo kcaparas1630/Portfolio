@@ -11,7 +11,9 @@ import {
   RightView,
   TopDiv,
   BottomDiv,
+  ButtonContainer,
 } from './Styled-Commons/Banner';
+import Button from './Button';
 
 interface BannerProps {
   isDarkMode: boolean;
@@ -45,9 +47,21 @@ const Banner: FC<BannerProps> = ({ isDarkMode }) => (
       >
         <StyledSummary isDarkMode={isDarkMode}>
           I&apos;m a full-stack developer and a recent graduate of Camosun College. With a passion
-          for building innovative and impactful solutions, I&apos;m eager to develop something
-          great and contribute to the tech community.
+          for building innovative and impactful solutions, I&apos;m eager to develop something great
+          and contribute to the tech community.
         </StyledSummary>
+      </BoxReveal>
+      <BoxReveal
+        boxColor="#e68369"
+        duration={0.5}
+      >
+        <ButtonContainer>
+          <Button
+            type="button"
+            text="Hire me!"
+            isDarkMode={isDarkMode}
+          />
+        </ButtonContainer>
       </BoxReveal>
     </LeftView>
     <RightView>
