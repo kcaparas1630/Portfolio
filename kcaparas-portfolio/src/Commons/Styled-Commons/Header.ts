@@ -64,12 +64,14 @@ const StyledUl = styled.ul<HeaderProps>`
   position: absolute;
   background-color: ${(props) => (props.isDarkMode ? '#131842' : '#fbf6e2')};
   width: 100%;
-  max-height: ${(props) => (props.isOpen ? '50vh' : '0')};
+  max-height: ${(props) => (props.isOpen ? '60vh' : '0')};
   transition: max-height 0.5s ease-in-out;
   right: 0;
   top: 60px;
-  padding: 20px 10px 0 0;
+  padding: 20px 10px 20px 0;
   z-index: 1000;
+  box-shadow: ${(props) =>
+    props.isDarkMode ? '-10px 15px 10px -15px #E68369' : '-15px 15px 10px -15px #111'};
 
   @media (min-width: 768px) {
     display: flex;
@@ -78,7 +80,7 @@ const StyledUl = styled.ul<HeaderProps>`
     width: auto;
     position: relative;
     top: 0;
-    padding-top: 0;
+    padding: 0 10px 0 0;
     right: 55%;
     transform: translateX(55%);
     background-color: transparent;
