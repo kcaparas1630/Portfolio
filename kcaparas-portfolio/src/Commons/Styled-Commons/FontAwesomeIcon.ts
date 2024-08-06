@@ -9,26 +9,26 @@ const OuterIcon = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-  width: 100px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
 `;
 
 const SolidBackground = styled.div`
   position: absolute;
   inset: 0;
   background: #e68369;
-  border-radius: 8px;
+  border-radius: 100%;
   z-index: 1;
 `;
 
 const InnerIcon = styled.div<StyledIconProps>`
   position: relative;
-  padding: 4px 10px;
+  padding: 10px 5px;
   background-color: ${(props) => (props.isDarkMode ? '#131842' : '#fbf6e2')};
   color: ${(props) => (props.isDarkMode ? 'white' : 'black')};
-  border-radius: 6px;
+  border-radius: 100%;
   z-index: 2;
-  font-size: 24px;
+  font-size: 18px;
   transition: background-color 0.2s ease, border 0.2s ease;
   text-align: center;
   cursor: pointer;
