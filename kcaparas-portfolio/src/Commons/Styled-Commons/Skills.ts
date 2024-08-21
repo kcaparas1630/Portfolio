@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 type SkillType = {
   isDarkMode: boolean;
-  inView: boolean;
+  inView?: boolean;
 };
 
 const SkillsContainer = styled.section<SkillType>`
@@ -16,6 +16,10 @@ const SkillsContainer = styled.section<SkillType>`
   @media (min-width: 768px) {
     flex-direction: row;
     align-items: center;
+    min-height: 80vh;
+  }
+  @media (min-width: 1024px) {
+    min-height: 50vh;
   }
 `;
 
@@ -23,21 +27,37 @@ const SkillsLeftContainer = styled.div`
   width: 100%;
   text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 
   @media (min-width: 768px) {
-    width: 50vw;
-    padding: 0 0 0 80px;
+    width: 40vw;
+    padding: 0 0 0 20px;
     text-align: start;
   }
 `;
 
-const SkillsHeader = styled.h2<SkillType>`
-  font-size: 28px;
+const SkillsHeader2 = styled.h2<SkillType>`
+  font-size: 2rem;
   font-weight: 700;
   width: 90%;
+  margin: 24px 0;
+  color: ${(props) => (props.isDarkMode ? 'black' : 'white')};
   transform: translateY(${(props) => (props.inView ? '0' : '100%')});
   opacity: ${(props) => (props.inView ? '1' : '0')};
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease;
+`;
+const SkillsHeader3 = styled.h3<SkillType>`
+  font-size: 1.15rem;
+  font-weight: 700;
+  width: 90%;
+  margin: 12px 0 24px 0;
+  color: ${(props) => (props.isDarkMode ? 'black' : 'white')};
+  transform: translateY(${(props) => (props.inView ? '0' : '100%')});
+  opacity: ${(props) => (props.inView ? '0.75' : '0')};
   transition:
     transform 0.5s ease,
     opacity 0.5s ease;
@@ -49,52 +69,78 @@ const SkillsRightContainer = styled.div`
   justify-content: center;
 
   @media (min-width: 768px) {
-    width: 50vw;
+    width: 40vw;
   }
 `;
 
 const SkillsSetContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  grid-template-columns: 1fr;
+  gap: 15px;
   padding: 10px;
 
-  @media (max-width: 768px) {
+  @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
   }
 `;
 
 const SkillSetItem = styled.div<SkillType>`
   display: flex;
+  align-items: center; /* Ensure vertical alignment */
   background-color: ${(props) => (props.isDarkMode ? '#131842' : '#fbf6e2')};
   color: ${(props) => (props.isDarkMode ? 'white' : 'black')};
   padding: 15px 20px;
   border-radius: 10px;
-
+  flex-direction: row;
+  gap: 24px;
+  box-shadow: ${(props) =>
+    props.isDarkMode ? '-10px 15px 10px -15px #E68369' : '-15px 15px 10px -15px #111'};
   img {
+    flex-shrink: 0;
     width: 30%;
+    max-width: 100px;
+    height: auto;
   }
 
   p {
-    margin-left: 25px;
-    font-size: 20px;
+    font-size: 1.15rem;
     font-weight: 600;
+    flex: 1;
+    word-break: break-word;
+  }
+
+  &:hover {
+    box-shadow: ${(props) =>
+      props.isDarkMode ? '15px 15px 10px -15px #111' : '-15px 15px 10px -15px #E68369'};
+    scale: 1.05;
   }
   transform: translateY(${(props) => (props.inView ? '0' : '100%')});
   opacity: ${(props) => (props.inView ? '1' : '0')};
   transition:
     transform 0.5s ease,
+    box-shadow 0.3s ease-in-out,
+    scale 0.5s ease,
     opacity 0.5s ease;
+
+  @media (min-width: 768px) {
+    flex-direction: column;
+    gap: 0;
+  }
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    gap: 24px;
+  }
 `;
 
 export {
   SkillsContainer,
   SkillsLeftContainer,
-  SkillsHeader,
+  SkillsHeader2,
+  SkillsHeader3,
   SkillsRightContainer,
   SkillsSetContainer,
   SkillSetItem,

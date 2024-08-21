@@ -96,7 +96,8 @@ const StyledSummary = styled.p<BannerProps>`
 const BottomDiv = styled.div`
   display: flex;
   background-color: #e68369;
-  width: 50%;
+  width: 100%;
+  max-width: 250px;
   height: 250px;
   position: relative;
   border-radius: 10%;
@@ -105,6 +106,7 @@ const BottomDiv = styled.div`
 
   @media (min-width: 768px) {
     height: 500px;
+    max-width: 500px;
   }
 `;
 

@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { useInView } from 'react-intersection-observer';
-import reactBlack from '../Assets/react/react-black.png';
-import reactWhite from '../Assets/react/react-white.png';
+import SkillSetArray from '../Constants/SkillSetArray';
 import {
   SkillsContainer,
   SkillsLeftContainer,
-  SkillsHeader,
+  SkillsHeader2,
+  SkillsHeader3,
   SkillsRightContainer,
   SkillsSetContainer,
   SkillSetItem,
@@ -20,54 +20,39 @@ const Skills: FC<SkillsProps> = ({ isDarkMode }) => {
     triggerOnce: false,
     threshold: 0.1,
   });
+
+  const getSkillSetArray = SkillSetArray(isDarkMode);
   return (
-    <SkillsContainer isDarkMode={isDarkMode}>
+    <SkillsContainer isDarkMode={isDarkMode} ref={ref}>
       <SkillsLeftContainer>
-        <SkillsHeader
-          ref={ref}
+        <SkillsHeader2
           inView={inView}
+          isDarkMode={isDarkMode}
         >
           I am proud to share my skills in these area!
-        </SkillsHeader>
+        </SkillsHeader2>
+        <SkillsHeader3
+          inView={inView}
+          isDarkMode={isDarkMode}
+        >
+          I would like to tell you more about everything but I&apos;ll post the highlights!
+        </SkillsHeader3>
       </SkillsLeftContainer>
       <SkillsRightContainer>
         <SkillsSetContainer>
-          <SkillSetItem isDarkMode={isDarkMode} ref={ref} inView={inView}>
-            <img src={isDarkMode ? reactWhite : reactBlack} alt="react-logo" />
-            <p>React</p>
-          </SkillSetItem>
-          <SkillSetItem isDarkMode={isDarkMode} ref={ref} inView={inView}>
-            <img src={isDarkMode ? reactWhite : reactBlack} alt="react-logo" />
-            <p>React</p>
-          </SkillSetItem>
-          <SkillSetItem isDarkMode={isDarkMode} ref={ref} inView={inView}>
-            <img src={isDarkMode ? reactWhite : reactBlack} alt="react-logo" />
-            <p>React</p>
-          </SkillSetItem>
-          <SkillSetItem isDarkMode={isDarkMode} ref={ref} inView={inView}>
-            <img src={isDarkMode ? reactWhite : reactBlack} alt="react-logo" />
-            <p>React</p>
-          </SkillSetItem>
-          <SkillSetItem isDarkMode={isDarkMode} ref={ref} inView={inView}>
-            <img src={isDarkMode ? reactWhite : reactBlack} alt="react-logo" />
-            <p>React</p>
-          </SkillSetItem>
-          <SkillSetItem isDarkMode={isDarkMode} ref={ref} inView={inView}>
-            <img src={isDarkMode ? reactWhite : reactBlack} alt="react-logo" />
-            <p>React</p>
-          </SkillSetItem>
-          <SkillSetItem isDarkMode={isDarkMode} ref={ref} inView={inView}>
-            <img src={isDarkMode ? reactWhite : reactBlack} alt="react-logo" />
-            <p>React</p>
-          </SkillSetItem>
-          <SkillSetItem isDarkMode={isDarkMode} ref={ref} inView={inView}>
-            <img src={isDarkMode ? reactWhite : reactBlack} alt="react-logo" />
-            <p>React</p>
-          </SkillSetItem>
-          <SkillSetItem isDarkMode={isDarkMode} ref={ref} inView={inView}>
-            <img src={isDarkMode ? reactWhite : reactBlack} alt="react-logo" />
-            <p>React</p>
-          </SkillSetItem>
+          {getSkillSetArray.map((skill) => (
+            <SkillSetItem
+              isDarkMode={isDarkMode}
+              inView={inView}
+              key={skill.id}
+            >
+              <img
+                src={skill.skillImage}
+                alt={skill.skillAltImg}
+              />
+              <p>{skill.skillText}</p>
+            </SkillSetItem>
+          ))}
         </SkillsSetContainer>
       </SkillsRightContainer>
     </SkillsContainer>
