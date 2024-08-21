@@ -16,13 +16,13 @@ const zoomIn = keyframes`
   }
 `;
 
-const BannerView = styled.div`
+const BannerView = styled.section`
   display: flex;
   flex-direction: column;
   // gap: 80px;
   @media (min-width: 768px) {
     flex-direction: row;
-    height: 100%;
+    min-height: 92vh;
   }
 `;
 const LeftView = styled.div`
@@ -74,7 +74,6 @@ const StyledName = styled.h1<BannerProps>`
 const StyledDesignation = styled.h2<BannerProps>`
   display: flex;
   color: ${(props) => (props.isDarkMode ? 'white' : 'black')};
-  // margin: 0;
 
   @media (min-width: 768px) {
     margin: 0;
