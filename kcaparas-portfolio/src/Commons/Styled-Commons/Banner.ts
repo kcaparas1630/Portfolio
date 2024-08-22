@@ -20,9 +20,10 @@ const BannerView = styled.section`
   display: flex;
   flex-direction: column;
   // gap: 80px;
+  width: 100%;
   @media (min-width: 768px) {
     flex-direction: row;
-    min-height: 92vh;
+    min-height: 100vh;
   }
 `;
 const LeftView = styled.div`
@@ -46,11 +47,12 @@ const RightView = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
   height: 50vh;
   margin-top: auto;
   margin-bottom: auto;
-  padding: 30px 20px;
+  padding: 30px 0;
 
   @media (min-width: 768px) {
     height: auto;
@@ -99,6 +101,7 @@ const BottomDiv = styled.div`
   width: 100%;
   max-width: 250px;
   height: 250px;
+  margin-left: 5%;
   position: relative;
   border-radius: 10%;
   animation: ${zoomIn} 1.5s ease-in-out forwards;

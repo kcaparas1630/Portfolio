@@ -19,14 +19,17 @@ type HeaderProps = {
 };
 
 const StyledHeader = styled.div<HeaderProps>`
-  width: 100vw;
-  padding: 10px 20px;
+  width: 100%;
+  padding: 35px 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  
   position: relative;
-  box-shadow: ${(props) =>
-    props.isDarkMode ? '-10px 15px 10px -15px #E68369' : '-15px 15px 10px -15px #111'};
+  box-shadow: ${(props) => props.isDarkMode ? '-10px 15px 10px -15px #E68369' : '-15px 15px 10px -15px #111'};
+  h2 {
+    position: absolute;
+    left: 25px;
+  }
   h2,
   a {
     text-decoration: none;
@@ -39,6 +42,11 @@ const StyledHeader = styled.div<HeaderProps>`
     color: #e68369;
     font-weight: 700;
   }
+
+  @media (min-width: 768px) {
+    padding: 25px 0;
+    justify-content: space-evenly;
+  }
 `;
 
 const HamburgerIcon = styled.button<HeaderProps>`
@@ -48,7 +56,7 @@ const HamburgerIcon = styled.button<HeaderProps>`
   font-size: 24px;
   color: ${(props) => (props.isDarkMode ? '#fff' : '#e68369')};
   position: absolute;
-  right: 15%;
+  right: 5%;
   transition: transform 0.3s ease-in-out;
   ${(props) => props.isOpen && 'transform: rotate(90deg);'}
   @media (min-width: 768px) {
@@ -81,8 +89,6 @@ const StyledUl = styled.ul<HeaderProps>`
     position: relative;
     top: 0;
     padding: 0 10px 0 0;
-    right: 55%;
-    transform: translateX(55%);
     background-color: transparent;
     box-shadow: none;
     gap: 60px;

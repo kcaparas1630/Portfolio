@@ -9,7 +9,7 @@ const SkillsContainer = styled.section<SkillType>`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
   min-height: 40vh;
   background-color: ${(props) => (props.isDarkMode ? '#fbf6e2' : '#131842')};
 
@@ -32,7 +32,7 @@ const SkillsLeftContainer = styled.div`
   align-items: center;
 
   @media (min-width: 768px) {
-    width: 40vw;
+    width: 40%;
     padding: 0 0 0 20px;
     text-align: start;
   }
@@ -69,7 +69,7 @@ const SkillsRightContainer = styled.div`
   justify-content: center;
 
   @media (min-width: 768px) {
-    width: 40vw;
+    width: 40%;
   }
 `;
 
