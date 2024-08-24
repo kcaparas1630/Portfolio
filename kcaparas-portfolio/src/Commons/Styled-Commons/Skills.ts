@@ -6,12 +6,13 @@ type SkillType = {
 };
 
 const SkillsContainer = styled.section<SkillType>`
+  label: SkillsContainer;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
   min-height: 40vh;
-  background-color: ${(props) => (props.isDarkMode ? '#fbf6e2' : '#131842')};
+  background-color: ${(props) => (props.isDarkMode ? '#1C225F' : '#131842')};
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -24,6 +25,7 @@ const SkillsContainer = styled.section<SkillType>`
 `;
 
 const SkillsLeftContainer = styled.div`
+  label: SkillsLeftContainer;
   width: 100%;
   text-align: center;
   display: flex;
@@ -39,11 +41,12 @@ const SkillsLeftContainer = styled.div`
 `;
 
 const SkillsHeader2 = styled.h2<SkillType>`
+  label: SkillsHeader2;
   font-size: 2rem;
   font-weight: 700;
   width: 90%;
   margin: 24px 0;
-  color: ${(props) => (props.isDarkMode ? 'black' : 'white')};
+  color: white;
   transform: translateY(${(props) => (props.inView ? '0' : '100%')});
   opacity: ${(props) => (props.inView ? '1' : '0')};
   transition:
@@ -51,11 +54,12 @@ const SkillsHeader2 = styled.h2<SkillType>`
     opacity 0.5s ease;
 `;
 const SkillsHeader3 = styled.h3<SkillType>`
+  label: SkillsHeader3;
   font-size: 1.15rem;
   font-weight: 700;
   width: 90%;
   margin: 12px 0 24px 0;
-  color: ${(props) => (props.isDarkMode ? 'black' : 'white')};
+  color: white;
   transform: translateY(${(props) => (props.inView ? '0' : '100%')});
   opacity: ${(props) => (props.inView ? '0.75' : '0')};
   transition:
@@ -64,6 +68,7 @@ const SkillsHeader3 = styled.h3<SkillType>`
 `;
 
 const SkillsRightContainer = styled.div`
+  label: SkillsRightContainer;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -74,6 +79,7 @@ const SkillsRightContainer = styled.div`
 `;
 
 const SkillsSetContainer = styled.div`
+  label: SkillsSetContainer;
   display: grid;
   grid-template-columns: 1fr;
   gap: 15px;
@@ -89,10 +95,11 @@ const SkillsSetContainer = styled.div`
 `;
 
 const SkillSetItem = styled.div<SkillType>`
+  label: SkillSetItem;
   display: flex;
   align-items: center; /* Ensure vertical alignment */
-  background-color: ${(props) => (props.isDarkMode ? '#131842' : '#fbf6e2')};
-  color: ${(props) => (props.isDarkMode ? 'white' : 'black')};
+  background-color: #fbf6e2;
+  color: black;
   padding: 15px 20px;
   border-radius: 10px;
   flex-direction: row;

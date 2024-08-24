@@ -4,6 +4,7 @@ type StyledIconProps = {
   isDarkMode?: boolean;
 }
 const OuterIcon = styled.button`
+  label: OuterIcon;
   position: relative;
   padding: 5px;
   border: none;
@@ -14,6 +15,7 @@ const OuterIcon = styled.button`
 `;
 
 const SolidBackground = styled.div`
+  label: SolidBackground;
   position: absolute;
   inset: 0;
   background: #e68369;
@@ -22,6 +24,7 @@ const SolidBackground = styled.div`
 `;
 
 const InnerIcon = styled.div<StyledIconProps>`
+  label: InnerIcon;
   position: relative;
   padding: 10px 5px;
   background-color: ${(props) => (props.isDarkMode ? '#131842' : '#fbf6e2')};

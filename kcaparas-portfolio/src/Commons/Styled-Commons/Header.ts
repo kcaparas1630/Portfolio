@@ -19,6 +19,7 @@ type HeaderProps = {
 };
 
 const StyledHeader = styled.div<HeaderProps>`
+  label: StyledHeader;
   width: 100%;
   padding: 35px 0;
   display: flex;
@@ -50,6 +51,7 @@ const StyledHeader = styled.div<HeaderProps>`
 `;
 
 const HamburgerIcon = styled.button<HeaderProps>`
+  label: HamburgerIcon;
   cursor: pointer;
   background: none;
   border: none;
@@ -65,6 +67,7 @@ const HamburgerIcon = styled.button<HeaderProps>`
 `;
 
 const StyledUl = styled.ul<HeaderProps>`
+  label: StyledUl;
   display: ${(props) => (props.isOpen ? 'flex' : 'none')};
   flex-direction: column;
   gap: 20px;
@@ -96,6 +99,7 @@ const StyledUl = styled.ul<HeaderProps>`
 `;
 
 const StyledListItem = styled.li<HeaderProps>`
+  label: StyledListItem;
   list-style-type: none;
   padding: 10px;
   width: 90%;
@@ -127,6 +131,7 @@ const StyledListItem = styled.li<HeaderProps>`
 `;
 
 const StyledIconButton = styled.button<HeaderProps>`
+  label: StyledIconButton;
   display: ${(props) => (props.isMobile ? 'flex' : 'none')};
   background: none;
   border: none;

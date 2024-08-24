@@ -3,6 +3,7 @@ import Header from '../Commons/Header';
 import StyledView from './Homepage.styles';
 import Banner from '../Commons/Banner';
 import Skills from '../Commons/Skills';
+import Projects from '../Commons/Projects';
 
 const Homepage = () => {
   const [isDarkMode, setDarkMode] = useState<boolean>(() => {
@@ -21,6 +22,7 @@ const Homepage = () => {
       />
       <Banner isDarkMode={isDarkMode} />
       <Skills isDarkMode={isDarkMode} />
+      <Projects />
     </StyledView>
   );
 };

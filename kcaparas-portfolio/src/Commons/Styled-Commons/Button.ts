@@ -4,6 +4,7 @@ type StyledButtonProps = {
   isDarkMode?: boolean;
 }
 const OuterButton = styled.button`
+  label: OuterButton;
   position: relative;
   padding: 3px;
   border: none;
@@ -14,6 +15,7 @@ const OuterButton = styled.button`
 `;
 
 const GradientBackground = styled.div`
+  label: GradientBackground;
   position: absolute;
   inset: 0;
   background: #e68369;
@@ -22,6 +24,7 @@ const GradientBackground = styled.div`
 `;
 
 const InnerButton = styled.div<StyledButtonProps>`
+  label: InnerButton;
   position: relative;
   padding: 8px 16px;
   background-color: ${(props) => (props.isDarkMode ? '#131842' : '#fbf6e2')};

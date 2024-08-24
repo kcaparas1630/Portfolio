@@ -19,11 +19,10 @@ const zoomIn = keyframes`
 const BannerView = styled.section`
   display: flex;
   flex-direction: column;
-  // gap: 80px;
   width: 100%;
   @media (min-width: 768px) {
     flex-direction: row;
-    min-height: 100vh;
+    min-height: 91vh;
   }
 `;
 const LeftView = styled.div`

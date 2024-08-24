@@ -21,7 +21,7 @@ const Skills: FC<SkillsProps> = ({ isDarkMode }) => {
     threshold: 0.1,
   });
 
-  const getSkillSetArray = SkillSetArray(isDarkMode);
+  const getSkillSetArray = SkillSetArray();
   return (
     <SkillsContainer isDarkMode={isDarkMode} ref={ref}>
       <SkillsLeftContainer>
