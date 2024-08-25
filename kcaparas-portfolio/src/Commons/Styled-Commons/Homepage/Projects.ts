@@ -35,8 +35,8 @@ const ProjectsCard = styled.div<ProjectsProps>`
   border-radius: 5px;
   width: 90%;
   padding-bottom: 24px;
-  background-color: ${(props) => (props.isDarkMode ? '#fbf6e2' : '#131842')};
-  color: ${(props) => (props.isDarkMode ? 'black' : 'white')};
+  background-color: ${(props) => (props.isDarkMode ? '#1C225F' : '#131842')};
+  color: white;
   box-shadow: 0 4px 8px 0 #e68369;
   display: flex;
   flex-direction: column;

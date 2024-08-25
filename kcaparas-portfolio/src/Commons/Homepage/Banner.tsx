@@ -2,9 +2,9 @@ import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { OuterIcon, InnerIcon, SolidBackground } from './Styled-Commons/FontAwesomeIcon';
-import BoxReveal from '../Animation/Box-Reveal';
-import Picture from '../Assets/kent-cropped.webp';
+import { OuterIcon, InnerIcon, SolidBackground } from '../Styled-Commons/FontAwesomeIcon';
+import BoxReveal from '../../Animation/Box-Reveal';
+import Picture from '../../Assets/kent-cropped.webp';
 import {
   BannerView,
   LeftView,
@@ -16,7 +16,7 @@ import {
   TopDiv,
   BottomDiv,
   IconContainer,
-} from './Styled-Commons/Banner';
+} from '../Styled-Commons/Homepage/Banner';
 
 interface BannerProps {
   isDarkMode: boolean;

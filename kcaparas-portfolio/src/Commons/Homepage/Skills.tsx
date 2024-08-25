@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useInView } from 'react-intersection-observer';
-import SkillSetArray from '../Constants/SkillSetArray';
+import SkillSetArray from '../../Constants/SkillSetArray';
 import {
   SkillsContainer,
   SkillsLeftContainer,
@@ -9,7 +9,7 @@ import {
   SkillsRightContainer,
   SkillsSetContainer,
   SkillSetItem,
-} from './Styled-Commons/Skills';
+} from '../Styled-Commons/Homepage/Skills';
 
 interface SkillsProps {
   isDarkMode: boolean;
