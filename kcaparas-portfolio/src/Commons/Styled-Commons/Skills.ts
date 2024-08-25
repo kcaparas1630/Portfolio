@@ -11,7 +11,7 @@ const SkillsContainer = styled.section<SkillType>`
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  min-height: 40vh;
+  min-height: 45vh;
   background-color: ${(props) => (props.isDarkMode ? '#1C225F' : '#131842')};
 
   @media (min-width: 768px) {
@@ -71,6 +71,7 @@ const SkillsRightContainer = styled.div`
   label: SkillsRightContainer;
   width: 100%;
   display: flex;
+  padding-bottom: 24px;
   justify-content: center;
 
   @media (min-width: 768px) {
