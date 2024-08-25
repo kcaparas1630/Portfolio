@@ -12,7 +12,7 @@ const StyledView = styled.div<ViewProps>`
     transition: background-color 0.5s ease;
 
     @media(min-width: 768px) {
-        height: 100vh;
+        min-height: 100vh;
     }
 `;
 

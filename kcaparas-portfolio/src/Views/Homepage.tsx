@@ -22,7 +22,7 @@ const Homepage = () => {
       />
       <Banner isDarkMode={isDarkMode} />
       <Skills isDarkMode={isDarkMode} />
-      <Projects />
+      <Projects isDarkMode={isDarkMode} />
     </StyledView>
   );
 };

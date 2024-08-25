@@ -48,7 +48,7 @@ const SkillsHeader2 = styled.h2<SkillType>`
   margin: 24px 0;
   color: white;
   transform: translateY(${(props) => (props.inView ? '0' : '100%')});
-  opacity: ${(props) => (props.inView ? '1' : '0')};
+  opacity: ${(props) => (props.inView ? '0.8' : '0')};
   transition:
     transform 0.5s ease,
     opacity 0.5s ease;
@@ -61,7 +61,7 @@ const SkillsHeader3 = styled.h3<SkillType>`
   margin: 12px 0 24px 0;
   color: white;
   transform: translateY(${(props) => (props.inView ? '0' : '100%')});
-  opacity: ${(props) => (props.inView ? '0.75' : '0')};
+  opacity: ${(props) => (props.inView ? '0.70' : '0')};
   transition:
     transform 0.5s ease,
     opacity 0.5s ease;

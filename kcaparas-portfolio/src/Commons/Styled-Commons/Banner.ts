@@ -63,6 +63,7 @@ const StyledGreetings = styled.h2<BannerProps>`
   display: flex;
   font-size: 28px;
   color: ${(props) => (props.isDarkMode ? 'white' : 'black')};
+  opacity: 0.8;
   margin: 0;
 `;
 const StyledName = styled.h1<BannerProps>`
@@ -75,7 +76,7 @@ const StyledName = styled.h1<BannerProps>`
 const StyledDesignation = styled.h2<BannerProps>`
   display: flex;
   color: ${(props) => (props.isDarkMode ? 'white' : 'black')};
-
+  opacity: 0.8;
   @media (min-width: 768px) {
     margin: 0;
   }
@@ -87,7 +88,7 @@ const StyledSummary = styled.p<BannerProps>`
   width: 80%;
   line-height: 1.5;
   text-align: justify;
-
+  opacity: 0.8;
   @media (min-width: 768px) {
     width: 70%;
     margin: 50px 0;

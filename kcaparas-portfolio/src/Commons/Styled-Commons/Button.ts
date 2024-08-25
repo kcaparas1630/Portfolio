@@ -29,6 +29,7 @@ const InnerButton = styled.div<StyledButtonProps>`
   padding: 8px 16px;
   background-color: ${(props) => (props.isDarkMode ? '#131842' : '#fbf6e2')};
   color: ${(props) => (props.isDarkMode ? 'white' : 'black')};
+  font-weight: 700;
   border-radius: 6px;
   z-index: 2;
   transition: background-color 0.2s ease, border 0.2s ease;
