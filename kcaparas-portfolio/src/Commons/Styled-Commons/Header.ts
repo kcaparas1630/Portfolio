@@ -16,37 +16,47 @@ type HeaderProps = {
   isDarkMode?: boolean;
   isOpen?: boolean;
   isMobile?: boolean;
+  isHeaderVisible?: boolean;
 };
 
 const StyledHeader = styled.div<HeaderProps>`
-  label: StyledHeader;
-  width: 100%;
-  padding: 35px 0;
-  display: flex;
-  align-items: center;
-  
-  position: relative;
-  box-shadow: ${(props) => props.isDarkMode ? '-10px 15px 10px -15px #E68369' : '-15px 15px 10px -15px #111'};
-  h2 {
-    position: absolute;
-    left: 25px;
-  }
-  h2,
-  a {
-    text-decoration: none;
-    color: ${(props) => (props.isDarkMode ? 'white' : 'black')};
-    font-size: 20px;
-    display: inline-block;
-    animation: ${pullUp} 0.5s ease forwards;
-  }
-  .active-link {
-    color: #e68369;
-    font-weight: 700;
-  }
+  && {
+    label: StyledHeader;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    padding: 35px 0;
+    display: flex;
+    align-items: center;
+    background-color: ${(props) => (props.isDarkMode ? 'var(--native-dark-bg-color)' : '#fbf6e2')};
+    transform: translateY(${(props) => (props.isHeaderVisible ? '0' : '-100%')});
+    transition: transform 0.3s ease;
+    box-shadow: ${(props) =>
+      props.isDarkMode ? '-10px 15px 10px -15px #E68369' : '-15px 15px 10px -15px #111'};
+    h2 {
+      position: absolute;
+      left: 25px;
+    }
+    h2,
+    a {
+      text-decoration: none !important;
+      color: ${(props) => (props.isDarkMode ? 'var(--native-dark-font-color) !important' : 'var(--native-light-font-color)')};
+      font-size: 20px;
+      display: inline-block;
+      animation: ${pullUp} 0.5s ease forwards;
+    }
 
-  @media (min-width: 768px) {
-    padding: 25px 0;
-    justify-content: space-evenly;
+    .active-link {
+      color: var(--accent-color) !important;
+      font-weight: 700;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    @media (min-width: 768px) {
+      padding: 25px 0;
+      justify-content: space-evenly;
+    }
   }
 `;
 
@@ -73,22 +83,23 @@ const StyledUl = styled.ul<HeaderProps>`
   gap: 20px;
   align-items: center;
   position: absolute;
-  background-color: ${(props) => (props.isDarkMode ? '#131842' : '#fbf6e2')};
+  background-color: ${(props) => (props.isDarkMode ? 'var(--native-dark-transparent-color)' : '#fbf6e2')};
   width: 100%;
+  margin-top: 0;
   max-height: ${(props) => (props.isOpen ? '60vh' : '0')};
   transition: max-height 0.5s ease-in-out;
   right: 0;
   top: 60px;
   padding: 20px 10px 20px 0;
-  z-index: 1000;
-  box-shadow: ${(props) =>
-    props.isDarkMode ? '-10px 15px 10px -15px #E68369' : '-15px 15px 10px -15px #111'};
+  z-index: 1000 !important;
+  box-shadow: ${(props) => (props.isDarkMode ? '' : '-15px 15px 10px -15px #111')};
 
   @media (min-width: 768px) {
     display: flex;
     flex-direction: row;
     height: auto;
     width: auto;
+    margin: 16px 0;
     position: relative;
     top: 0;
     padding: 0 10px 0 0;
@@ -99,34 +110,30 @@ const StyledUl = styled.ul<HeaderProps>`
 `;
 
 const StyledListItem = styled.li<HeaderProps>`
-  label: StyledListItem;
-  list-style-type: none;
-  padding: 10px;
-  width: 90%;
-  cursor: pointer;
-  box-shadow: ${(props) =>
-    props.isDarkMode ? '-10px 15px 10px -15px #E68369' : '-15px 15px 10px -15px #111'};
-  transition: box-shadow 0.3s ease-in-out;
+  && {
+    label: StyledListItem;
+    list-style-type: none;
+    padding: 10px;
+    width: 90%;
+    cursor: pointer;
+    box-shadow: ${(props) => (props.isDarkMode ? '' : '-15px 15px 10px -15px #111')};
+    transition: box-shadow 0.3s ease-in-out;
 
-  &:hover {
-    box-shadow: ${(props) =>
-      props.isDarkMode ? '15px 15px 10px -15px #E68369' : '-15px 15px 10px -15px #111'};
-  }
+    a {
+      text-decoration: none !important;
+      font-size: 18px !important;
+      display: inline-block;
+      animation: ${pullUp} 0.5s ease forwards;
+    }
 
-  a {
-    text-decoration: none;
-    font-size: 18px;
-    display: inline-block;
-    animation: ${pullUp} 0.5s ease forwards;
-  }
+    a:hover {
+      color: #e68369 !important;
+      transition: color 0.5s ease-out;
+    }
 
-  a:hover {
-    color: #e68369;
-    transition: 0.5s ease-out;
-  }
-
-  @media (min-width: 768px) {
-    box-shadow: none;
+    @media (min-width: 768px) {
+      box-shadow: none;
+    }
   }
 `;
 

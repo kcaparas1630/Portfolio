@@ -13,8 +13,9 @@ import {
 interface HeaderProps {
   isDarkMode: boolean;
   setDarkMode: Dispatch<SetStateAction<boolean>>;
+  isHeaderVisible?: boolean;
 }
-const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode }) => {
+const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode, isHeaderVisible = true }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const toggleModeWrapper = () => {
     setDarkMode(!isDarkMode);
@@ -27,6 +28,7 @@ const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode }) => {
     <StyledHeader
       isDarkMode={isDarkMode}
       isOpen={isMenuOpen}
+      isHeaderVisible={isHeaderVisible}
     >
       <h2>
         <NavLink to="/">Kcaparas</NavLink>
@@ -47,6 +49,8 @@ const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode }) => {
           <NavLink
             to="/"
             className={({ isActive }) => (isActive ? 'active-link' : '')}
+            onMouseEnter={(e) => e.currentTarget.style.setProperty('color', 'var(--accent-color)', 'important')}
+            onMouseLeave={(e) => e.currentTarget.style.removeProperty('color')}
           >
             Home
           </NavLink>
@@ -55,6 +59,8 @@ const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode }) => {
           <NavLink
             to="/about"
             className={({ isActive }) => (isActive ? 'active-link' : '')}
+            onMouseEnter={(e) => e.currentTarget.style.setProperty('color', 'var(--accent-color)', 'important')}
+            onMouseLeave={(e) => e.currentTarget.style.removeProperty('color')}
           >
             About
           </NavLink>
@@ -63,6 +69,8 @@ const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode }) => {
           <NavLink
             to="/projects"
             className={({ isActive }) => (isActive ? 'active-link' : '')}
+            onMouseEnter={(e) => e.currentTarget.style.setProperty('color', 'var(--accent-color)', 'important')}
+            onMouseLeave={(e) => e.currentTarget.style.removeProperty('color')}
           >
             Projects
           </NavLink>
@@ -71,6 +79,8 @@ const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode }) => {
           <NavLink
             to="/contact"
             className={({ isActive }) => (isActive ? 'active-link' : '')}
+            onMouseEnter={(e) => e.currentTarget.style.setProperty('color', 'var(--accent-color)', 'important')}
+            onMouseLeave={(e) => e.currentTarget.style.removeProperty('color')}
           >
             Contact
           </NavLink>

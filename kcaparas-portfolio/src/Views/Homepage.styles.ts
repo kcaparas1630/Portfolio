@@ -6,7 +6,7 @@ type ViewProps = {
 const StyledView = styled.div<ViewProps>`
     display: flex;
     flex-direction: column;
-    background-color: ${(props) => (props.isDarkMode ? '#131842' : '#fbf6e2')};
+    background-color: ${(props) => (props.isDarkMode ? 'var(--native-dark-transparent-color) !important' : '#fbf6e2')};
     width: 100vw;
     height: 100%;
     transition: background-color 0.5s ease;

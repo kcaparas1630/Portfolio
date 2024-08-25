@@ -129,6 +129,7 @@ const TopDiv = styled.div`
     height: 100%;
     object-fit: cover;
     border-radius: 10%;
+    opacity: 1 !important; 
     transition: transform 0.3s ease-in-out;
   }
 `;

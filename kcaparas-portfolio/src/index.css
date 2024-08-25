@@ -1,3 +1,13 @@
+:root {
+  --native-dark-font-color: white;
+  --native-light-font-color: black;
+  --native-dark-transparent-color: #131842;
+  --native-dark-bg-color: #131842;
+  --native-dark-box-shadow: #111;
+  --native-dark-border-color: #e68369;
+  --accent-color: #e68369;
+}
+
 body {
   margin: 0;
   font-family: 'Playfair Display';

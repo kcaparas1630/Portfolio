@@ -20,7 +20,7 @@ const SolidBackground = styled.div`
   inset: 0;
   background: #e68369;
   border-radius: 100%;
-  z-index: 1;
+  z-index: 0;
 `;
 
 const InnerIcon = styled.div<StyledIconProps>`
@@ -30,7 +30,7 @@ const InnerIcon = styled.div<StyledIconProps>`
   background-color: ${(props) => (props.isDarkMode ? '#131842' : '#fbf6e2')};
   color: ${(props) => (props.isDarkMode ? 'white' : 'black')};
   border-radius: 100%;
-  z-index: 2;
+  z-index: 1;
   font-size: 18px;
   transition: background-color 0.2s ease, border 0.2s ease;
   text-align: center;

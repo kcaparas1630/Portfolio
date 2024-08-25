@@ -98,14 +98,13 @@ const SkillSetItem = styled.div<SkillType>`
   label: SkillSetItem;
   display: flex;
   align-items: center; /* Ensure vertical alignment */
-  background-color: #fbf6e2;
-  color: black;
+  background-color: #131842;
+  color: white;
   padding: 15px 20px;
   border-radius: 10px;
   flex-direction: row;
   gap: 24px;
-  box-shadow: ${(props) =>
-    props.isDarkMode ? '-10px 15px 10px -15px #E68369' : '-15px 15px 10px -15px #111'};
+  box-shadow: -15px 15px 10px -15px #111;
   img {
     flex-shrink: 0;
     width: 30%;
