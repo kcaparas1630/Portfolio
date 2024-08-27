@@ -1,35 +1,28 @@
 import styled from '@emotion/styled';
-import { keyframes } from '@emotion/react';
 
-const paragato = keyframes`
-  from {
-    transform: rotate(-20deg);
-  }
-  to {
-    transform: rotate(20deg);
-  }
-`;
+type PreloaderProps = {
+  isDarkMode?: boolean;
+};
 
-const Parachute = styled.div`
-  position: absolute;
-  z-index: 1;
-  left: 30%;
-  img {
-    width: 35%;
-    height: 35%;
-    transform-origin: 50px 5px;
-    transition: transform 1s ease-in 0s;
-    animation-duration: 2.2s;
-    animation-name: ${paragato};
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    -webkit-animation-duration: 2.2s;
-    -webkit-animation-name: ${paragato};
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-direction: alternate;
-    -webkit-animation-timing-function: ease-in-out; /* Chrome, Safari, Opera */
-    animation-timing-function: ease-in-out;
+const PreloaderContainer = styled.div<PreloaderProps>`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+
+  .textmode {
+    font-size: 28px;
+    font-weight: 700;
+    color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
   }
 `;
+const PreloaderImg = styled.img`
+  width: 20%;
+  aspect-ratio: 4/3;
+  object-fit: contain;
+`;
 
-export default Parachute;
+export { PreloaderContainer, PreloaderImg };

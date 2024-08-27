@@ -58,9 +58,9 @@ const ProjectsCard = styled.div<ProjectsProps>`
   transform: translateY(${(props) => (props.inView ? '0' : '100%')});
   opacity: ${(props) => (props.inView ? '1' : '0')};
   transition:
-    transform 0.5s ease,
+    transform 1s ease,
     box-shadow 0.3s ease-in-out,
-    opacity 0.5s ease;
+    opacity 1s ease;
 
   @media (min-width: 1024px) {
     width: 40%;

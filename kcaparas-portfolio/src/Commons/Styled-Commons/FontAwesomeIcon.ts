@@ -28,7 +28,7 @@ const InnerIcon = styled.div<StyledIconProps>`
   position: relative;
   padding: 10px 5px;
   background-color: ${(props) => (props.isDarkMode ? '#131842' : '#fbf6e2')};
-  color: ${(props) => (props.isDarkMode ? 'white' : 'black')};
+  color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
   border-radius: 100%;
   z-index: 1;
   font-size: 18px;

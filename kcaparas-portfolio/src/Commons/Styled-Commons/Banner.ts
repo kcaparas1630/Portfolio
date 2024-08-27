@@ -22,7 +22,7 @@ const BannerView = styled.section`
   width: 100%;
   @media (min-width: 768px) {
     flex-direction: row;
-    min-height: 91vh;
+    min-height: 100vh;
   }
 `;
 const LeftView = styled.div`
@@ -62,20 +62,20 @@ const RightView = styled.div`
 const StyledGreetings = styled.h2<BannerProps>`
   display: flex;
   font-size: 28px;
-  color: ${(props) => (props.isDarkMode ? 'white' : 'black')};
+  color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
   opacity: 0.8;
   margin: 0;
 `;
 const StyledName = styled.h1<BannerProps>`
   display: flex;
-  color: ${(props) => (props.isDarkMode ? 'white' : 'black')};
+  color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
   text-align: center;
   font-size: 48px;
   font-weight: 700;
 `;
 const StyledDesignation = styled.h2<BannerProps>`
   display: flex;
-  color: ${(props) => (props.isDarkMode ? 'white' : 'black')};
+  color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
   opacity: 0.8;
   @media (min-width: 768px) {
     margin: 0;
@@ -83,7 +83,7 @@ const StyledDesignation = styled.h2<BannerProps>`
 `;
 const StyledSummary = styled.p<BannerProps>`
   display: flex;
-  color: ${(props) => (props.isDarkMode ? 'white' : 'black')};
+  color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
   margin: auto;
   width: 80%;
   line-height: 1.5;

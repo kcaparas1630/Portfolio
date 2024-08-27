@@ -1,7 +1,7 @@
 import { Dispatch, FC, SetStateAction, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faMoon, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faMoon, faTimes, faSun } from '@fortawesome/free-solid-svg-icons';
 import {
   StyledHeader,
   StyledUl,
@@ -17,11 +17,19 @@ interface HeaderProps {
 }
 const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode, isHeaderVisible = true }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isRotating, setIsRotating] = useState(false);
+
   const toggleModeWrapper = () => {
     setDarkMode(!isDarkMode);
   };
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleClick = () => {
+    setIsRotating(true);
+    toggleModeWrapper();
+    setTimeout(() => setIsRotating(false), 1000); // Reset after animation completes
   };
 
   return (
@@ -98,9 +106,10 @@ const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode, isHeaderVisible = tr
         type="button"
         isDarkMode={isDarkMode}
         isMobile={false}
-        onClick={toggleModeWrapper}
+        isRotating={isRotating}
+        onClick={handleClick}
       >
-        <FontAwesomeIcon icon={faMoon} />
+        <FontAwesomeIcon className="icon" icon={isDarkMode ? faMoon : faSun} />
       </StyledIconButton>
     </StyledHeader>
   );

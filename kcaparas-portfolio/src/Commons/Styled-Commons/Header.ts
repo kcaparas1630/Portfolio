@@ -12,11 +12,21 @@ const pullUp = keyframes`
   }
 `;
 
+const rotateIcon = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
 type HeaderProps = {
   isDarkMode?: boolean;
   isOpen?: boolean;
   isMobile?: boolean;
   isHeaderVisible?: boolean;
+  isRotating?: boolean;
 };
 
 const StyledHeader = styled.div<HeaderProps>`
@@ -41,7 +51,10 @@ const StyledHeader = styled.div<HeaderProps>`
     h2,
     a {
       text-decoration: none !important;
-      color: ${(props) => (props.isDarkMode ? 'var(--native-dark-font-color) !important' : 'var(--native-light-font-color)')};
+      color: ${(props) =>
+        props.isDarkMode
+          ? 'var(--native-dark-font-color) !important'
+          : 'var(--native-light-font-color)'};
       font-size: 20px;
       display: inline-block;
       animation: ${pullUp} 0.5s ease forwards;
@@ -83,7 +96,8 @@ const StyledUl = styled.ul<HeaderProps>`
   gap: 20px;
   align-items: center;
   position: absolute;
-  background-color: ${(props) => (props.isDarkMode ? 'var(--native-dark-transparent-color)' : '#fbf6e2')};
+  background-color: ${(props) =>
+    props.isDarkMode ? 'var(--native-dark-transparent-color)' : '#fbf6e2'};
   width: 100%;
   margin-top: 0;
   max-height: ${(props) => (props.isOpen ? '60vh' : '0')};
@@ -145,22 +159,25 @@ const StyledIconButton = styled.button<HeaderProps>`
   color: ${(props) => (props.isDarkMode ? '#fff' : '#E68369')};
   font-size: 24px;
   cursor: pointer;
-
+  transition:
+    color 0.3s ease,
+    font-size 0.3s ease;
+  transform: 1s ease-in-out;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    color: #ff8225;
+  }
   @media (min-width: 768px) {
     display: ${(props) => (props.isMobile ? 'none' : 'flex')};
     align-items: center;
     font-size: 28px;
     position: absolute;
     right: 5%;
-    transition:
-      color 0.3s ease,
-      font-size 0.3s ease;
-    &:focus {
-      outline: none;
-    }
-    &:hover {
-      color: #ff8225;
-    }
+  }
+  .icon {
+    animation: ${(props) => (props.isRotating ? rotateIcon : 'none')} 1s ease-in-out;
   }
 `;
 

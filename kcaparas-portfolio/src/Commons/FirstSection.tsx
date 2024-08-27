@@ -8,8 +8,7 @@ type FirstSectionProps = {
 const FirstSectionComponent: FC<FirstSectionProps> = ({ isDarkMode }) => (
   <FirstSection isDarkMode={isDarkMode}>
     <HeaderContainer>
-      <h2>01</h2>
-      <h2>About me</h2>
+      <h2>A day in the life of Kent Caparas</h2>
     </HeaderContainer>
   </FirstSection>
 );
