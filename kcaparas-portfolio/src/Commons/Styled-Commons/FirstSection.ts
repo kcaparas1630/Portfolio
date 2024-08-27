@@ -36,7 +36,6 @@ const HeaderContainer = styled.div`
     margin: 0;
   }
 `;
-
 const Parachute = styled.div`
   position: absolute;
   z-index: 1;

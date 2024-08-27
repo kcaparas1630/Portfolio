@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
 import Header from '../Commons/Header';
 import StyledView from './ViewStyles';
-import Banner from '../Commons/Homepage/Banner';
-import Skills from '../Commons/Homepage/Skills';
-import Projects from '../Commons/Homepage/Projects';
+import Banner from '../Commons/Banner';
+import Skills from '../Commons/Skills';
+import Projects from '../Commons/Projects';
 
 const Homepage = () => {
   const [isDarkMode, setDarkMode] = useState<boolean>(() => {

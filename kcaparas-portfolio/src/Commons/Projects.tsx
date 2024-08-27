@@ -6,9 +6,9 @@ import {
   DescriptionContainer,
   ProjectHeader2Container,
   ProjectHeader2,
-} from '../Styled-Commons/Homepage/Projects';
-import ProjectArray from '../../Constants/ProjectsArray';
-import Button from '../Button';
+} from './Styled-Commons/Projects';
+import ProjectArray from '../Constants/ProjectsArray';
+import Button from './Button';
 
 interface ProjectsProps {
   isDarkMode: boolean;

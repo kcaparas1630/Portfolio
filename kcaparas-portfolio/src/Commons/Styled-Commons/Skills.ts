@@ -99,8 +99,8 @@ const SkillSetItem = styled.div<SkillType>`
   label: SkillSetItem;
   display: flex;
   align-items: center; /* Ensure vertical alignment */
-  background-color: #131842;
-  color: white;
+  background-color: ${(props) => (props.isDarkMode ? '#131842' : '#fbf6e2')};
+  color: ${(props) => (props.isDarkMode ? 'white' : 'black')};
   padding: 15px 20px;
   border-radius: 10px;
   flex-direction: row;
