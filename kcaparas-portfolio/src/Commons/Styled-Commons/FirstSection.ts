@@ -35,4 +35,15 @@ const HeaderContainer = styled.div`
   }
 `;
 
-export { FirstSection, HeaderContainer };
+const ArrowDown = styled.img<{ isHidden: boolean }>`
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translateY(${(props) => (props.isHidden ? '0' : '-100%')});
+  opacity: ${(props) => (props.isHidden ? '0.8' : '0')};
+  transition:
+    transform 1s ease,
+    opacity 0.5s ease;
+`;
+
+export { FirstSection, HeaderContainer, ArrowDown };

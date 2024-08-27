@@ -5,6 +5,7 @@ import Header from './Commons/Header';
 import FirstSection from './Commons/FirstSection';
 import PreLoader from './Assets/infinite-spinner.svg';
 import TypingAnimation from './Animation/Typing';
+import HobbySectionComponent from './Commons/HobbySection';
 
 const AboutComponent = () => {
   const [isDarkMode, setDarkMode] = useState<boolean>(
@@ -12,7 +13,7 @@ const AboutComponent = () => {
   );
   const [isPreloaded, setIsPreloaded] = useState<boolean>(false);
 
-  setTimeout(() => setIsPreloaded(true), 10000);
+  setTimeout(() => setIsPreloaded(true), 1000);
 
   return !isPreloaded ? (
     <StyledView isDarkMode={isDarkMode}>
@@ -34,6 +35,7 @@ const AboutComponent = () => {
         setDarkMode={setDarkMode}
       />
       <FirstSection isDarkMode={isDarkMode} />
+      <HobbySectionComponent isDarkMode={isDarkMode} />
     </StyledView>
   );
 };

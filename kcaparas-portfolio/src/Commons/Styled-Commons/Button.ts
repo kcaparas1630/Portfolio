@@ -10,7 +10,7 @@ const OuterButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-  width: 150px;
+  width: 100%;
   height: 40px;
 `;
 
