@@ -2,10 +2,11 @@ import { Dispatch, FC, SetStateAction, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faMoon, faTimes, faSun } from '@fortawesome/free-solid-svg-icons';
+import { AnimatePresence } from 'framer-motion';
+import HeaderMobile from './Header-mobile';
+import HeaderDesktop from './Header-Desktop';
 import {
   StyledHeader,
-  StyledUl,
-  StyledListItem,
   StyledIconButton,
   HamburgerIcon,
 } from './Styled-Commons/Header';
@@ -15,6 +16,7 @@ interface HeaderProps {
   setDarkMode: Dispatch<SetStateAction<boolean>>;
   isHeaderVisible?: boolean;
 }
+
 const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode, isHeaderVisible = true }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isRotating, setIsRotating] = useState(false);
@@ -22,6 +24,7 @@ const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode, isHeaderVisible = tr
   const toggleModeWrapper = () => {
     setDarkMode(!isDarkMode);
   };
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -29,8 +32,15 @@ const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode, isHeaderVisible = tr
   const handleClick = () => {
     setIsRotating(true);
     toggleModeWrapper();
-    setTimeout(() => setIsRotating(false), 1000); // Reset after animation completes
+    setTimeout(() => setIsRotating(false), 1000);
   };
+
+  const menuItems = [
+    { to: '/', text: 'Home' },
+    { to: '/about', text: 'About' },
+    { to: '/projects', text: 'Projects' },
+    { to: '/contact', text: 'Contact' },
+  ];
 
   return (
     <StyledHeader
@@ -49,59 +59,27 @@ const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode, isHeaderVisible = tr
       >
         <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
       </HamburgerIcon>
-      <StyledUl
-        isDarkMode={isDarkMode}
-        isOpen={isMenuOpen}
-      >
-        <StyledListItem isDarkMode={isDarkMode}>
-          <NavLink
-            to="/"
-            className={({ isActive }) => (isActive ? 'active-link' : '')}
-            onMouseEnter={(e) => e.currentTarget.style.setProperty('color', 'var(--accent-color)', 'important')}
-            onMouseLeave={(e) => e.currentTarget.style.removeProperty('color')}
-          >
-            Home
-          </NavLink>
-        </StyledListItem>
-        <StyledListItem isDarkMode={isDarkMode}>
-          <NavLink
-            to="/about"
-            className={({ isActive }) => (isActive ? 'active-link' : '')}
-            onMouseEnter={(e) => e.currentTarget.style.setProperty('color', 'var(--accent-color)', 'important')}
-            onMouseLeave={(e) => e.currentTarget.style.removeProperty('color')}
-          >
-            About
-          </NavLink>
-        </StyledListItem>
-        <StyledListItem isDarkMode={isDarkMode}>
-          <NavLink
-            to="/projects"
-            className={({ isActive }) => (isActive ? 'active-link' : '')}
-            onMouseEnter={(e) => e.currentTarget.style.setProperty('color', 'var(--accent-color)', 'important')}
-            onMouseLeave={(e) => e.currentTarget.style.removeProperty('color')}
-          >
-            Projects
-          </NavLink>
-        </StyledListItem>
-        <StyledListItem isDarkMode={isDarkMode}>
-          <NavLink
-            to="/contact"
-            className={({ isActive }) => (isActive ? 'active-link' : '')}
-            onMouseEnter={(e) => e.currentTarget.style.setProperty('color', 'var(--accent-color)', 'important')}
-            onMouseLeave={(e) => e.currentTarget.style.removeProperty('color')}
-          >
-            Contact
-          </NavLink>
-        </StyledListItem>
-        <StyledIconButton
-          type="button"
-          isDarkMode={isDarkMode}
-          isMobile
-          onClick={toggleModeWrapper}
-        >
-          <FontAwesomeIcon icon={faMoon} />
-        </StyledIconButton>
-      </StyledUl>
+      <AnimatePresence>
+        {/* Honestly the same thing but animation wouldn't work. */}
+        {isMenuOpen ? (
+          <HeaderMobile
+            isDarkMode={isDarkMode}
+            isMenuOpen={isMenuOpen}
+            toggleModeWrapper={toggleModeWrapper}
+            menuItems={menuItems}
+            setIsMenuOpen={setIsMenuOpen}
+          />
+        ) : (
+          <HeaderDesktop
+            isDarkMode={isDarkMode}
+            isMenuOpen={isMenuOpen}
+            toggleModeWrapper={toggleModeWrapper}
+            menuItems={menuItems}
+            setIsMenuOpen={setIsMenuOpen}
+          />
+        )}
+      </AnimatePresence>
+
       <StyledIconButton
         type="button"
         isDarkMode={isDarkMode}
@@ -109,7 +87,11 @@ const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode, isHeaderVisible = tr
         isRotating={isRotating}
         onClick={handleClick}
       >
-        <FontAwesomeIcon className="icon" icon={isDarkMode ? faMoon : faSun} />
+        <p>{isDarkMode ? 'Dark' : 'Light'}</p>
+        <FontAwesomeIcon
+          className="icon"
+          icon={isDarkMode ? faMoon : faSun}
+        />
       </StyledIconButton>
     </StyledHeader>
   );

@@ -1,28 +1,19 @@
 import styled from '@emotion/styled';
 
-type PreloaderProps = {
-  isDarkMode?: boolean;
-};
-
-const PreloaderContainer = styled.div<PreloaderProps>`
+const MobileDesignationContainer = styled.div`
   width: 100vw;
-  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-
-  .textmode {
-    font-size: 28px;
-    font-weight: 700;
-    color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
+  @media (min-width: 1024px) {
+    display: none;
   }
 `;
-const PreloaderImg = styled.img`
-  width: 20%;
-  aspect-ratio: 4/3;
-  object-fit: contain;
-`;
 
-export { PreloaderContainer, PreloaderImg };
+const DesktopDesignationContainer = styled.div`
+  width: 100vw;
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: flex;
+  }
+`;
+export { MobileDesignationContainer, DesktopDesignationContainer };

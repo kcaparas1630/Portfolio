@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 import { keyframes } from '@emotion/react';
 
 const pullUp = keyframes`
@@ -55,7 +56,6 @@ const StyledHeader = styled.div<HeaderProps>`
         props.isDarkMode
           ? 'var(--native-dark-font-color) !important'
           : 'var(--native-light-font-color)'};
-      font-size: 20px;
       display: inline-block;
       animation: ${pullUp} 0.5s ease forwards;
     }
@@ -63,11 +63,10 @@ const StyledHeader = styled.div<HeaderProps>`
     .active-link {
       color: var(--accent-color) !important;
       font-weight: 700;
-      border-bottom: 2px solid var(--accent-color);
     }
 
     @media (min-width: 768px) {
-      padding: 25px 0;
+      padding: 0;
       justify-content: space-evenly;
     }
   }
@@ -89,22 +88,21 @@ const HamburgerIcon = styled.button<HeaderProps>`
   }
 `;
 
-const StyledUl = styled.ul<HeaderProps>`
+const StyledUl = styled(motion.ul)<HeaderProps>`
   label: StyledUl;
   display: ${(props) => (props.isOpen ? 'flex' : 'none')};
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
   align-items: center;
+  justify-content: center;
   position: absolute;
   background-color: ${(props) =>
     props.isDarkMode ? 'var(--native-dark-transparent-color)' : '#fbf6e2'};
   width: 100%;
-  margin-top: 0;
-  max-height: ${(props) => (props.isOpen ? '60vh' : '0')};
-  transition: max-height 0.5s ease-in-out;
+  height: ${(props) => (props.isOpen ? '100vh' : '0')};
   right: 0;
   top: 60px;
-  padding: 20px 10px 20px 0;
+  padding: 0 10px 20px 0;
   z-index: 1000 !important;
   box-shadow: ${(props) => (props.isDarkMode ? '' : '-15px 15px 10px -15px #111')};
 
@@ -123,21 +121,22 @@ const StyledUl = styled.ul<HeaderProps>`
   }
 `;
 
-const StyledListItem = styled.li<HeaderProps>`
+const StyledListItem = styled(motion.li)<HeaderProps>`
   && {
     label: StyledListItem;
     list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 10px;
     width: 90%;
     cursor: pointer;
-    box-shadow: ${(props) => (props.isDarkMode ? '' : '-15px 15px 10px -15px #111')};
-    transition: box-shadow 0.3s ease-in-out;
 
     a {
       text-decoration: none !important;
-      font-size: 18px !important;
+      font-size: 2.5rem;
       display: inline-block;
-      animation: ${pullUp} 0.5s ease forwards;
     }
 
     a:hover {
@@ -145,20 +144,29 @@ const StyledListItem = styled.li<HeaderProps>`
       transition: color 0.5s ease-out;
     }
 
-    @media (min-width: 768px) {
-      box-shadow: none;
+    @media (min-width: 1024px) {
+      a {
+        font-size: 1.2rem;
+      }
     }
   }
 `;
 
 const StyledIconButton = styled.button<HeaderProps>`
   label: StyledIconButton;
+  width: 100%;
   display: ${(props) => (props.isMobile ? 'flex' : 'none')};
   background: none;
   border: none;
   color: ${(props) => (props.isDarkMode ? '#fff' : '#E68369')};
   font-size: 24px;
   cursor: pointer;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  p {
+    font-size: 18px;
+  }
   transition:
     color 0.3s ease,
     font-size 0.3s ease;
@@ -171,10 +179,13 @@ const StyledIconButton = styled.button<HeaderProps>`
   }
   @media (min-width: 768px) {
     display: ${(props) => (props.isMobile ? 'none' : 'flex')};
+    position: fixed;
+    right: 5%;
     align-items: center;
     font-size: 28px;
     position: absolute;
     right: 5%;
+    width: auto;
   }
   .icon {
     animation: ${(props) => (props.isRotating ? rotateIcon : 'none')} 1s ease-in-out;

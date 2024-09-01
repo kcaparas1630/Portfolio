@@ -1,38 +1,52 @@
-import { FC, useState, useCallback, useEffect } from 'react';
-import { FirstSection, HeaderContainer, ArrowDown } from './Styled-Commons/FirstSection';
-import arrowDownBlack from '../Assets/down-arrow-black.png';
-import arrowDownWhite from '../Assets/down-arrow-white.png';
+import { FC, useRef } from 'react';
+import { useScroll, useTransform, useSpring } from 'framer-motion';
+import { FirstSection, HeaderContainer, Blob } from './Styled-Commons/FirstSection';
 
 type FirstSectionProps = {
   isDarkMode: boolean;
 };
 
 const FirstSectionComponent: FC<FirstSectionProps> = ({ isDarkMode }) => {
-  const [lastScrollTop, setLastScrollTop] = useState(0);
-  const [hideArrow, setHideArrow] = useState<boolean>(false);
-  const ScrollArrowDown = useCallback(() => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    if (scrollTop > lastScrollTop) {
-      setHideArrow(true);
-    } else {
-      setHideArrow(false);
-    }
-    setLastScrollTop(scrollTop);
-  }, [lastScrollTop]);
+  const targetRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ['end end', 'end start'],
+  });
 
-  useEffect(() => {
-    window.addEventListener('scroll', ScrollArrowDown);
-    return () => {
-      window.removeEventListener('scroll', ScrollArrowDown);
-    };
-  }, [ScrollArrowDown]);
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 20,
+    restDelta: 0.001,
+  });
+
+  const opacity = useTransform(smoothProgress, [0, 0.8], [2, 0]);
+  const scale = useTransform(smoothProgress, [0, 0.8], [1, 0.8]);
+  const y = useTransform(smoothProgress, [0, 1], [0, 50]);
+  const position = useTransform(scrollYProgress, (pos) => {
+    if (pos >= 0.8) return 'relative';
+    if (pos >= 0.5) return 'relative';
+    return 'fixed';
+  });
+  const getRandomTranslate = () => {
+    const xBlob = Math.floor(Math.random() * 100) - 50;
+    const yBlob = Math.floor(Math.random() * 100) - 50;
+    return `${xBlob}%, ${yBlob}%`;
+  };
+  const blob1Translate = getRandomTranslate();
+  const blob2Translate = getRandomTranslate();
 
   return (
-    <FirstSection isDarkMode={isDarkMode}>
-      <HeaderContainer>
-        <h2>A day in the life of Kent Caparas</h2>
+    <FirstSection
+      ref={targetRef}
+      style={{ opacity }}
+      isDarkMode={isDarkMode}
+    >
+      <HeaderContainer style={{ scale, y, position }}>
+        <h2>I&apos;m Kent Hudson Caparas</h2>
+        <p>A full-stack developer</p>
       </HeaderContainer>
-      <ArrowDown src={isDarkMode ? arrowDownWhite : arrowDownBlack} alt="arrow-down" isHidden={hideArrow} />
+      <Blob topPos="40%" leftPos="40%" blobTranslate={blob1Translate} />
+      <Blob topPos="10%" leftPos="10%" blobTranslate={blob2Translate} />
     </FirstSection>
   );
 };
