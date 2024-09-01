@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from 'react';
+import { FC, useRef } from 'react';
 import { useSpring, motion, useScroll, useTransform } from 'framer-motion';
 import {
   Section,
