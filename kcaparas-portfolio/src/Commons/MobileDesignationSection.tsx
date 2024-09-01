@@ -35,6 +35,7 @@ const MobileDesignationSectionComponent: FC<DesignationSectionProps> = ({ isDark
   const BBOpacity = useTransform(smoothProgress, [0.4, 0.5, 0.6, 0.7], [0, 1, 1, 0]);
   const BBImgScale = useTransform(smoothProgress, [0.4, 0.5], [0.5, 1]);
   const BBImageX = useTransform(smoothProgress, [0.6, 0.7], ['0%', '600%']);
+  const BBImageY = useTransform(smoothProgress, [0.4, 0.5], ['100%', '0%']);
 
   // MechEng image animations
   const MEOpacity = useTransform(smoothProgress, [0.7, 0.75, 1], [0, 1, 1]);
@@ -60,6 +61,7 @@ const MobileDesignationSectionComponent: FC<DesignationSectionProps> = ({ isDark
               opacity: BBOpacity,
               scale: BBImgScale,
               x: BBImageX,
+              y: BBImageY,
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',

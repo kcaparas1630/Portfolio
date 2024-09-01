@@ -24,14 +24,13 @@ type SectionProps = {
 
 const FirstSection = styled(motion.section)<SectionProps>`
   margin-top: 10vh;
-  height: 90vh;
+  height: 100vh;
   width: 95vw;
   color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  // padding: 0 12px;
 
   @media (min-width: 1024px) {
     margin-top: 0;

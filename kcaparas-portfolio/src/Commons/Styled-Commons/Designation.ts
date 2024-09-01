@@ -60,7 +60,7 @@ const ImageContainer = styled(motion.div)`
   @media (min-width: 1024px) {
     display: flex;
     justify-content: center;
-    margin-left: 25px;
+    margin-left: 25px;  
   }
 `;
 

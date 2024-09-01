@@ -106,6 +106,10 @@ const StyledUl = styled(motion.ul)<HeaderProps>`
   z-index: 1000 !important;
   box-shadow: ${(props) => (props.isDarkMode ? '' : '-15px 15px 10px -15px #111')};
 
+  & > :first-of-type {
+    margin-top: -50px;
+  }
+
   @media (min-width: 768px) {
     display: flex;
     flex-direction: row;
@@ -118,6 +122,10 @@ const StyledUl = styled(motion.ul)<HeaderProps>`
     background-color: transparent;
     box-shadow: none;
     gap: 60px;
+
+    & > :first-of-type {
+      margin-top: 0;
+    }
   }
 `;
 

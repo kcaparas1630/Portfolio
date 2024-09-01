@@ -26,21 +26,18 @@ const DesktopDesignationSectionComponent: FC<DesignationSectionProps> = ({ isDar
   });
 
   const headerScale = useTransform(smoothProgress, [0.1, 0.3], [1, 0.5]);
-  const headerX = useTransform(
-    smoothProgress,
-    [0, 0.4, 0.5, 1],
-    ['0%', '-15%', '-20%', '-25%'],
-  );
+  const headerX = useTransform(smoothProgress, [0, 0.4, 0.5, 1], ['0%', '-15%', '-20%', '-25%']);
 
   // BetterBerries image animations
   const BBOpacity = useTransform(smoothProgress, [0.4, 0.5, 0.6, 0.7], [0, 1, 1, 0]);
-  const BBImgScale = useTransform(smoothProgress, [0.4, 0.7], [0.5, 1]);
+  const BBImgScale = useTransform(smoothProgress, [0.4, 0.5], [0.5, 1]);
   const BBImageX = useTransform(smoothProgress, [0.6, 0.7], ['0%', '600%']);
+  const BBImageY = useTransform(smoothProgress, [0.4, 0.5], ['100%', '0%']);
 
   // MechEng image animations
   const MEOpacity = useTransform(smoothProgress, [0.7, 0.75, 1], [0, 1, 1]);
   const MEImgScale = useTransform(smoothProgress, [0.7, 0.75], [0.5, 1]);
-  const MEImageY = useTransform(smoothProgress, [0.6, 0.9], ['100%', '-80%']);
+  const MEImageY = useTransform(smoothProgress, [0.6, 0.9], ['100%', '0%']);
 
   return (
     <Section isDarkMode={isDarkMode}>
@@ -51,14 +48,17 @@ const DesktopDesignationSectionComponent: FC<DesignationSectionProps> = ({ isDar
         <motion.div
           style={{
             position: 'sticky',
-            top: '10vh',
+            top: '50%',
+            transform: 'translateY(-50%)',
             left: '70%',
             width: '44vw',
             overflow: 'hidden',
             padding: '0 48px',
           }}
         >
-          <ImageContainer style={{ opacity: BBOpacity, scale: BBImgScale, x: BBImageX }}>
+          <ImageContainer
+            style={{ opacity: BBOpacity, scale: BBImgScale, x: BBImageX, y: BBImageY }}
+          >
             <img
               src={BetterBerries}
               alt="better-berries-landing-page"
@@ -68,10 +68,10 @@ const DesktopDesignationSectionComponent: FC<DesignationSectionProps> = ({ isDar
         <motion.div
           style={{
             position: 'sticky',
-            top: '2vh',
+            top: '60%',
+            transform: 'translateY(-60%)',
             left: '70%',
             width: '44vw',
-            overflow: 'hidden',
             padding: '0 48px',
           }}
         >
