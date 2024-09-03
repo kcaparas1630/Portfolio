@@ -57,6 +57,7 @@ const HeaderContainer = styled(motion.div)`
   p {
     font-size: 1.5rem;
     margin: 0;
+    color: #e68369;
   }
 
   @media (min-width: 1024px) {

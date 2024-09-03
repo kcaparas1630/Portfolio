@@ -26,7 +26,11 @@ const DesktopDesignationSectionComponent: FC<DesignationSectionProps> = ({ isDar
   });
 
   const headerScale = useTransform(smoothProgress, [0.1, 0.3], [0.8, 0.5]);
-  const headerX = useTransform(smoothProgress, [0, 0.4, 0.5, 0.8, 0.85], ['0%', '-15%', '-20%', '-22%', '-100%']);
+  const headerX = useTransform(
+    smoothProgress,
+    [0, 0.4, 0.5, 0.8, 0.85],
+    ['0%', '-15%', '-20%', '-22%', '-100%'],
+  );
   const headerOpacity = useTransform(smoothProgress, [0, 1], [1, 0.8]);
 
   // BetterBerries image animations
@@ -44,7 +48,10 @@ const DesktopDesignationSectionComponent: FC<DesignationSectionProps> = ({ isDar
     <Section isDarkMode={isDarkMode}>
       <SectionContainer ref={targetRef}>
         <HeaderContainer style={{ opacity: headerOpacity, scale: headerScale, x: headerX }}>
-          <h2>I&apos;m a Full-Stack Developer who focuses on Front-end Designs!</h2>
+          <h2>
+            I&apos;m a Full-Stack Developer who specializes on
+            <strong> Front-end Designs!</strong>
+          </h2>
         </HeaderContainer>
         <motion.div
           style={{

@@ -1,23 +1,28 @@
-import { FC, useRef } from 'react';
+import { FC, useRef, useState } from 'react';
 import { useTransform, useSpring, useScroll } from 'framer-motion';
+import SkillSetArray from '../Constants/SkillSetArray';
+import SkillCarousel from './SkillCarousel';
 import {
   ThirdSection,
   SectionContainer,
   HeaderContainer,
   StyledImage,
   ImageContainer,
-  SkillList,
-  SkillItem,
   SkillDescContainer,
   SkillDescription,
+  SkillDescriptionTab,
 } from './Styled-Commons/ThirdSection';
 import Picture from '../Assets/kent-nobg2.png';
+import SkillSetTypes from '../Types/SkillSetTypes';
 
 type ThirdSectionProps = {
   isDarkMode: boolean;
 };
 
 const ThirdSectionComponent: FC<ThirdSectionProps> = ({ isDarkMode }) => {
+  const getSkillArray = SkillSetArray(isDarkMode);
+  const [skillDescription, setSkillDescription] = useState<SkillSetTypes>(getSkillArray[0]);
+  console.log('Description updated: ', skillDescription);
   const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -42,30 +47,25 @@ const ThirdSectionComponent: FC<ThirdSectionProps> = ({ isDarkMode }) => {
             alt="alt"
           />
         </ImageContainer>
-        <SkillList>
-          <SkillItem isDarkMode={isDarkMode}>
-            <p>Hello World</p>
-          </SkillItem>
-          <SkillItem isDarkMode={isDarkMode}>
-            <p>Hello World2</p>
-          </SkillItem>
-          <SkillItem isDarkMode={isDarkMode}>
-            <p>Hello World3</p>
-          </SkillItem>
-          <SkillItem isDarkMode={isDarkMode}>
-            <p>Hello World4</p>
-          </SkillItem>
-        </SkillList>
-        <SkillDescContainer>
-          <SkillDescription isDarkMode={isDarkMode}>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum.
-            </p>
+        <SkillCarousel
+          getSkillArray={getSkillArray}
+          isDarkMode={isDarkMode}
+          setSkillDescription={setSkillDescription}
+        />
+        <SkillDescContainer isDarkMode={isDarkMode}>
+          <h4>Technical Skills</h4>
+          <img src={skillDescription.skillImage} alt={skillDescription.skillAltImg} />
+          <h3>{skillDescription.skillText}</h3>
+          <SkillDescriptionTab>
+            <h4>Description</h4>
+          </SkillDescriptionTab>
+          <SkillDescription>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum.
           </SkillDescription>
         </SkillDescContainer>
       </SectionContainer>

@@ -20,7 +20,7 @@ const SectionContainer = styled.div`
   min-height: 400vh;
   width: 100vw;
   @media (min-width: 1024px) {
-    min-height: 150vh;
+    min-height: 300vh;
   }
 `;
 
@@ -62,50 +62,61 @@ const StyledImage = styled.img`
   filter: drop-shadow(12px 6px 9px #2e2e2e);
 `;
 
-const SkillList = styled.div`
-  height: 100%;
+const SkillDescContainer = styled.div<SectionProps>`
   width: 15%;
-  position: sticky;
-  top: 25vh;
-  left: 95vw;
+  height: 100%;
+  min-height: 500px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-`;
-
-const SkillItem = styled.div<SectionProps>`
-  width: 100%;
-  height: 100%;
-  max-width: 100px;
-  min-height: 100px;
-  padding: 12px;
-  border-radius: 50%;
-  border: 2px solid ${(props) => (props.isDarkMode ? '#fbf6e2' : '#131842')};
-  display: flex;
-  justify-content: center;
+  gap: 12px;
   align-items: center;
-`;
-const SkillDescContainer = styled.div`
-  width: 30%;
-  height: 100%;
-  min-height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: sticky;
   left: 2vw;
   top: 25vh;
-  padding: 24px 0;
+  padding: 24px 24px 0 24px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
+
+  h3 {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 700;
+  }
+
+  h4 {
+    font-size: 1.05rem;
+    margin: 0;
+    font-weight: 700;
+  }
+  img {
+    width: 20%;
+    height: 20%;
+  }
 `;
-const SkillDescription = styled.div<SectionProps>`
-  width: 30%;
-  height: 100%;
+
+const SkillDescriptionTab = styled.div`
+  width: 90%;
+  height: 50px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h4 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+`;
+const SkillDescription = styled.p`
+  width: 85%;
+  font-size: 0.9rem;
 `;
 
 export {
@@ -114,8 +125,7 @@ export {
   HeaderContainer,
   StyledImage,
   ImageContainer,
-  SkillList,
-  SkillItem,
   SkillDescContainer,
   SkillDescription,
+  SkillDescriptionTab,
 };

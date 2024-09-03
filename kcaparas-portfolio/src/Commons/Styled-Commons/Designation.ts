@@ -35,6 +35,10 @@ const HeaderContainer = styled(motion.div)<SectionProps>`
     font-weight: 900;
     margin: 0;
     text-align: center;
+    
+    strong {
+      color: #e68369;
+    }
   }
 
   @media (min-width: 1024px) {

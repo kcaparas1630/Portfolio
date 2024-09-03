@@ -24,13 +24,6 @@ const MobileDesignationSectionComponent: FC<DesignationSectionProps> = ({ isDark
     damping: 50,
   });
 
-  //   const headerScale = useTransform(smoothProgress, [0.1, 0.3], [1, 0.5]);
-  //   const headerX = useTransform(
-  //     smoothProgress,
-  //     [0, 0.5, 0.6, 1],
-  //     ['0%', '-15%', '-20%', '-25%'],
-  //   );
-
   // BetterBerries image animations
   const BBOpacity = useTransform(smoothProgress, [0.4, 0.5, 0.6, 0.7], [0, 1, 1, 0]);
   const BBImgScale = useTransform(smoothProgress, [0.4, 0.5], [0.5, 1]);
@@ -46,7 +39,10 @@ const MobileDesignationSectionComponent: FC<DesignationSectionProps> = ({ isDark
     <Section isDarkMode={isDarkMode}>
       <SectionContainer ref={targetRef}>
         <HeaderContainer>
-          <h2>I&apos;m a Full-Stack Developer who focuses on Front-end Designs!</h2>
+          <h2>
+            I&apos;m a Full-Stack Developer who specializes on
+            <strong>Front-end Designs!</strong>
+          </h2>
         </HeaderContainer>
         <motion.div
           style={{
