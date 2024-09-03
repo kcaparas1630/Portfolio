@@ -5,12 +5,24 @@ interface ButtonType {
   text: string;
   type: 'button' | 'submit' | 'reset';
   isDarkMode: boolean;
+  handleClick?: () => void;
 }
-const Button: FC<ButtonType> = ({ text, type = 'button', isDarkMode }) => (
-  <OuterButton type={type}>
-    <GradientBackground />
-    <InnerButton isDarkMode={isDarkMode}>{text}</InnerButton>
-  </OuterButton>
-);
+const Button: FC<ButtonType> = ({ text, type = 'button', isDarkMode, handleClick }) => {
+  const handleClickWrapper = () => {
+    if (handleClick) {
+      handleClick();
+    }
+  };
+
+  return (
+    <OuterButton
+      type={type}
+      onClick={handleClickWrapper}
+    >
+      <GradientBackground />
+      <InnerButton isDarkMode={isDarkMode}>{text}</InnerButton>
+    </OuterButton>
+  );
+};
 
 export default Button;

@@ -10,7 +10,7 @@ const OuterButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-  width: 150px;
+  width: 100%;
   height: 40px;
 `;
 
@@ -28,7 +28,7 @@ const InnerButton = styled.div<StyledButtonProps>`
   position: relative;
   padding: 8px 16px;
   background-color: ${(props) => (props.isDarkMode ? '#131842' : '#fbf6e2')};
-  color: ${(props) => (props.isDarkMode ? 'white' : 'black')};
+  color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
   font-weight: 700;
   border-radius: 6px;
   z-index: 2;
