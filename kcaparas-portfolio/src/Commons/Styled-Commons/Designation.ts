@@ -38,7 +38,6 @@ const HeaderContainer = styled(motion.div)<SectionProps>`
   }
 
   @media (min-width: 1024px) {
-    padding: 0 100px;
     top: 40vh;
     h2 {
       font-size: 5rem;

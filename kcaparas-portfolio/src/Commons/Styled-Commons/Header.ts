@@ -100,7 +100,7 @@ const StyledUl = styled(motion.ul)<HeaderProps>`
     props.isDarkMode ? 'var(--native-dark-transparent-color)' : '#fbf6e2'};
   width: 100%;
   height: ${(props) => (props.isOpen ? '100vh' : '0')};
-  right: 0;
+  transform: 'translateX(-50%)',
   top: 60px;
   padding: 0 10px 20px 0;
   z-index: 1000 !important;

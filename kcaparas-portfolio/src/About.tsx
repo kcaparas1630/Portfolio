@@ -5,6 +5,7 @@ import Header from './Commons/Header';
 import FirstSection from './Commons/FirstSection';
 import DesktopDesignationSection from './Commons/DesktopDesignationSection';
 import MobileDesignationSectionComponent from './Commons/MobileDesignationSection';
+import ThirdSectionComponent from './Commons/ThirdSection';
 
 const AboutComponent = () => {
   const [isDarkMode, setDarkMode] = useState<boolean>(
@@ -24,6 +25,7 @@ const AboutComponent = () => {
       <MobileDesignationContainer>
         <MobileDesignationSectionComponent isDarkMode={isDarkMode} />
       </MobileDesignationContainer>
+      <ThirdSectionComponent isDarkMode={isDarkMode} />
     </StyledView>
   );
 };

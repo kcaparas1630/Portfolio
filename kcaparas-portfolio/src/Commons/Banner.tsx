@@ -5,6 +5,7 @@ import { faGithub, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-i
 import { OuterIcon, InnerIcon, SolidBackground } from './Styled-Commons/FontAwesomeIcon';
 import BoxReveal from '../Animation/Box-Reveal';
 import Picture from '../Assets/kent-cropped.webp';
+import AltPicture from '../Assets/kent-nobg2.png';
 import {
   BannerView,
   LeftView,
