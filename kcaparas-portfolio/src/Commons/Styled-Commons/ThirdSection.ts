@@ -65,7 +65,7 @@ const StyledImage = styled.img`
 const SkillDescContainer = styled.div<SectionProps>`
   width: 15%;
   height: 100%;
-  min-height: 500px;
+  min-height: 600px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -114,7 +114,7 @@ const SkillDescriptionTab = styled.div`
     font-weight: 700;
   }
 `;
-const SkillDescription = styled.p`
+const SkillDescription = styled(motion.p)`
   width: 85%;
   font-size: 0.9rem;
 `;

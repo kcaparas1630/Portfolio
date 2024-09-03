@@ -1,5 +1,5 @@
 import { FC, useRef, useState } from 'react';
-import { useTransform, useSpring, useScroll } from 'framer-motion';
+import { motion, useTransform, useSpring, useScroll, AnimatePresence } from 'framer-motion';
 import SkillSetArray from '../Constants/SkillSetArray';
 import SkillCarousel from './SkillCarousel';
 import {
@@ -52,22 +52,46 @@ const ThirdSectionComponent: FC<ThirdSectionProps> = ({ isDarkMode }) => {
           isDarkMode={isDarkMode}
           setSkillDescription={setSkillDescription}
         />
-        <SkillDescContainer isDarkMode={isDarkMode}>
-          <h4>Technical Skills</h4>
-          <img src={skillDescription.skillImage} alt={skillDescription.skillAltImg} />
-          <h3>{skillDescription.skillText}</h3>
-          <SkillDescriptionTab>
-            <h4>Description</h4>
-          </SkillDescriptionTab>
-          <SkillDescription>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-            mollit anim id est laborum.
-          </SkillDescription>
-        </SkillDescContainer>
+        <AnimatePresence mode="wait">
+          <SkillDescContainer
+            isDarkMode={isDarkMode}
+            key={skillDescription.id}
+          >
+            <h4>Technical Skills</h4>
+            <motion.img
+              src={skillDescription.skillImage}
+              alt={skillDescription.skillAltImg}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              transition={{ duration: 0.3 }}
+            />
+            <motion.h3
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+            >
+              {skillDescription.skillText}
+            </motion.h3>
+            <SkillDescriptionTab>
+              <h4>Description</h4>
+            </SkillDescriptionTab>
+            <SkillDescription
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+              mollit anim id est laborum.
+            </SkillDescription>
+          </SkillDescContainer>
+        </AnimatePresence>
       </SectionContainer>
     </ThirdSection>
   );
