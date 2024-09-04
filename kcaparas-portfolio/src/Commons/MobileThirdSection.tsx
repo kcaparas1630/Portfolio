@@ -54,13 +54,12 @@ const MobileThirdSection: FC<MobileThirdSectionProps> = ({ isDarkMode, isHeaderV
       setInView(false);
     }
   });
-  console.log(isHeaderVisible);
   return (
     <ThirdSection isDarkMode={isDarkMode}>
       <SectionContainer ref={targetRef}>
         <HeaderContainer
           isHeaderVisible={isHeaderVisible}
-          style={{ scale: headerScale, opacity: headerOpacity }}
+          inView={inView}
         >
           <h2>Kent&apos;s skill points</h2>
         </HeaderContainer>

@@ -17,6 +17,11 @@ const CarouselContainer = styled.div<DarkModeProps>`
   justify-content: center;
   align-items: center;
   z-index: 999;
+  transform: translateY(${(props) => (props.inView ? '0' : '100%')});
+  opacity: ${(props) => (props.inView ? '0.8' : '0')};
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease;
   @media (min-width: 1024px) {
     width: 15%;
     position: sticky;

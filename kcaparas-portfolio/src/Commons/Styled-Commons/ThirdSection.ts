@@ -19,7 +19,7 @@ const ThirdSection = styled(motion.section)<SectionProps>`
 `;
 
 const SectionContainer = styled.div`
-  min-height: 400vh;
+  min-height: 150vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -45,6 +45,12 @@ const HeaderContainer = styled(motion.div)<SectionProps>`
     margin: 0;
     text-align: center;
   }
+
+  transform: translateY(${(props) => (props.inView ? '0' : '100%')});
+  opacity: ${(props) => (props.inView ? '1' : '0')};
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease;
 
   @media (min-width: 1024px) {
     position: sticky;
@@ -94,7 +100,7 @@ const SkillDescContainer = styled(motion.div)<SectionProps>`
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   h3 {
-   display: none;
+    display: none;
   }
 
   h4 {
@@ -106,6 +112,12 @@ const SkillDescContainer = styled(motion.div)<SectionProps>`
     width: 15%;
     height: 15%;
   }
+
+  transform: translateY(${(props) => (props.inView ? '0' : '100%')});
+  opacity: ${(props) => (props.inView ? '1' : '0')};
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease;
 
   @media (min-width: 1024px) {
     width: 15%;

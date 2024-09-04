@@ -21,6 +21,9 @@ const MobileDesignationSectionComponent: FC<ComponentProps> = ({ isDarkMode }) =
     damping: 50,
   });
 
+  const headerScale = useTransform(smoothProgress, [0.8, 0.85], [1, 0.5]);
+  const headerOpacity = useTransform(smoothProgress, [0.8, 0.85], [1, 0]);
+
   // BetterBerries image animations
   const BBOpacity = useTransform(smoothProgress, [0.4, 0.5, 0.6, 0.7], [0, 1, 1, 0]);
   const BBImgScale = useTransform(smoothProgress, [0.4, 0.5], [0.5, 1]);
@@ -35,7 +38,7 @@ const MobileDesignationSectionComponent: FC<ComponentProps> = ({ isDarkMode }) =
   return (
     <Section isDarkMode={isDarkMode}>
       <SectionContainer ref={targetRef}>
-        <HeaderContainer>
+        <HeaderContainer style={{ scale: headerScale, opacity: headerOpacity }}>
           <h2>
             I&apos;m a Full-Stack Developer who specializes on
             <strong> Front-end Designs!</strong>
