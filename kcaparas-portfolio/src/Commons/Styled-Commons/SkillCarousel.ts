@@ -2,10 +2,12 @@ import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
 type DarkModeProps = {
-  isDarkMode: boolean;
+  isDarkMode?: boolean;
+  inView?: boolean;
+  disabled?: boolean;
 };
 
-const CarouselContainer = styled.div`
+const CarouselContainer = styled.div<DarkModeProps>`
   height: 100%;
   width: 15%;
   position: sticky;
@@ -15,12 +17,18 @@ const CarouselContainer = styled.div`
   gap: 24px;
   flex-direction: column;
   align-items: center;
+  transform: translateX(${(props) => (props.inView ? '0' : '100%')});
+  opacity: ${(props) => (props.inView ? '0.8' : '0')};
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease;
 `;
 
 const Button = styled.button<DarkModeProps>`
   background: none;
   border: none;
-  cursor: pointer;
+  opacity: ${(props) => (props.disabled ? 0.5 : 1)};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
   color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
   &:hover {
     color: ${(props) => (props.isDarkMode ? '#fbf6e2' : '#131842')};
@@ -72,8 +80,7 @@ const SkillItemCircle = styled.div<DarkModeProps>`
     object-fit: contain;
   }
   &:hover {
-    box-shadow: ${(props) =>
-      props.isDarkMode ? '0 0 2px 2px #E68369' : '0 0 0 2px #111'};
+    box-shadow: ${(props) => (props.isDarkMode ? '0 0 2px 2px #E68369' : '0 0 0 2px #111')};
   }
   transition: box-shadow 0.5s ease-in-out;
 `;

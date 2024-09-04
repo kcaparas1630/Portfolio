@@ -1,5 +1,12 @@
 import { FC, useRef, useState } from 'react';
-import { motion, useTransform, useSpring, useScroll, AnimatePresence } from 'framer-motion';
+import {
+  motion,
+  useTransform,
+  useSpring,
+  useScroll,
+  AnimatePresence,
+  useMotionValueEvent,
+} from 'framer-motion';
 import SkillSetArray from '../Constants/SkillSetArray';
 import SkillCarousel from './SkillCarousel';
 import {
@@ -22,7 +29,7 @@ type ThirdSectionProps = {
 const ThirdSectionComponent: FC<ThirdSectionProps> = ({ isDarkMode }) => {
   const getSkillArray = SkillSetArray(isDarkMode);
   const [skillDescription, setSkillDescription] = useState<SkillSetTypes>(getSkillArray[0]);
-  console.log('Description updated: ', skillDescription);
+  const [inView, setInView] = useState<boolean>(false);
   const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -35,25 +42,43 @@ const ThirdSectionComponent: FC<ThirdSectionProps> = ({ isDarkMode }) => {
   const headerScale = useTransform(smoothProgress, [0, 0.15], [0.5, 1]);
   const headerOpacity = useTransform(smoothProgress, [0, 0.15], [0, 1]);
 
+  const PictureOpacity = useTransform(smoothProgress, [0, 1], [0, 1]);
+  const PictureScale = useTransform(smoothProgress, [0, 1], [0.5, 1]);
+  const PictureY = useTransform(smoothProgress, [0, 1], ['100%', '-20%']);
+
+  const DescOpacity = useTransform(smoothProgress, [0, 0.5], [0, 1]);
+  const DescScale = useTransform(smoothProgress, [0, 0.5], [0.5, 1]);
+  const DescY = useTransform(smoothProgress, [0, 0.5], ['100%', '0%']);
+
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    if (latest >= 0.5) {
+      setInView(true);
+    } else {
+      setInView(false);
+    }
+  });
+
   return (
     <ThirdSection isDarkMode={isDarkMode}>
       <SectionContainer ref={targetRef}>
         <HeaderContainer style={{ scale: headerScale, opacity: headerOpacity }}>
           <h2>Kent&apos;s skill points</h2>
         </HeaderContainer>
-        <ImageContainer>
+        <ImageContainer style={{ opacity: PictureOpacity, scale: PictureScale, y: PictureY }}>
           <StyledImage
             src={Picture}
             alt="alt"
           />
         </ImageContainer>
         <SkillCarousel
+          inView={inView}
           getSkillArray={getSkillArray}
           isDarkMode={isDarkMode}
           setSkillDescription={setSkillDescription}
         />
         <AnimatePresence mode="wait">
           <SkillDescContainer
+            inView={inView}
             isDarkMode={isDarkMode}
             key={skillDescription.id}
           >

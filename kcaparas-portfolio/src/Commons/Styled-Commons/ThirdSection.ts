@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 type SectionProps = {
   isDarkMode: boolean;
+  inView?: boolean;
 };
 
 const ThirdSection = styled(motion.section)<SectionProps>`
@@ -48,7 +49,7 @@ const HeaderContainer = styled(motion.div)`
     }
   }
 `;
-const ImageContainer = styled.div`
+const ImageContainer = styled(motion.div)`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -62,7 +63,7 @@ const StyledImage = styled.img`
   filter: drop-shadow(12px 6px 9px #2e2e2e);
 `;
 
-const SkillDescContainer = styled.div<SectionProps>`
+const SkillDescContainer = styled(motion.div)<SectionProps>`
   width: 15%;
   height: 100%;
   min-height: 600px;
@@ -80,6 +81,12 @@ const SkillDescContainer = styled.div<SectionProps>`
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
+
+  transform: translateX(${(props) => (props.inView ? '0' : '-100%')});
+  opacity: ${(props) => (props.inView ? '0.8' : '0')};
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease;
 
   h3 {
     font-size: 1.5rem;
