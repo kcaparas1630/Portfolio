@@ -2,8 +2,9 @@ import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
 type SectionProps = {
-  isDarkMode: boolean;
+  isDarkMode?: boolean;
   inView?: boolean;
+  isHeaderVisible?: boolean;
 };
 
 const ThirdSection = styled(motion.section)<SectionProps>`
@@ -18,17 +19,23 @@ const ThirdSection = styled(motion.section)<SectionProps>`
 `;
 
 const SectionContainer = styled.div`
-  min-height: 400vh;
+  min-height: 300vh;
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   @media (min-width: 1024px) {
     min-height: 300vh;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 `;
 
-const HeaderContainer = styled(motion.div)`
+const HeaderContainer = styled(motion.div)<SectionProps>`
   display: flex;
   position: sticky;
-  top: 20vh;
+  top: ${(props) => (props.isHeaderVisible ? '15vh' : '10vh')};
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -40,6 +47,7 @@ const HeaderContainer = styled(motion.div)`
   }
 
   @media (min-width: 1024px) {
+    position: sticky;
     top: 15vh;
     h2 {
       font-size: 3.5rem;
@@ -50,11 +58,14 @@ const HeaderContainer = styled(motion.div)`
   }
 `;
 const ImageContainer = styled(motion.div)`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  position: sticky;
-  top: 80vh;
+  display: none;
+  @media (min-width: 1024px) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 80vh;
+  }
 `;
 
 const StyledImage = styled.img`
@@ -64,44 +75,65 @@ const StyledImage = styled.img`
 `;
 
 const SkillDescContainer = styled(motion.div)<SectionProps>`
-  width: 15%;
+  width: 95%;
   height: 100%;
-  min-height: 600px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   align-items: center;
   position: sticky;
-  left: 2vw;
-  top: 25vh;
-  padding: 24px 24px 0 24px;
+  top: ${(props) => (props.isHeaderVisible ? '30vh' : '20vh')};
+  margin-bottom: 24px;
+  padding: 12px 0 0 0;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-
-  transform: translateX(${(props) => (props.inView ? '0' : '-100%')});
-  opacity: ${(props) => (props.inView ? '1' : '0')};
-  transition:
-    transform 0.5s ease,
-    opacity 0.5s ease;
-
   h3 {
-    font-size: 1.5rem;
-    margin: 0;
-    font-weight: 700;
-  }
+      font-size: 1.2rem;
+      margin: 0;
+      font-weight: 700;
+    }
 
-  h4 {
-    font-size: 1.05rem;
-    margin: 0;
-    font-weight: 700;
-  }
-  img {
-    width: 20%;
-    height: 20%;
+    h4 {
+      font-size: 0.9rem;
+      margin: 0;
+      font-weight: 700;
+    }
+    img {
+      width: 20%;
+      height: 20%;
+    }
+  
+  @media (min-width: 1024px) {
+    width: 15%;
+    min-height: 600px;
+    position: sticky;
+    left: 2vw;
+    top: 25vh;
+    padding: 24px 24px 0 24px;
+    h3 {
+      font-size: 1.5rem;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    h4 {
+      font-size: 1.05rem;
+      margin: 0;
+      font-weight: 700;
+    }
+    img {
+      width: 20%;
+      height: 20%;
+    }
+    transform: translateX(${(props) => (props.inView ? '0' : '-100%')});
+    opacity: ${(props) => (props.inView ? '1' : '0')};
+    transition:
+      transform 0.5s ease,
+      opacity 0.5s ease;
   }
 `;
 
@@ -120,7 +152,6 @@ const SkillDescriptionTab = styled.div`
     font-size: 1.5rem;
     font-weight: 700;
   }
-
 `;
 const SkillDescription = styled(motion.p)`
   width: 85%;
