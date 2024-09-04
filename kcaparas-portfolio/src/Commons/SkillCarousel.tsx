@@ -1,7 +1,13 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { useMediaQuery } from 'react-responsive';
+import {
+  faChevronUp,
+  faChevronDown,
+  faChevronLeft,
+  faChevronRight,
+} from '@fortawesome/free-solid-svg-icons';
 import SkillSetTypes from '../Types/SkillSetTypes';
 import SkillVariants from '../Motion-Variants/Skill-Variants';
 import {
@@ -24,8 +30,15 @@ const SkillCarousel: React.FC<SkillCarouselType> = ({
   setSkillDescription,
   inView,
 }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [direction, setDirection] = useState<number>(0);
+
+  const isDesktopOrLaptop = useMediaQuery({
+    query: '(min-width: 1024px)',
+  });
+  const mobileOrTablet = useMediaQuery({
+    query: '(min-width: 375px)',
+  });
 
   const nextSlide = () => {
     if (currentIndex + 4 < getSkillArray.length) {
@@ -54,10 +67,18 @@ const SkillCarousel: React.FC<SkillCarouselType> = ({
         isDarkMode={isDarkMode}
         disabled={currentIndex === 0}
       >
-        <FontAwesomeIcon
-          icon={faChevronUp}
-          size="lg"
-        />
+        {mobileOrTablet && !isDesktopOrLaptop && (
+          <FontAwesomeIcon
+            icon={faChevronLeft}
+            size="lg"
+          />
+        )}
+        {isDesktopOrLaptop && (
+          <FontAwesomeIcon
+            icon={faChevronUp}
+            size="lg"
+          />
+        )}
       </Button>
       <SkillList>
         <AnimatePresence initial={false}>
@@ -91,10 +112,18 @@ const SkillCarousel: React.FC<SkillCarouselType> = ({
         isDarkMode={isDarkMode}
         disabled={currentIndex + 4 >= getSkillArray.length}
       >
-        <FontAwesomeIcon
-          icon={faChevronDown}
-          size="lg"
-        />
+        {mobileOrTablet && !isDesktopOrLaptop && (
+          <FontAwesomeIcon
+            icon={faChevronRight}
+            size="lg"
+          />
+        )}
+        {isDesktopOrLaptop && (
+          <FontAwesomeIcon
+            icon={faChevronDown}
+            size="lg"
+          />
+        )}
       </Button>
     </CarouselContainer>
   );

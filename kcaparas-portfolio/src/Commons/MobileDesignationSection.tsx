@@ -38,7 +38,7 @@ const MobileDesignationSectionComponent: FC<ComponentProps> = ({ isDarkMode }) =
         <HeaderContainer>
           <h2>
             I&apos;m a Full-Stack Developer who specializes on
-            <strong>Front-end Designs!</strong>
+            <strong> Front-end Designs!</strong>
           </h2>
         </HeaderContainer>
         <motion.div

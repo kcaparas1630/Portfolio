@@ -19,7 +19,7 @@ const ThirdSection = styled(motion.section)<SectionProps>`
 `;
 
 const SectionContainer = styled.div`
-  min-height: 300vh;
+  min-height: 400vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -35,7 +35,7 @@ const SectionContainer = styled.div`
 const HeaderContainer = styled(motion.div)<SectionProps>`
   display: flex;
   position: sticky;
-  top: ${(props) => (props.isHeaderVisible ? '15vh' : '10vh')};
+  top: ${(props) => (props.isHeaderVisible ? '12vh' : '5vh')};
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -77,12 +77,14 @@ const StyledImage = styled.img`
 const SkillDescContainer = styled(motion.div)<SectionProps>`
   width: 95%;
   height: 100%;
+  min-height: 200px;
+  max-height: 400px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   align-items: center;
   position: sticky;
-  top: ${(props) => (props.isHeaderVisible ? '30vh' : '20vh')};
+  top: ${(props) => (props.isHeaderVisible ? '22vh' : '15vh')};
   margin-bottom: 24px;
   padding: 12px 0 0 0;
   background: rgba(255, 255, 255, 0.2);
@@ -92,21 +94,19 @@ const SkillDescContainer = styled(motion.div)<SectionProps>`
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   h3 {
-      font-size: 1.2rem;
-      margin: 0;
-      font-weight: 700;
-    }
+   display: none;
+  }
 
-    h4 {
-      font-size: 0.9rem;
-      margin: 0;
-      font-weight: 700;
-    }
-    img {
-      width: 20%;
-      height: 20%;
-    }
-  
+  h4 {
+    font-size: 0.8rem;
+    margin: 0;
+    font-weight: 700;
+  }
+  img {
+    width: 15%;
+    height: 15%;
+  }
+
   @media (min-width: 1024px) {
     width: 15%;
     min-height: 600px;
@@ -139,7 +139,7 @@ const SkillDescContainer = styled(motion.div)<SectionProps>`
 
 const SkillDescriptionTab = styled.div`
   width: 90%;
-  height: 50px;
+  height: 30px;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.2);
@@ -149,14 +149,28 @@ const SkillDescriptionTab = styled.div`
   align-items: center;
   h4 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 700;
+  }
+
+  @media (min-width: 1024px) {
+    height: 50px;
+    h4 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
   }
 `;
 const SkillDescription = styled(motion.p)`
   width: 85%;
-  font-size: 0.85rem;
-  line-height: 1.5;
+  font-size: 0.75rem;
+  line-height: 1.3;
+
+  @media (min-width: 1024px) {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
 `;
 
 export {
