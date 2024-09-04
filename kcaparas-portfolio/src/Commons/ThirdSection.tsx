@@ -46,10 +46,6 @@ const ThirdSectionComponent: FC<ThirdSectionProps> = ({ isDarkMode }) => {
   const PictureScale = useTransform(smoothProgress, [0, 1], [0.5, 1]);
   const PictureY = useTransform(smoothProgress, [0, 1], ['100%', '-20%']);
 
-  const DescOpacity = useTransform(smoothProgress, [0, 0.5], [0, 1]);
-  const DescScale = useTransform(smoothProgress, [0, 0.5], [0.5, 1]);
-  const DescY = useTransform(smoothProgress, [0, 0.5], ['100%', '0%']);
-
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
     if (latest >= 0.5) {
       setInView(true);
@@ -108,12 +104,7 @@ const ThirdSectionComponent: FC<ThirdSectionProps> = ({ isDarkMode }) => {
               exit={{ opacity: 0, scale: 0 }}
               transition={{ duration: 0.3, delay: 0.1 }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum.
+              {skillDescription.skillDesc}
             </SkillDescription>
           </SkillDescContainer>
         </AnimatePresence>

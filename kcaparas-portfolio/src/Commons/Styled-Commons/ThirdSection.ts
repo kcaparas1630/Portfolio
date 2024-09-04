@@ -123,7 +123,8 @@ const SkillDescriptionTab = styled.div`
 `;
 const SkillDescription = styled(motion.p)`
   width: 85%;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
 `;
 
 export {

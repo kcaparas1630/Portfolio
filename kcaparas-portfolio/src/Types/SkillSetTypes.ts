@@ -3,6 +3,7 @@ type SkillSetTypes = {
     skillImage: string,
     skillText: string,
     skillAltImg: string,
+    skillDesc: string,
 };
 
 export default SkillSetTypes;
