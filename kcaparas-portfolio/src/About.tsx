@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import StyledView from './Views/ViewStyles';
-import { DesktopDesignationContainer, MobileDesignationContainer } from './Views/About';
+import { DesktopContainer, MobileContainer } from './Views/About';
 import Header from './Commons/Header';
 import FirstSection from './Commons/FirstSection';
 import DesktopDesignationSection from './Commons/DesktopDesignationSection';
 import MobileDesignationSectionComponent from './Commons/MobileDesignationSection';
-import ThirdSectionComponent from './Commons/ThirdSection';
+import DesktopThirdSection from './Commons/ThirdSection';
 
 const AboutComponent = () => {
   const [isDarkMode, setDarkMode] = useState<boolean>(
@@ -19,13 +19,13 @@ const AboutComponent = () => {
         setDarkMode={setDarkMode}
       />
       <FirstSection isDarkMode={isDarkMode} />
-      <DesktopDesignationContainer>
+      <DesktopContainer>
         <DesktopDesignationSection isDarkMode={isDarkMode} />
-      </DesktopDesignationContainer>
-      <MobileDesignationContainer>
+        <DesktopThirdSection isDarkMode={isDarkMode} />
+      </DesktopContainer>
+      <MobileContainer>
         <MobileDesignationSectionComponent isDarkMode={isDarkMode} />
-      </MobileDesignationContainer>
-      <ThirdSectionComponent isDarkMode={isDarkMode} />
+      </MobileContainer>
     </StyledView>
   );
 };

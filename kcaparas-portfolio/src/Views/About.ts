@@ -1,19 +1,21 @@
 import styled from '@emotion/styled';
 
-const MobileDesignationContainer = styled.div`
+const MobileContainer = styled.div`
   width: 100vw;
   display: flex;
+  flex-direction: column;
   @media (min-width: 1024px) {
     display: none;
   }
 `;
 
-const DesktopDesignationContainer = styled.div`
+const DesktopContainer = styled.div`
   width: 100vw;
   display: none;
 
   @media (min-width: 1024px) {
     display: flex;
+    flex-direction: column;
   }
 `;
-export { MobileDesignationContainer, DesktopDesignationContainer };
+export { MobileContainer, DesktopContainer };
