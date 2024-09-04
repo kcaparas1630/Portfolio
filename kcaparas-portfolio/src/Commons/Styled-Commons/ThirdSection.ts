@@ -83,7 +83,7 @@ const SkillDescContainer = styled(motion.div)<SectionProps>`
   border: 1px solid rgba(255, 255, 255, 0.3);
 
   transform: translateX(${(props) => (props.inView ? '0' : '-100%')});
-  opacity: ${(props) => (props.inView ? '0.8' : '0')};
+  opacity: ${(props) => (props.inView ? '1' : '0')};
   transition:
     transform 0.5s ease,
     opacity 0.5s ease;
@@ -120,6 +120,7 @@ const SkillDescriptionTab = styled.div`
     font-size: 1.5rem;
     font-weight: 700;
   }
+
 `;
 const SkillDescription = styled(motion.p)`
   width: 85%;

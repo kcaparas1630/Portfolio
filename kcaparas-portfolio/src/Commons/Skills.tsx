@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { useInView } from 'react-intersection-observer';
 import SkillSetArray from '../Constants/SkillSetArray';
+import ComponentProps from '../Types/ComponentProps';
 import {
   SkillsContainer,
   SkillsLeftContainer,
@@ -11,11 +12,8 @@ import {
   SkillSetItem,
 } from './Styled-Commons/Skills';
 
-interface SkillsProps {
-  isDarkMode: boolean;
-}
 
-const Skills: FC<SkillsProps> = ({ isDarkMode }) => {
+const Skills: FC<ComponentProps> = ({ isDarkMode }) => {
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.1,

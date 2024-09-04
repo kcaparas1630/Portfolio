@@ -21,12 +21,9 @@ import {
 } from './Styled-Commons/ThirdSection';
 import Picture from '../Assets/kent-nobg2.png';
 import SkillSetTypes from '../Types/SkillSetTypes';
+import ComponentProps from '../Types/ComponentProps';
 
-type ThirdSectionProps = {
-  isDarkMode: boolean;
-};
-
-const ThirdSectionComponent: FC<ThirdSectionProps> = ({ isDarkMode }) => {
+const DesktopThirdSection: FC<ComponentProps> = ({ isDarkMode }) => {
   const getSkillArray = SkillSetArray(isDarkMode);
   const [skillDescription, setSkillDescription] = useState<SkillSetTypes>(getSkillArray[0]);
   const [inView, setInView] = useState<boolean>(false);
@@ -42,7 +39,7 @@ const ThirdSectionComponent: FC<ThirdSectionProps> = ({ isDarkMode }) => {
   const headerScale = useTransform(smoothProgress, [0, 0.15], [0.5, 1]);
   const headerOpacity = useTransform(smoothProgress, [0, 0.15], [0, 1]);
 
-  const PictureOpacity = useTransform(smoothProgress, [0, 1], [0, 1]);
+  const PictureOpacity = useTransform(smoothProgress, [0, 0.7], [0, 1]);
   const PictureScale = useTransform(smoothProgress, [0, 1], [0.5, 1]);
   const PictureY = useTransform(smoothProgress, [0, 1], ['100%', '-20%']);
 
@@ -113,4 +110,4 @@ const ThirdSectionComponent: FC<ThirdSectionProps> = ({ isDarkMode }) => {
   );
 };
 
-export default ThirdSectionComponent;
+export default DesktopThirdSection;

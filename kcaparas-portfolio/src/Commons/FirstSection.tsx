@@ -1,12 +1,9 @@
 import { FC, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { FirstSection, HeaderContainer, Blob } from './Styled-Commons/FirstSection';
+import ComponentProps from '../Types/ComponentProps';
 
-type FirstSectionProps = {
-  isDarkMode: boolean;
-};
-
-const FirstSectionComponent: FC<FirstSectionProps> = ({ isDarkMode }) => {
+const FirstSectionComponent: FC<ComponentProps> = ({ isDarkMode }) => {
   const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,

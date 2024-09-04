@@ -11,13 +11,13 @@ import {
   SkillItemCircle,
   SkillList,
 } from './Styled-Commons/SkillCarousel';
+import ComponentProps from '../Types/ComponentProps';
 
-type SkillCarouselType = {
+interface SkillCarouselType extends ComponentProps {
   getSkillArray: SkillSetTypes[];
-  isDarkMode: boolean;
   setSkillDescription: Dispatch<SetStateAction<SkillSetTypes>>;
   inView: boolean;
-};
+}
 const SkillCarousel: React.FC<SkillCarouselType> = ({
   getSkillArray,
   isDarkMode,

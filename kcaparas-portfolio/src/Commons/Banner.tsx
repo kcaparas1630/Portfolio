@@ -5,7 +5,7 @@ import { faGithub, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-i
 import { OuterIcon, InnerIcon, SolidBackground } from './Styled-Commons/FontAwesomeIcon';
 import BoxReveal from '../Animation/Box-Reveal';
 import Picture from '../Assets/kent-cropped.webp';
-import AltPicture from '../Assets/kent-nobg2.png';
+import ComponentProps from '../Types/ComponentProps';
 import {
   BannerView,
   LeftView,
@@ -19,11 +19,9 @@ import {
   IconContainer,
 } from './Styled-Commons/Banner';
 
-interface BannerProps {
-  isDarkMode: boolean;
-}
 
-const Banner: FC<BannerProps> = ({ isDarkMode }) => (
+
+const Banner: FC<ComponentProps> = ({ isDarkMode }) => (
   <BannerView>
     <LeftView>
       <BoxReveal

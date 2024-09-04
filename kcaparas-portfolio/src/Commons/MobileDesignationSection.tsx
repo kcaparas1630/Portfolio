@@ -8,12 +8,9 @@ import {
 } from './Styled-Commons/Designation';
 import BetterBerries from '../Assets/better-berries.png';
 import MechEng from '../Assets/mech-eng.png';
+import ComponentProps from '../Types/ComponentProps';
 
-interface DesignationSectionProps {
-  isDarkMode: boolean;
-}
-
-const MobileDesignationSectionComponent: FC<DesignationSectionProps> = ({ isDarkMode }) => {
+const MobileDesignationSectionComponent: FC<ComponentProps> = ({ isDarkMode }) => {
   const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
