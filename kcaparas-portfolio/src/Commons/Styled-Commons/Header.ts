@@ -35,7 +35,7 @@ const StyledHeader = styled.div<HeaderProps>`
     label: StyledHeader;
     position: fixed;
     top: 0;
-    z-index: 2;
+    z-index: 30;
     width: 100%;
     padding: 35px 0;
     display: flex;
@@ -81,6 +81,7 @@ const HamburgerIcon = styled.button<HeaderProps>`
   color: ${(props) => (props.isDarkMode ? '#fff' : '#e68369')};
   position: absolute;
   right: 5%;
+  z-index: 35;
   transition: transform 0.3s ease-in-out;
   ${(props) => props.isOpen && 'transform: rotate(90deg);'}
   @media (min-width: 768px) {
@@ -94,21 +95,18 @@ const StyledUl = styled(motion.ul)<HeaderProps>`
   flex-direction: column;
   gap: 24px;
   align-items: center;
-  justify-content: center;
-  position: absolute;
+  justify-content: flex-start;
+  position: fixed;
   background-color: ${(props) =>
     props.isDarkMode ? 'var(--native-dark-transparent-color)' : '#fbf6e2'};
   width: 100%;
-  height: ${(props) => (props.isOpen ? '100vh' : '0')};
-  transform: 'translateX(-50%)',
-  top: 60px;
-  padding: 0 10px 20px 0;
-  z-index: 1000 !important;
+  height: 90vh;
+  top: 0;
+  left: 0;
+  padding: 80px 10px 20px 0;
+  z-index: 10;
   box-shadow: ${(props) => (props.isDarkMode ? '' : '-15px 15px 10px -15px #111')};
-
-  & > :first-of-type {
-    margin-top: -50px;
-  }
+  overflow-y: auto;
 
   @media (min-width: 768px) {
     display: flex;
@@ -122,10 +120,7 @@ const StyledUl = styled(motion.ul)<HeaderProps>`
     background-color: transparent;
     box-shadow: none;
     gap: 60px;
-
-    & > :first-of-type {
-      margin-top: 0;
-    }
+    overflow-y: visible;
   }
 `;
 
@@ -170,6 +165,7 @@ const StyledIconButton = styled.button<HeaderProps>`
   font-size: 24px;
   cursor: pointer;
   gap: 24px;
+  z-index: 35;
   align-items: center;
   justify-content: center;
   p {
