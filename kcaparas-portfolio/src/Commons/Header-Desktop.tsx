@@ -5,9 +5,9 @@ import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { StyledUl, StyledIconButton, StyledListItem } from './Styled-Commons/Header';
 import MenuVariants from '../Motion-Variants/Menu-Variants';
 import mobileLinkVariants from '../Motion-Variants/Mobile-Link-Variants';
+import ComponentProps from '../Types/ComponentProps';
 
-type HeaderDesktopProps = {
-  isDarkMode: boolean;
+interface HeaderDesktopProps extends ComponentProps {
   isMenuOpen: boolean;
   menuItems: {
     to: string;
@@ -16,6 +16,7 @@ type HeaderDesktopProps = {
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   toggleModeWrapper: () => void;
 };
+
 const HeaderDesktop: React.FC<HeaderDesktopProps> = ({
   isDarkMode,
   isMenuOpen,

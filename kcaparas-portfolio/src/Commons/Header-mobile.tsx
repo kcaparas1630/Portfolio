@@ -5,9 +5,9 @@ import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { StyledUl, StyledIconButton, StyledListItem } from './Styled-Commons/Header';
 import MenuVariants from '../Motion-Variants/Menu-Variants';
 import mobileLinkVariants from '../Motion-Variants/Mobile-Link-Variants';
+import ComponentProps from '../Types/ComponentProps';
 
-type HeaderMobileProps = {
-  isDarkMode: boolean;
+interface HeaderMobileProps extends ComponentProps {
   isMenuOpen: boolean;
   menuItems: {
     to: string;

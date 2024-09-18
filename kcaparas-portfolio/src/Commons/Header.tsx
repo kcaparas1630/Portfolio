@@ -10,9 +10,9 @@ import {
   StyledIconButton,
   HamburgerIcon,
 } from './Styled-Commons/Header';
+import ComponentProps from '../Types/ComponentProps';
 
-interface HeaderProps {
-  isDarkMode: boolean;
+interface HeaderProps extends ComponentProps {
   setDarkMode: Dispatch<SetStateAction<boolean>>;
   isHeaderVisible?: boolean;
 }

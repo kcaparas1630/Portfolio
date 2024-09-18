@@ -9,12 +9,9 @@ import {
 } from './Styled-Commons/Projects';
 import ProjectArray from '../Constants/ProjectsArray';
 import Button from './Button';
+import ComponentProps from '../Types/ComponentProps';
 
-interface ProjectsProps {
-  isDarkMode: boolean;
-}
-
-const Projects: FC<ProjectsProps> = ({ isDarkMode }) => {
+const Projects: FC<ComponentProps> = ({ isDarkMode }) => {
   const getProjectArray = ProjectArray();
   const [ref, inView] = useInView({
     triggerOnce: false,

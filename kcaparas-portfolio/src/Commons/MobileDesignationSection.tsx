@@ -8,12 +8,9 @@ import {
 } from './Styled-Commons/Designation';
 import BetterBerries from '../Assets/better-berries.png';
 import MechEng from '../Assets/mech-eng.png';
+import ComponentProps from '../Types/ComponentProps';
 
-interface DesignationSectionProps {
-  isDarkMode: boolean;
-}
-
-const MobileDesignationSectionComponent: FC<DesignationSectionProps> = ({ isDarkMode }) => {
+const MobileDesignationSectionComponent: FC<ComponentProps> = ({ isDarkMode }) => {
   const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -23,6 +20,9 @@ const MobileDesignationSectionComponent: FC<DesignationSectionProps> = ({ isDark
     stiffness: 400,
     damping: 50,
   });
+
+  const headerScale = useTransform(smoothProgress, [0.8, 0.85], [1, 0.5]);
+  const headerOpacity = useTransform(smoothProgress, [0.8, 0.85], [1, 0]);
 
   // BetterBerries image animations
   const BBOpacity = useTransform(smoothProgress, [0.4, 0.5, 0.6, 0.7], [0, 1, 1, 0]);
@@ -38,10 +38,10 @@ const MobileDesignationSectionComponent: FC<DesignationSectionProps> = ({ isDark
   return (
     <Section isDarkMode={isDarkMode}>
       <SectionContainer ref={targetRef}>
-        <HeaderContainer>
+        <HeaderContainer style={{ scale: headerScale, opacity: headerOpacity }}>
           <h2>
             I&apos;m a Full-Stack Developer who specializes on
-            <strong>Front-end Designs!</strong>
+            <strong> Front-end Designs!</strong>
           </h2>
         </HeaderContainer>
         <motion.div

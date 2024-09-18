@@ -1,5 +1,12 @@
 import { FC, useRef, useState } from 'react';
-import { motion, useTransform, useSpring, useScroll, AnimatePresence } from 'framer-motion';
+import {
+  motion,
+  useTransform,
+  useSpring,
+  useScroll,
+  AnimatePresence,
+  useMotionValueEvent,
+} from 'framer-motion';
 import SkillSetArray from '../Constants/SkillSetArray';
 import SkillCarousel from './SkillCarousel';
 import {
@@ -14,15 +21,12 @@ import {
 } from './Styled-Commons/ThirdSection';
 import Picture from '../Assets/kent-nobg2.png';
 import SkillSetTypes from '../Types/SkillSetTypes';
+import ComponentProps from '../Types/ComponentProps';
 
-type ThirdSectionProps = {
-  isDarkMode: boolean;
-};
-
-const ThirdSectionComponent: FC<ThirdSectionProps> = ({ isDarkMode }) => {
+const DesktopThirdSection: FC<ComponentProps> = ({ isDarkMode }) => {
   const getSkillArray = SkillSetArray(isDarkMode);
   const [skillDescription, setSkillDescription] = useState<SkillSetTypes>(getSkillArray[0]);
-  console.log('Description updated: ', skillDescription);
+  const [inView, setInView] = useState<boolean>(false);
   const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -35,25 +39,39 @@ const ThirdSectionComponent: FC<ThirdSectionProps> = ({ isDarkMode }) => {
   const headerScale = useTransform(smoothProgress, [0, 0.15], [0.5, 1]);
   const headerOpacity = useTransform(smoothProgress, [0, 0.15], [0, 1]);
 
+  const PictureOpacity = useTransform(smoothProgress, [0, 0.7], [0, 1]);
+  const PictureScale = useTransform(smoothProgress, [0, 1], [0.5, 1]);
+  const PictureY = useTransform(smoothProgress, [0, 1], ['100%', '-20%']);
+
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    if (latest >= 0.5) {
+      setInView(true);
+    } else {
+      setInView(false);
+    }
+  });
+
   return (
     <ThirdSection isDarkMode={isDarkMode}>
       <SectionContainer ref={targetRef}>
         <HeaderContainer style={{ scale: headerScale, opacity: headerOpacity }}>
           <h2>Kent&apos;s skill points</h2>
         </HeaderContainer>
-        <ImageContainer>
+        <ImageContainer style={{ opacity: PictureOpacity, scale: PictureScale, y: PictureY }}>
           <StyledImage
             src={Picture}
             alt="alt"
           />
         </ImageContainer>
         <SkillCarousel
+          inView={inView}
           getSkillArray={getSkillArray}
           isDarkMode={isDarkMode}
           setSkillDescription={setSkillDescription}
         />
         <AnimatePresence mode="wait">
           <SkillDescContainer
+            inView={inView}
             isDarkMode={isDarkMode}
             key={skillDescription.id}
           >
@@ -83,12 +101,7 @@ const ThirdSectionComponent: FC<ThirdSectionProps> = ({ isDarkMode }) => {
               exit={{ opacity: 0, scale: 0 }}
               transition={{ duration: 0.3, delay: 0.1 }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum.
+              {skillDescription.skillDesc}
             </SkillDescription>
           </SkillDescContainer>
         </AnimatePresence>
@@ -97,4 +110,4 @@ const ThirdSectionComponent: FC<ThirdSectionProps> = ({ isDarkMode }) => {
   );
 };
 
-export default ThirdSectionComponent;
+export default DesktopThirdSection;
