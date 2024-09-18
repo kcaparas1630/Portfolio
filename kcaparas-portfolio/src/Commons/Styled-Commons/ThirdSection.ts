@@ -83,8 +83,7 @@ const StyledImage = styled.img`
 const SkillDescContainer = styled(motion.div)<SectionProps>`
   width: 95%;
   height: 100%;
-  min-height: 200px;
-  max-height: 400px;
+  max-height: 800px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -180,7 +179,7 @@ const SkillDescription = styled(motion.p)`
   line-height: 1.3;
 
   @media (min-width: 1024px) {
-    font-size: 0.85rem;
+    font-size: 1.1rem;
     line-height: 1.5;
   }
 `;
