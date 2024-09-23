@@ -27,6 +27,7 @@ const SectionContainer = styled.div`
   align-items: center;
   @media (min-width: 1024px) {
     min-height: 300vh;
+    padding-bottom: 20vh;
     justify-content: flex-start;
     align-items: flex-start;
   }
