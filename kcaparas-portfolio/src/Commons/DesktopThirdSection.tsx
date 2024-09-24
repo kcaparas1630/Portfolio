@@ -36,9 +36,9 @@ const DesktopThirdSection: FC<ComponentProps> = ({ isDarkMode }) => {
     stiffness: 400,
     damping: 50,
   });
-  const headerScale = useTransform(smoothProgress, [0, 0.15], [0.5, 1]);
-  const headerOpacity = useTransform(smoothProgress, [0, 0.15], [0, 1]);
-
+  const headerScale = useTransform(smoothProgress, [0, 0.15, 0.75, 1], [0.5, 1, 1, 0]);
+  const headerOpacity = useTransform(smoothProgress, [0, 0.15, 0.75, 1], [0, 1, 1, 0]);
+  const position = useTransform(scrollYProgress, (pos) => (pos >= 0.9 ? 'relative' : 'sticky'));
   const PictureOpacity = useTransform(smoothProgress, [0, 0.7], [0, 1]);
   const PictureScale = useTransform(smoothProgress, [0, 1], [0.5, 1]);
   const PictureY = useTransform(smoothProgress, [0, 1], ['100%', '-20%']);
@@ -54,7 +54,7 @@ const DesktopThirdSection: FC<ComponentProps> = ({ isDarkMode }) => {
   return (
     <ThirdSection isDarkMode={isDarkMode}>
       <SectionContainer ref={targetRef}>
-        <HeaderContainer style={{ scale: headerScale, opacity: headerOpacity }}>
+        <HeaderContainer style={{ scale: headerScale, opacity: headerOpacity, position }}>
           <h2>Kent&apos;s skill points</h2>
         </HeaderContainer>
         <ImageContainer style={{ opacity: PictureOpacity, scale: PictureScale, y: PictureY }}>
