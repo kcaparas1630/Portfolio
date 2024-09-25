@@ -40,7 +40,7 @@ const HeaderContainer = styled(motion.div)<SectionProps>`
     color: #e68369;
   }
 
-  transform: translateY(${(props) => (props.inView ? '0' : '30px')});
+  transform: translateY(${(props) => (props.inView ? '0' : '100%')});
   opacity: ${(props) => (props.inView ? '1' : '0')};
   transition:
     transform 0.5s ease,
@@ -98,7 +98,7 @@ const HobbyCard = styled.div<SectionProps>`
     font-size: 1rem;
     opacity: 0.8;
   }
-  transform: translateY(${(props) => (props.inView ? '0' : '50px')});
+  transform: translateY(${(props) => (props.inView ? '0' : '100%')});
   opacity: ${(props) => (props.inView ? '1' : '0')};
   transition:
     transform 1s ease,

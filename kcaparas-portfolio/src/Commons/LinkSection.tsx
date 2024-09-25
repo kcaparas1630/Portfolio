@@ -1,13 +1,19 @@
 import { FC } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { LinkSection, Text, Line } from './Styled-Commons/LinkSection';
+import { LinkSection, Text, Line, ButtonContainer } from './Styled-Commons/LinkSection';
 import ComponentProps from '../Types/ComponentProps';
+import Button from './Button';
+import Resume from '../Assets/Docs/kent-caparas-resume.pdf';
 
 const LinkSectionComponent: FC<ComponentProps> = ({ isDarkMode }) => {
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.1,
   });
+
+  const downloadResume = () => {
+    window.open(Resume);
+  };
 
   return (
     <LinkSection
@@ -19,6 +25,14 @@ const LinkSectionComponent: FC<ComponentProps> = ({ isDarkMode }) => {
         skills regarding my line of work. here&apos;s a link to my resume.
       </Text>
       <Line />
+      <ButtonContainer>
+        <Button
+          text="Download Resume"
+          type="button"
+          isDarkMode={isDarkMode}
+          handleClick={downloadResume}
+        />
+      </ButtonContainer>
     </LinkSection>
   );
 };
