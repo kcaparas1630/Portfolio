@@ -18,7 +18,6 @@ const HobbySection = styled(motion.section)<SectionProps>`
   padding: 5vh 0;
 
   @media (min-width: 1024px) {
-    padding: 10vh 0;
     align-items: center;
   }
 `;
