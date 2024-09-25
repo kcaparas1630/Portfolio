@@ -109,6 +109,10 @@ const HobbyCard = styled.div<SectionProps>`
   @media (min-width: 1024px) {
     width: 30%;
     max-height: 500px;
+
+    img {
+      object-fit: scale-down;
+    }
   }
 `;
 

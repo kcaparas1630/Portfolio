@@ -13,6 +13,10 @@ const LinkSection = styled.section<SectionProps>`
   padding: 0 24px;
   gap: 24px;
   color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
+
+  @media (min-width: 1024px) {
+    height: 50vh;
+  }
 `;
 
 const Text = styled.h3<SectionProps>`
