@@ -8,17 +8,27 @@ type SectionProps = {
 const LinkSection = styled.section<SectionProps>`
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 90vw;
   height: 100vh;
+  padding: 0 24px;
   color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
 `;
 
 const Text = styled.h3<SectionProps>`
+  position: sticky;
+  top: 10vh;
+  font-size: 2.5rem;
+  width: 70vw;
   transform: translateX(${(props) => (props.inView ? '0' : '-100%')});
   opacity: ${(props) => (props.inView ? '1' : '0')};
-   transition:
+  transition:
     transform 0.5s ease,
     opacity 0.5s ease;
 `;
 
-export { LinkSection, Text };
+const Line = styled.hr`
+  width: 50vw;
+  margin: 24px 0 0 0;
+`;
+
+export { LinkSection, Text, Line };

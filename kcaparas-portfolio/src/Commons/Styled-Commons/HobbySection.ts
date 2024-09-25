@@ -24,7 +24,7 @@ const HobbySection = styled(motion.section)<SectionProps>`
   }
 `;
 const HeaderContainer = styled(motion.div)<SectionProps>`
-  position: sticky;
+  position: ${(props) => (props.inView ? 'relative' : 'sticky')};
   top: 25vh;
   gap: 24px;
   width: 100%;
@@ -40,7 +40,7 @@ const HeaderContainer = styled(motion.div)<SectionProps>`
     color: #e68369;
   }
 
-  transform: translateY(${(props) => (props.inView ? '0' : '100%')});
+  transform: translateY(${(props) => (props.inView ? '0' : '30px')});
   opacity: ${(props) => (props.inView ? '1' : '0')};
   transition:
     transform 0.5s ease,
@@ -98,7 +98,7 @@ const HobbyCard = styled.div<SectionProps>`
     font-size: 1rem;
     opacity: 0.8;
   }
-  transform: translateY(${(props) => (props.inView ? '0' : '100%')});
+  transform: translateY(${(props) => (props.inView ? '0' : '50px')});
   opacity: ${(props) => (props.inView ? '1' : '0')};
   transition:
     transform 1s ease,

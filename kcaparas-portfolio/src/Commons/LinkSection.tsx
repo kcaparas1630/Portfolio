@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { LinkSection, Text } from './Styled-Commons/LinkSection';
+import { LinkSection, Text, Line } from './Styled-Commons/LinkSection';
 import ComponentProps from '../Types/ComponentProps';
 
 const LinkSectionComponent: FC<ComponentProps> = ({ isDarkMode }) => {
@@ -18,6 +18,7 @@ const LinkSectionComponent: FC<ComponentProps> = ({ isDarkMode }) => {
         You&apos;ve read what I do, and about me, if you inquire to know more about my professional
         skills regarding my line of work. here&apos;s a link to my resume.
       </Text>
+      <Line />
     </LinkSection>
   );
 };
