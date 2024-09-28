@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import StyledView from './Views/ViewStyles';
+import { StyledView } from './Views/ViewStyles';
 import { DesktopContainer, MobileContainer } from './Views/About';
 import Header from './Commons/Header';
 import FirstSection from './Commons/FirstSection';

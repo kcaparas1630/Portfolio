@@ -1,21 +1,13 @@
 import { useState, useEffect, useCallback } from 'react';
+import { StyledView, ConstructionSection } from './ViewStyles';
 import Header from '../Commons/Header';
-import { StyledView } from './ViewStyles';
-import Banner from '../Commons/Banner';
-import Skills from '../Commons/Skills';
-import Projects from '../Commons/Projects';
 
-const Homepage = () => {
-  const [isDarkMode, setDarkMode] = useState<boolean>(() => {
-    const savedDarkMode = localStorage.getItem('isDarkMode');
-    return savedDarkMode !== null ? JSON.parse(savedDarkMode) : true;
-  });
+const ContactsView = () => {
+  const [isDarkMode, setDarkMode] = useState<boolean>(
+    localStorage.getItem('isDarkMode') === 'true',
+  );
   const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(true);
   const [lastScrollTop, setLastScrollTop] = useState(0);
-
-  useEffect(() => {
-    localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode));
-  }, [isDarkMode]);
 
   const scrollHeader = useCallback(() => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -39,6 +31,7 @@ const Homepage = () => {
       window.removeEventListener('scroll', scrollHeader);
     };
   }, [scrollHeader]);
+
   return (
     <StyledView isDarkMode={isDarkMode}>
       <Header
@@ -46,11 +39,11 @@ const Homepage = () => {
         setDarkMode={setDarkMode}
         isHeaderVisible={isHeaderVisible}
       />
-      <Banner isDarkMode={isDarkMode} />
-      <Skills isDarkMode={isDarkMode} />
-      <Projects isDarkMode={isDarkMode} />
+      <ConstructionSection isDarkMode={isDarkMode}>
+        <h1>This page is still under construction</h1>
+      </ConstructionSection>
     </StyledView>
   );
 };
 
-export default Homepage;
+export default ContactsView;
