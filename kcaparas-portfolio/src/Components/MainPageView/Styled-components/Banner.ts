@@ -83,6 +83,7 @@ const StyledDesignation = styled.h2<BannerProps>`
 `;
 const StyledSummary = styled.p<BannerProps>`
   display: flex;
+  flex-direction: column;
   color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
   margin: auto;
   width: 80%;
@@ -91,7 +92,7 @@ const StyledSummary = styled.p<BannerProps>`
   opacity: 0.8;
   @media (min-width: 768px) {
     width: 70%;
-    margin: 50px 0;
+    margin: 24px 0;
   }
 `;
 
@@ -147,6 +148,7 @@ const IconContainer = styled.div`
     width: 100%;
   }
 `;
+
 export {
   BannerView,
   LeftView,
