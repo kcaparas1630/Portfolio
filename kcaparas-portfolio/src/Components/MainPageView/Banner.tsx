@@ -57,8 +57,7 @@ const Banner: FC<ComponentProps> = ({ isDarkMode }) => (
       >
         <StyledSummary isDarkMode={isDarkMode}>
           Want to reach me out and collaborate on some projects? Click the social medias buttons
-          below or
-          <Link to="/contact">Contact me</Link>
+          below or <Link to="/contact">Contact me</Link>
         </StyledSummary>
       </BoxReveal>
       <BoxReveal
