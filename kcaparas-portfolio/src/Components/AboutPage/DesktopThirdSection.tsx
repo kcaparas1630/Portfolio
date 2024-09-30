@@ -7,7 +7,7 @@ import {
   AnimatePresence,
   useMotionValueEvent,
 } from 'framer-motion';
-import SkillSetArray from '../Constants/SkillSetArray';
+import SkillSetArray from '../../Constants/SkillSetArray';
 import SkillCarousel from './SkillCarousel';
 import {
   ThirdSection,
@@ -18,10 +18,10 @@ import {
   SkillDescContainer,
   SkillDescription,
   SkillDescriptionTab,
-} from './Styled-Commons/ThirdSection';
-import Picture from '../Assets/kent-nobg2.png';
-import SkillSetTypes from '../Types/SkillSetTypes';
-import ComponentProps from '../Types/ComponentProps';
+} from './Styled-components/ThirdSection';
+import Picture from '../../Assets/kent-nobg2.png';
+import SkillSetTypes from '../../Types/SkillSetTypes';
+import ComponentProps from '../../Types/ComponentProps';
 
 const DesktopThirdSection: FC<ComponentProps> = ({ isDarkMode }) => {
   const getSkillArray = SkillSetArray(isDarkMode);

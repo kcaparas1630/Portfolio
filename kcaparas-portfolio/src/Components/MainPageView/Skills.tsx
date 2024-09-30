@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useInView } from 'react-intersection-observer';
-import SkillSetArray from '../Constants/SkillSetArray';
-import ComponentProps from '../Types/ComponentProps';
+import SkillSetArray from '../../Constants/SkillSetArray';
+import ComponentProps from '../../Types/ComponentProps';
 import {
   SkillsContainer,
   SkillsLeftContainer,
@@ -10,7 +10,7 @@ import {
   SkillsRightContainer,
   SkillsSetContainer,
   SkillSetItem,
-} from './Styled-Commons/Skills';
+} from './Styled-components/Skills';
 
 
 const Skills: FC<ComponentProps> = ({ isDarkMode }) => {

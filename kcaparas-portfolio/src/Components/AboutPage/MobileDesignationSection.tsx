@@ -5,30 +5,24 @@ import {
   HeaderContainer,
   SectionContainer,
   ImageContainer,
-} from './Styled-Commons/Designation';
-import BetterBerries from '../Assets/better-berries.png';
-import MechEng from '../Assets/mech-eng.png';
-import ComponentProps from '../Types/ComponentProps';
+} from './Styled-components/Designation';
+import BetterBerries from '../../Assets/better-berries.png';
+import MechEng from '../../Assets/mech-eng.png';
+import ComponentProps from '../../Types/ComponentProps';
 
-const DesktopDesignationSectionComponent: FC<ComponentProps> = ({ isDarkMode }) => {
+const MobileDesignationSectionComponent: FC<ComponentProps> = ({ isDarkMode }) => {
   const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ['start end', 'end start'],
   });
-
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 400,
     damping: 50,
   });
 
-  const headerScale = useTransform(smoothProgress, [0.1, 0.3], [0.8, 0.5]);
-  const headerX = useTransform(
-    smoothProgress,
-    [0, 0.4, 0.5, 0.8, 0.85],
-    ['0%', '-15%', '-20%', '-22%', '-100%'],
-  );
-  const headerOpacity = useTransform(smoothProgress, [0, 1], [1, 0.8]);
+  const headerScale = useTransform(smoothProgress, [0.8, 0.85], [1, 0.5]);
+  const headerOpacity = useTransform(smoothProgress, [0.8, 0.85], [1, 0]);
 
   // BetterBerries image animations
   const BBOpacity = useTransform(smoothProgress, [0.4, 0.5, 0.6, 0.7], [0, 1, 1, 0]);
@@ -39,12 +33,12 @@ const DesktopDesignationSectionComponent: FC<ComponentProps> = ({ isDarkMode }) 
   // MechEng image animations
   const MEOpacity = useTransform(smoothProgress, [0.7, 0.75, 1], [0, 1, 1]);
   const MEImgScale = useTransform(smoothProgress, [0.7, 0.75], [0.5, 1]);
-  const MEImageY = useTransform(smoothProgress, [0.6, 0.9], ['100%', '0%']);
+  const MEImageY = useTransform(smoothProgress, [0.6, 0.9], ['100%', '-20%']);
 
   return (
     <Section isDarkMode={isDarkMode}>
       <SectionContainer ref={targetRef}>
-        <HeaderContainer style={{ opacity: headerOpacity, scale: headerScale, x: headerX }}>
+        <HeaderContainer style={{ scale: headerScale, opacity: headerOpacity }}>
           <h2>
             I&apos;m a Full-Stack Developer who specializes on
             <strong> Front-end Designs!</strong>
@@ -53,16 +47,21 @@ const DesktopDesignationSectionComponent: FC<ComponentProps> = ({ isDarkMode }) 
         <motion.div
           style={{
             position: 'sticky',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            left: '70%',
-            width: '44vw',
+            top: '50vh',
+            width: '100%',
             overflow: 'hidden',
-            padding: '0 48px',
           }}
         >
           <ImageContainer
-            style={{ opacity: BBOpacity, scale: BBImgScale, x: BBImageX, y: BBImageY }}
+            style={{
+              opacity: BBOpacity,
+              scale: BBImgScale,
+              x: BBImageX,
+              y: BBImageY,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
           >
             <img
               src={BetterBerries}
@@ -73,14 +72,21 @@ const DesktopDesignationSectionComponent: FC<ComponentProps> = ({ isDarkMode }) 
         <motion.div
           style={{
             position: 'sticky',
-            top: '60%',
-            transform: 'translateY(-60%)',
-            left: '70%',
-            width: '44vw',
-            padding: '0 48px',
+            top: '40vh',
+            width: '100%',
+            overflow: 'hidden',
           }}
         >
-          <ImageContainer style={{ opacity: MEOpacity, scale: MEImgScale, y: MEImageY }}>
+          <ImageContainer
+            style={{
+              opacity: MEOpacity,
+              scale: MEImgScale,
+              y: MEImageY,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
             <img
               src={MechEng}
               alt="mech-eng-symposium-landing-page"
@@ -92,4 +98,4 @@ const DesktopDesignationSectionComponent: FC<ComponentProps> = ({ isDarkMode }) 
   );
 };
 
-export default DesktopDesignationSectionComponent;
+export default MobileDesignationSectionComponent;

@@ -6,10 +6,10 @@ import {
   DescriptionContainer,
   ProjectHeader2Container,
   ProjectHeader2,
-} from './Styled-Commons/Projects';
-import ProjectArray from '../Constants/ProjectsArray';
-import Button from './Button';
-import ComponentProps from '../Types/ComponentProps';
+} from './Styled-components/Projects';
+import ProjectArray from '../../Constants/ProjectsArray';
+import Button from '../../Commons/Button';
+import ComponentProps from '../../Types/ComponentProps';
 
 const Projects: FC<ComponentProps> = ({ isDarkMode }) => {
   const getProjectArray = ProjectArray();

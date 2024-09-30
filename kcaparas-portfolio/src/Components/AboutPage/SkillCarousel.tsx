@@ -8,16 +8,16 @@ import {
   faChevronLeft,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
-import SkillSetTypes from '../Types/SkillSetTypes';
-import SkillVariants from '../Motion-Variants/Skill-Variants';
+import SkillSetTypes from '../../Types/SkillSetTypes';
+import SkillVariants from '../../Motion-Variants/Skill-Variants';
 import {
   CarouselContainer,
   Button,
   SkillItem,
   SkillItemCircle,
   SkillList,
-} from './Styled-Commons/SkillCarousel';
-import ComponentProps from '../Types/ComponentProps';
+} from './Styled-components/SkillCarousel';
+import ComponentProps from '../../Types/ComponentProps';
 
 interface SkillCarouselType extends ComponentProps {
   getSkillArray: SkillSetTypes[];
