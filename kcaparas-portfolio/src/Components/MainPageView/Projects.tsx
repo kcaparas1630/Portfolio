@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import { useInView } from 'react-intersection-observer';
 import {
-  ProjectsContainer,
+  ProjectSection,
   ProjectsCard,
+  ProjectContainer,
   DescriptionContainer,
   ProjectHeader2Container,
   ProjectHeader2,
@@ -18,7 +19,7 @@ const Projects: FC<ComponentProps> = ({ isDarkMode }) => {
     threshold: 0.1,
   });
   return (
-    <ProjectsContainer ref={ref}>
+    <ProjectSection ref={ref}>
       <ProjectHeader2Container>
         <ProjectHeader2
           isDarkMode={isDarkMode}
@@ -27,28 +28,30 @@ const Projects: FC<ComponentProps> = ({ isDarkMode }) => {
           Here&apos;s my current projects!
         </ProjectHeader2>
       </ProjectHeader2Container>
-      {getProjectArray.map((project) => (
-        <ProjectsCard
-          key={project.id}
-          isDarkMode={isDarkMode}
-          inView={inView}
-        >
-          <img
-            src={project.projectImage}
-            alt={project.projectImageAlt}
-          />
-          <DescriptionContainer>
-            <h4>{project.projectName}</h4>
-            <p>{project.projectDescription}</p>
-            <Button
-              text="Learn more"
-              type="button"
-              isDarkMode={isDarkMode}
+      <ProjectContainer>
+        {getProjectArray.map((project) => (
+          <ProjectsCard
+            key={project.id}
+            isDarkMode={isDarkMode}
+            inView={inView}
+          >
+            <img
+              src={project.projectImage}
+              alt={project.projectImageAlt}
             />
-          </DescriptionContainer>
-        </ProjectsCard>
-      ))}
-    </ProjectsContainer>
+            <DescriptionContainer>
+              <h4>{project.projectName}</h4>
+              <p>{project.projectDescription}</p>
+              <Button
+                text="Learn more"
+                type="button"
+                isDarkMode={isDarkMode}
+              />
+            </DescriptionContainer>
+          </ProjectsCard>
+        ))}
+      </ProjectContainer>
+    </ProjectSection>
   );
 };
 

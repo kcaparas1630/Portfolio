@@ -5,14 +5,27 @@ type ProjectsProps = {
   inView?: boolean;
 };
 
-const ProjectsContainer = styled.section`
-  label: ProjectsContainer;
+const ProjectSection = styled.section`
+  label: ProjectSection;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 80px 0;
   gap: 24px;
+`;
+
+const ProjectContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 `;
 const ProjectHeader2Container = styled.div`
   display: inline-block;
@@ -72,7 +85,8 @@ const DescriptionContainer = styled.div`
 `;
 
 export {
-  ProjectsContainer,
+  ProjectSection,
+  ProjectContainer,
   ProjectsCard,
   DescriptionContainer,
   ProjectHeader2Container,
