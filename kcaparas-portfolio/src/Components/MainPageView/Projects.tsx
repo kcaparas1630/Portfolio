@@ -42,11 +42,11 @@ const Projects: FC<ComponentProps> = ({ isDarkMode }) => {
             <DescriptionContainer>
               <h4>{project.projectName}</h4>
               <p>{project.projectDescription}</p>
-              <Button
+              {/* <Button
                 text="Learn more"
                 type="button"
                 isDarkMode={isDarkMode}
-              />
+              /> */}
             </DescriptionContainer>
           </ProjectsCard>
         ))}
