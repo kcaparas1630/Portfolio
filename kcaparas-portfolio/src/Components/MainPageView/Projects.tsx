@@ -9,7 +9,6 @@ import {
   ProjectHeader2,
 } from './Styled-components/Projects';
 import ProjectArray from '../../Constants/ProjectsArray';
-import Button from '../../Commons/Button';
 import ComponentProps from '../../Types/ComponentProps';
 
 const Projects: FC<ComponentProps> = ({ isDarkMode }) => {

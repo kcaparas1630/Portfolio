@@ -61,8 +61,6 @@ const DescriptionContainer = styled.div`
 
 export {
   ProjectContainer,
-  ProjectHeader2,
-  ProjectHeader2Container,
   ProjectsCard,
   DescriptionContainer,
 };
