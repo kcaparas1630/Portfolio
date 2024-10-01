@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { LinkSection, Text, Line, ButtonContainer } from './Styled-Commons/LinkSection';
-import ComponentProps from '../Types/ComponentProps';
-import Button from './Button';
-import Resume from '../Assets/Docs/kent-caparas-resume.pdf';
+import { LinkSection, Text, Line, ButtonContainer } from './Styled-components/LinkSection';
+import ComponentProps from '../../Types/ComponentProps';
+import Button from '../../Commons/Button';
+import Resume from '../../Assets/Docs/kent-caparas-resume.pdf';
 
 const LinkSectionComponent: FC<ComponentProps> = ({ isDarkMode }) => {
   const [ref, inView] = useInView({

@@ -6,11 +6,11 @@ import {
   HobbyContainer,
   HobbyCard,
   DescriptionContainer,
-} from './Styled-Commons/HobbySection';
-import ComponentProps from '../Types/ComponentProps';
-import KaraokePic from '../Assets/karaoke.jpg';
-import BadmintonPic from '../Assets/badminton.jpg';
-import CodingPic from '../Assets/coding.jpg';
+} from './Styled-components/HobbySection';
+import ComponentProps from '../../Types/ComponentProps';
+import KaraokePic from '../../Assets/karaoke.jpg';
+import BadmintonPic from '../../Assets/badminton.jpg';
+import CodingPic from '../../Assets/coding.jpg';
 
 const HobbySectionComponent: FC<ComponentProps> = ({ isDarkMode }) => {
   const [ref, inView] = useInView({

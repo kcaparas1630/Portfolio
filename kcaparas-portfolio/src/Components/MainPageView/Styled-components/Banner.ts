@@ -82,18 +82,31 @@ const StyledDesignation = styled.h2<BannerProps>`
   }
 `;
 const StyledSummary = styled.p<BannerProps>`
-  display: flex;
   color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
+  text-decoration: none;
   margin: auto;
   width: 80%;
   line-height: 1.5;
   text-align: justify;
   opacity: 0.8;
+
+  a {
+    text-decoration: underline;
+    color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
+    opacity: 1;
+    
+    &:hover {
+      color: #e68369;
+      transition: color 0.5s ease;
+    }
+  }
+
   @media (min-width: 768px) {
     width: 70%;
-    margin: 50px 0;
+    margin: 24px 0;
   }
 `;
+
 
 const BottomDiv = styled.div`
   display: flex;
@@ -147,6 +160,7 @@ const IconContainer = styled.div`
     width: 100%;
   }
 `;
+
 export {
   BannerView,
   LeftView,

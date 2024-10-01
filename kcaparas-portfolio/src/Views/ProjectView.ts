@@ -5,29 +5,17 @@ type ProjectsProps = {
   inView?: boolean;
 };
 
-const ProjectsContainer = styled.section`
-  label: ProjectsContainer;
+const ProjectContainer = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 24px;
   align-items: center;
   justify-content: center;
-  padding: 80px 0;
-  gap: 24px;
-`;
-const ProjectHeader2Container = styled.div`
-  display: inline-block;
-  width: 90%;
-`;
-
-const ProjectHeader2 = styled.h2<ProjectsProps>`
-  font-size: 2rem;
-  font-weight: 700;
-  color: ${(props) => (props.isDarkMode ? 'white' : 'black')};
-  transform: translateY(${(props) => (props.inView ? '0' : '100%')});
-  opacity: ${(props) => (props.inView ? '0.8' : '0')};
-  transition:
-    transform 0.5s ease,
-    opacity 0.5s ease;
+  margin-top: 20vh;
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 `;
 
 const ProjectsCard = styled.div<ProjectsProps>`
@@ -72,9 +60,7 @@ const DescriptionContainer = styled.div`
 `;
 
 export {
-  ProjectsContainer,
+  ProjectContainer,
   ProjectsCard,
   DescriptionContainer,
-  ProjectHeader2Container,
-  ProjectHeader2,
 };

@@ -1,14 +1,14 @@
 import { useState, useEffect, useCallback } from 'react';
-import StyledView from './Views/ViewStyles';
+import { StyledView } from './Views/ViewStyles';
 import { DesktopContainer, MobileContainer } from './Views/About';
 import Header from './Commons/Header';
-import FirstSection from './Commons/FirstSection';
-import DesktopDesignationSection from './Commons/DesktopDesignationSection';
-import MobileDesignationSectionComponent from './Commons/MobileDesignationSection';
-import DesktopThirdSection from './Commons/DesktopThirdSection';
-import MobileThirdSection from './Commons/MobileThirdSection';
-import HobbySectionComponent from './Commons/HobbySection';
-import LinkSectionComponent from './Commons/LinkSection';
+import FirstSection from './Components/AboutPage/FirstSection';
+import DesktopDesignationSection from './Components/AboutPage/DesktopDesignationSection';
+import MobileDesignationSectionComponent from './Components/AboutPage/MobileDesignationSection';
+import DesktopThirdSection from './Components/AboutPage/DesktopThirdSection';
+import MobileThirdSection from './Components/AboutPage/MobileThirdSection';
+import HobbySectionComponent from './Components/AboutPage/HobbySection';
+import LinkSectionComponent from './Components/AboutPage/LinkSection';
 
 const AboutComponent = () => {
   const [isDarkMode, setDarkMode] = useState<boolean>(
