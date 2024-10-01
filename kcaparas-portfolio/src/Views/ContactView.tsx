@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { StyledView, ConstructionSection } from './ViewStyles';
 import Header from '../Commons/Header';
+import ContactMeComponent from '../Components/ContactsView/ContactMe';
 
 const ContactsView = () => {
   const [isDarkMode, setDarkMode] = useState<boolean>(
@@ -39,9 +40,7 @@ const ContactsView = () => {
         setDarkMode={setDarkMode}
         isHeaderVisible={isHeaderVisible}
       />
-      <ConstructionSection isDarkMode={isDarkMode}>
-        <h1>This page is still under construction</h1>
-      </ConstructionSection>
+      <ContactMeComponent isDarkMode={isDarkMode} />
     </StyledView>
   );
 };
