@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { StyledView, ConstructionSection } from './ViewStyles';
+import { StyledView } from './ViewStyles';
 import Header from '../Commons/Header';
 import ContactMeComponent from '../Components/ContactsView/ContactMe';
 
