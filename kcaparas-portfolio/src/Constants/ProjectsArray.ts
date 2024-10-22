@@ -3,6 +3,7 @@ import BetterBerriesPage from '../Assets/BetterBerries-LandingPage.png';
 import CamosunSymposiumPage from '../Assets/camosun-symposium-website.png';
 import Colliseum from '../Assets/Colliseum.png';
 import EscapeIntoAbyss from '../Assets/EscapeIntoAbyss.png';
+import TaskCLI from '../Assets/CLI-SAMPLE.png';
 
 const ProjectArray = (): ProjectTypes[] => [
   {
@@ -36,6 +37,13 @@ const ProjectArray = (): ProjectTypes[] => [
     projectName: 'Escape into the Abyss',
     projectDescription:
       'Our project in Camosun College`s Game Development Course. It is a heavy story-line based game, where you collect 6 keys, finish the puzzle, avoid traps, and fight the last boss.',
+  },
+  {
+    id: 4,
+    projectImage: TaskCLI,
+    projectImageAlt: 'Task CLI',
+    projectName: 'Task CLI',
+    projectDescription: 'Side project that I worked on using typescript and NODE.JS. Typescript is not compatible with NODE.JS so I have to install typescript globally and transform my ts files into js using the command `tsc fileName`',
   },
 ];
 
