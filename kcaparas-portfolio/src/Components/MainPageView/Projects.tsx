@@ -18,7 +18,7 @@ const Projects: FC<ComponentProps> = ({ isDarkMode }) => {
     threshold: 0.1,
   });
   return (
-    <ProjectSection ref={ref}>
+    <ProjectSection isDarkMode={isDarkMode} ref={ref}>
       <ProjectHeader2Container>
         <ProjectHeader2
           isDarkMode={isDarkMode}

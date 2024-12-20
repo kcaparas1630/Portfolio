@@ -12,7 +12,7 @@ const SkillsContainer = styled.section<SkillType>`
   justify-content: center;
   width: 100%;
   min-height: 45vh;
-  background-color: ${(props) => (props.isDarkMode ? '#1C225F' : '#131842')};
+  background-color: ${(props) => (props.isDarkMode ? '#131842' : '#1C225F')};
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -99,8 +99,8 @@ const SkillSetItem = styled.div<SkillType>`
   label: SkillSetItem;
   display: flex;
   align-items: center; /* Ensure vertical alignment */
-  background-color: ${(props) => (props.isDarkMode ? '#131842' : '#fbf6e2')};
-  color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
+  background-color: ${(props) => (props.isDarkMode ? '#fbf6e2' : '#131842')};
+  color: ${(props) => (props.isDarkMode ? '#1B1212' : 'white')};
   padding: 15px 20px;
   border-radius: 10px;
   flex-direction: row;

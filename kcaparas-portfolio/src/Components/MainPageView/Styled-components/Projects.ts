@@ -5,7 +5,7 @@ type ProjectsProps = {
   inView?: boolean;
 };
 
-const ProjectSection = styled.section`
+const ProjectSection = styled.section<ProjectsProps>`
   label: ProjectSection;
   display: flex;
   flex-direction: column;
@@ -13,6 +13,7 @@ const ProjectSection = styled.section`
   justify-content: center;
   padding: 80px 0;
   gap: 24px;
+  background-color: ${(props) => (props.isDarkMode ? '#1C225F' : '#131842')};
 `;
 
 const ProjectContainer = styled.div`
