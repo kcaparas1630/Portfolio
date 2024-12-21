@@ -33,4 +33,19 @@ const getRepos = async (username: string): Promise<Repository[]> => {
   return repos;
 };
 
-export { getUserStats, getRepos };
+// identify return type later.
+const getLanguages = async (username: string) => {
+  try {
+    const repositoryData = await getRepos(username);
+    const result = await Promise.all(repositoryData.map(async (language) => {
+      const response = await axios.get(language.languages_url);
+      return response.data;
+    }));
+    return result;
+  } catch (error) {
+    console.error('Cannot get languages');
+    throw new Error();
+  }
+};
+
+export { getUserStats, getRepos, getLanguages };
