@@ -3,7 +3,6 @@ import Repository from '../src/Interface/Repository';
 
 const BASE_URL_GITHUB = 'https://api.github.com';
 const { GITHUB_TOKEN } = import.meta.env;
-
 const getUserStats = async (username: string) => {
   try {
     const response = await axios.get(`${BASE_URL_GITHUB}/users/${username}`, {
@@ -16,15 +15,22 @@ const getUserStats = async (username: string) => {
   }
 };
 
-const getRepos = async (username:string): Promise<Repository[]> => {
+const getRepos = async (username: string): Promise<Repository[]> => {
   const repos: Repository[] = [];
   let page = 1;
-
-  while(true) {
-    try {
-      const response = await axios.get(`https://api.github.com/users/${username}/repos?page=${page}&per_page=100`)
-    }
+  try {
+    // eslint-disable-next-line no-await-in-loop
+    const response = await axios.get(
+      `https://api.github.com/users/${username}/repos?page=${page}&per_page=100`,
+    );
+    repos.push(...response.data);
+    page += 1;
+  } catch (error) {
+    console.error(error);
+    throw new Error();
   }
-}
 
-export default getUserStats;
+  return repos;
+};
+
+export { getUserStats, getRepos };

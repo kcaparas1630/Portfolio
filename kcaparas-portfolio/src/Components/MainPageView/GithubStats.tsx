@@ -7,10 +7,11 @@ import {
   StatsHeader2,
 } from './Styled-components/GithubStats';
 import ComponentProps from '../../Types/ComponentProps';
-import getUserStats from '../../../api/GithubStats';
+import { getUserStats, getRepos } from '../../../api/GithubStats';
 
 const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
   const [userStats, setUserStats] = useState<any>(null);
+  const [, setUserRepos] = useState<any>(null);
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.1,
@@ -21,6 +22,9 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
       try {
         const userStatsResponse = await getUserStats('kcaparas1630');
         setUserStats(userStatsResponse);
+        const userReposResponse = await getRepos('kcaparas1630');
+        console.log(userReposResponse);
+        setUserRepos(userReposResponse);
       } catch (error) {
         console.error('Something went wrong.');
         throw error;
