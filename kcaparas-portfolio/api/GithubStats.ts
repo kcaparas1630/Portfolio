@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Repository from '../src/Interface/Repository';
+import LanguageResponse from '../src/Interface/LanguageInterface';
 
 const BASE_URL_GITHUB = 'https://api.github.com';
 const { GITHUB_TOKEN } = import.meta.env;
@@ -36,12 +37,18 @@ const getRepos = async (username: string): Promise<Repository[]> => {
 // identify return type later.
 const getLanguages = async (username: string) => {
   try {
+    const languageMap = new Map<string, number>();
     const repositoryData = await getRepos(username);
-    const result = await Promise.all(repositoryData.map(async (language) => {
-      const response = await axios.get(language.languages_url);
+    const languageArray = await Promise.all(repositoryData.map(async (language) => {
+      const response = await axios.get<LanguageResponse>(language.languages_url);
       return response.data;
     }));
-    return result;
+    languageArray.forEach((languageObj) => {
+      Object.entries(languageObj).forEach(([language, lines]) => {
+        languageMap.set(language, (languageMap.get(language) || 0) + lines);
+      });
+    });
+    return languageMap;
   } catch (error) {
     console.error('Cannot get languages');
     throw new Error();

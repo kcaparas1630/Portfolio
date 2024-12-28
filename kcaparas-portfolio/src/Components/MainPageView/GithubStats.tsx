@@ -9,6 +9,8 @@ import {
 import ComponentProps from '../../Types/ComponentProps';
 import { getUserStats, getRepos, getLanguages } from '../../../api/GithubStats';
 
+const GITHUBUSERNAME: string = 'kcaparas1630';
+
 const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
   const [userStats, setUserStats] = useState<any>(null);
   const [, setUserRepos] = useState<any>(null);
@@ -20,12 +22,11 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const userStatsResponse = await getUserStats('kcaparas1630');
-        // setUserStats(userStatsResponse);
-        // const userReposResponse = await getRepos('kcaparas1630');
-        // setUserRepos(userReposResponse);
-        const userLanguages = await getLanguages('kcaparas1630');
-        console.log(userLanguages);
+        const userStatsResponse = await getUserStats(GITHUBUSERNAME);
+        setUserStats(userStatsResponse);
+        const userReposResponse = await getRepos(GITHUBUSERNAME);
+        setUserRepos(userReposResponse);
+        const userLanguages = await getLanguages(GITHUBUSERNAME);
       } catch (error) {
         console.error('Something went wrong.');
         throw error;
