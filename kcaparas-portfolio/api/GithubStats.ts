@@ -86,10 +86,13 @@ const getLanguages = async (username: string) => {
         languageMap.set(language, (languageMap.get(language) || 0) + lines);
       });
     });
+    const sortedMapDescending = new Map<string, number>(
+      [...languageMap.entries()].sort((a, b) => b[1] - a[1]),
+    );
     // Check if map is not empty then set it to localStorage
-    if (languageMap.size > 0) {
+    if (sortedMapDescending.size > 0) {
       // Convert Map to plain object before storing
-      const languageObject = Object.fromEntries(languageMap);
+      const languageObject = Object.fromEntries(sortedMapDescending);
       localStorage.setItem(
         'GithubLanguages',
         JSON.stringify({
