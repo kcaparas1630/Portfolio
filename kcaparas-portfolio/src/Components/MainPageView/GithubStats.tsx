@@ -27,6 +27,7 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
         const userReposResponse = await getRepos(GITHUBUSERNAME);
         setUserRepos(userReposResponse);
         const userLanguages = await getLanguages(GITHUBUSERNAME);
+        console.log(userLanguages);
       } catch (error) {
         console.error('Something went wrong.');
         throw error;
