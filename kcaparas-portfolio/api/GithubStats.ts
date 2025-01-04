@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Repository from '../src/Interface/Repository';
 import LanguageResponse from '../src/Interface/LanguageInterface';
+import GITHUBLANGUAGES from '../src/Constants/GithubLanguages';
 
 const BASE_URL_GITHUB = 'https://api.github.com';
 const { GITHUB_TOKEN } = import.meta.env;
@@ -83,11 +84,15 @@ const getLanguages = async (username: string) => {
     );
     languageArray.forEach((languageObj) => {
       Object.entries(languageObj).forEach(([language, lines]) => {
-        languageMap.set(language, (languageMap.get(language) || 0) + lines);
+        const CSharpReplace = language.replace('C#', 'Csharp');
+        const newLanguage = CSharpReplace.replace('HTML', 'HTML5');
+        languageMap.set(newLanguage, (languageMap.get(language) || 0) + lines);
       });
     });
     const sortedMapDescending = new Map<string, number>(
-      [...languageMap.entries()].sort((a, b) => b[1] - a[1]),
+      [...languageMap.entries()]
+        .sort((a, b) => b[1] - a[1])
+        .filter(([key]) => !GITHUBLANGUAGES.includes(key)),
     );
     // Check if map is not empty then set it to localStorage
     if (sortedMapDescending.size > 0) {

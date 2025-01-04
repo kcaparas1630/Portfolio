@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 import {
   AvatarUrl,
@@ -13,7 +13,7 @@ const GITHUBUSERNAME: string = 'kcaparas1630';
 
 const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
   const [userStats, setUserStats] = useState<any>(null);
-  const [, setUserRepos] = useState<any>(null);
+  const arrayLanguages = useRef<string[] | undefined>(undefined);
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.1,
@@ -24,12 +24,12 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
       try {
         const userStatsResponse = await getUserStats(GITHUBUSERNAME);
         setUserStats(userStatsResponse);
-        const userReposResponse = await getRepos(GITHUBUSERNAME);
-        setUserRepos(userReposResponse);
         const userLanguages = await getLanguages(GITHUBUSERNAME);
-        console.log(userLanguages);
         const iterator = userLanguages.keys();
-        console.log(iterator.next().value);
+        const languages = Array.from(iterator);
+        arrayLanguages.current = languages;
+
+        console.log('Stored languages:', arrayLanguages.current);
       } catch (error) {
         console.error('Something went wrong.');
         throw error;
@@ -38,7 +38,6 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
 
     fetchData();
   }, []);
-
 
   return (
     <GithubStatsContainer
@@ -57,6 +56,13 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
             src={userStats.avatar_url}
             alt="Github Avatar"
           />
+          {arrayLanguages.current?.map((language) => (
+            <i
+              key={language}
+              className={`devicon-${language.toString().toLowerCase()}-plain`}
+              style={{ fontSize: '2rem' }}
+            />
+          ))}
         </StatsContainer>
       )}
     </GithubStatsContainer>
