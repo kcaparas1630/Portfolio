@@ -13,7 +13,7 @@ const GITHUBUSERNAME: string = 'kcaparas1630';
 
 const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
   const [userStats, setUserStats] = useState<any>(null);
-  const arrayLanguages = useRef<string[] | undefined>(undefined);
+  const [languages, setLanguages] = useState<string[]>([]);
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.1,
@@ -26,10 +26,8 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
         setUserStats(userStatsResponse);
         const userLanguages = await getLanguages(GITHUBUSERNAME);
         const iterator = userLanguages.keys();
-        const languages = Array.from(iterator).slice(0, 5);
-        arrayLanguages.current = languages;
-
-        console.log('Stored languages:', arrayLanguages.current);
+        const fetchedLanguages = Array.from(iterator).slice(0, 5);
+        setLanguages(fetchedLanguages);
       } catch (error) {
         console.error('Something went wrong.');
         throw error;
@@ -56,7 +54,8 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
             src={userStats.avatar_url}
             alt="Github Avatar"
           />
-          {arrayLanguages.current?.map((language) => (
+          <h2>Top 5 languages</h2>
+          {languages.map((language) => (
             <div key={language}>
               <i
                 className={`devicon-${language.toString().toLowerCase()}-plain`}
