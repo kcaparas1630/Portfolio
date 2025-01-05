@@ -86,7 +86,8 @@ const getLanguages = async (username: string) => {
       Object.entries(languageObj).forEach(([language, lines]) => {
         // have to look for a new way
         const CSharpReplace = language.replace('C#', 'Csharp');
-        const newLanguage = CSharpReplace.replace('HTML', 'HTML5');
+        const CSSReplace = CSharpReplace.replace('CSS', 'CSS3');
+        const newLanguage = CSSReplace.replace('HTML', 'HTML5');
         languageMap.set(newLanguage, (languageMap.get(language) || 0) + lines);
       });
     });

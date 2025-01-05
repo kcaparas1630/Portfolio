@@ -26,7 +26,7 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
         setUserStats(userStatsResponse);
         const userLanguages = await getLanguages(GITHUBUSERNAME);
         const iterator = userLanguages.keys();
-        const languages = Array.from(iterator);
+        const languages = Array.from(iterator).slice(0, 6);
         arrayLanguages.current = languages;
 
         console.log('Stored languages:', arrayLanguages.current);
