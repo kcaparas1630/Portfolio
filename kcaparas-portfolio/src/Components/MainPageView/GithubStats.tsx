@@ -26,7 +26,7 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
         setUserStats(userStatsResponse);
         const userLanguages = await getLanguages(GITHUBUSERNAME);
         const iterator = userLanguages.keys();
-        const languages = Array.from(iterator).slice(0, 6);
+        const languages = Array.from(iterator).slice(0, 5);
         arrayLanguages.current = languages;
 
         console.log('Stored languages:', arrayLanguages.current);
@@ -57,11 +57,15 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
             alt="Github Avatar"
           />
           {arrayLanguages.current?.map((language) => (
-            <i
-              key={language}
-              className={`devicon-${language.toString().toLowerCase()}-plain`}
-              style={{ fontSize: '2rem' }}
-            />
+            <div key={language}>
+              <i
+                className={`devicon-${language.toString().toLowerCase()}-plain`}
+                style={{ fontSize: '2rem' }}
+              />
+              <p>
+                {language}
+              </p>
+            </div>
           ))}
         </StatsContainer>
       )}

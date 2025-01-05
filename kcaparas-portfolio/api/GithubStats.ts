@@ -17,6 +17,22 @@ const getCachedData = (dataName: string) => {
   return isExpired ? null : data;
 };
 
+type LanguageMapping = {
+  'C#': string;
+  CSS: string;
+  HTML: string;
+};
+
+const mapLanguageToDevicon = (language: string): string => {
+  const languageMapping: LanguageMapping = {
+    'C#': 'Csharp',
+    CSS: 'CSS3',
+    HTML: 'HTML5',
+  };
+
+  return languageMapping[language as keyof LanguageMapping] || language;
+};
+
 const getUserStats = async (username: string) => {
   const cacheData = getCachedData('GithubInfo');
   if (cacheData) return cacheData;
@@ -84,11 +100,8 @@ const getLanguages = async (username: string) => {
     );
     languageArray.forEach((languageObj) => {
       Object.entries(languageObj).forEach(([language, lines]) => {
-        // have to look for a new way
-        const CSharpReplace = language.replace('C#', 'Csharp');
-        const CSSReplace = CSharpReplace.replace('CSS', 'CSS3');
-        const newLanguage = CSSReplace.replace('HTML', 'HTML5');
-        languageMap.set(newLanguage, (languageMap.get(language) || 0) + lines);
+        const mappedLanguage = mapLanguageToDevicon(language);
+        languageMap.set(mappedLanguage, (languageMap.get(mappedLanguage) || 0) + lines);
       });
     });
     const sortedMapDescending = new Map<string, number>(
