@@ -7,7 +7,7 @@ import {
   StatsHeader2,
 } from './Styled-components/GithubStats';
 import ComponentProps from '../../Types/ComponentProps';
-import { getUserStats, getCommitCount, getLanguages } from '../../../api/GithubStats';
+import { getUserStats, getCommitCount, getLanguages, getRepos } from '../../../api/GithubStats';
 
 const GITHUBUSERNAME: string = 'kcaparas1630';
 

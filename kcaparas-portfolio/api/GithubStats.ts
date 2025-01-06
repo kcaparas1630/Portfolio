@@ -85,6 +85,8 @@ const getRepos = async (username: string): Promise<Repository[]> => {
 
 const getCommitCount = async (username: string): Promise<number> => {
   let totalCommits = 0;
+  const cacheData = getCachedData('GithubCommits');
+  if (cacheData) return cacheData;
   try {
     const repositoryData = await getRepos(username);
     const commitsResponses = await Promise.all(
@@ -117,11 +119,19 @@ const getCommitCount = async (username: string): Promise<number> => {
     await new Promise<void>((resolve) => {
       setTimeout(resolve, 100);
     });
+
+    localStorage.setItem(
+      'GithubCommits',
+      JSON.stringify({
+        data: totalCommits,
+        timestamp: Date.now(),
+      }),
+    );
+    return totalCommits;
   } catch (error) {
     console.error(error);
     throw new Error('Failed to fetch commit count');
   }
-  return totalCommits;
 };
 
 // identify return type later.
