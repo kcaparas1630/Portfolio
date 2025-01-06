@@ -1,4 +1,4 @@
-interface PullRequestResponse {
+interface GithubIssuesResponse {
     total_count: number;
     incomplete_results: boolean;
     items: Array<{
@@ -11,4 +11,4 @@ interface PullRequestResponse {
     }>;
 }
 
-export default PullRequestResponse;
+export default GithubIssuesResponse;

@@ -3,7 +3,7 @@ import Repository from '../src/Interface/Repository';
 import LanguageResponse from '../src/Interface/LanguageInterface';
 import GITHUBLANGUAGES from '../src/Constants/GithubLanguages';
 import CommitResponse from '../src/Interface/CommitResponse';
-import PullRequestResponse from '../src/Interface/PullRequestResponse';
+import GithubIssuesResponse from '../src/Interface/PullRequestResponse';
 
 const BASE_URL_GITHUB = 'https://api.github.com';
 const { GITHUB_TOKEN } = import.meta.env;
@@ -99,7 +99,12 @@ const getCommitCount = async (username: string): Promise<number> => {
               author: username,
               per_page: 1,
             },
-            headers: GITHUB_TOKEN ? { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: 'application/vnd.github.v3+json' } : {},
+            headers: GITHUB_TOKEN
+              ? {
+                Authorization: `Bearer ${GITHUB_TOKEN}`,
+                Accept: 'application/vnd.github.v3+json',
+              }
+              : {},
           },
         );
         // Process the Link header for each response individually
@@ -135,17 +140,32 @@ const getCommitCount = async (username: string): Promise<number> => {
   }
 };
 
-const getTotalPRs = async (username: string): Promise<number> => {
+const getTotalIssues = async (
+  username: string,
+  issueType: string,
+  localStorageName: string,
+): Promise<number> => {
+  const cacheData = getCachedData(localStorageName);
+  if (cacheData) return cacheData;
   try {
-    const PRResponse: AxiosResponse<PullRequestResponse> = await axios.get(
+    const PRResponse: AxiosResponse<GithubIssuesResponse> = await axios.get(
       'https://api.github.com/search/issues',
       {
         params: {
-          q: `author:${username} is:pr`,
+          q: `author:${username} is:${issueType}`,
           per_page: 1,
         },
-        headers: GITHUB_TOKEN ? { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: 'application/vnd.github.v3+json' } : {},
+        headers: GITHUB_TOKEN
+          ? { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: 'application/vnd.github.v3+json' }
+          : {},
       },
+    );
+    localStorage.setItem(
+      localStorageName,
+      JSON.stringify({
+        data: PRResponse.data.total_count,
+        timestamp: Date.now(),
+      }),
     );
     return PRResponse.data.total_count;
   } catch (error) {
@@ -200,4 +220,4 @@ const getLanguages = async (username: string) => {
   }
 };
 
-export { getUserStats, getRepos, getLanguages, getCommitCount, getTotalPRs };
+export { getUserStats, getRepos, getLanguages, getCommitCount, getTotalIssues };

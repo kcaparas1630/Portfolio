@@ -7,7 +7,7 @@ import {
   StatsHeader2,
 } from './Styled-components/GithubStats';
 import ComponentProps from '../../Types/ComponentProps';
-import { getUserStats, getCommitCount, getLanguages, getTotalPRs } from '../../../api/GithubStats';
+import { getUserStats, getCommitCount, getLanguages, getTotalIssues } from '../../../api/GithubStats';
 
 const GITHUBUSERNAME: string = 'kcaparas1630';
 
@@ -17,6 +17,7 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
   const [languages, setLanguages] = useState<string[]>([]);
   const [commitCount, setCommitCount] = useState<number>(0);
   const [PRCount, setPRCount] = useState<number>(0);
+  const [issueCount, setIssueCount] = useState<number>(0);
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.1,
@@ -30,8 +31,10 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
         const userLanguages = await getLanguages(GITHUBUSERNAME);
         const userCommits = await getCommitCount(GITHUBUSERNAME);
         setCommitCount(userCommits);
-        const userPR = await getTotalPRs(GITHUBUSERNAME);
-        setPRCount(userPR);
+        const userPRCount = await getTotalIssues(GITHUBUSERNAME, 'pr', 'GITHUBPR');
+        setPRCount(userPRCount);
+        const userIssuesCount = await getTotalIssues(GITHUBUSERNAME, 'issue', 'GITHUBISSUE');
+        setIssueCount(userIssuesCount);
         const iterator = userLanguages.keys();
         const fetchedLanguages = Array.from(iterator).slice(0, 5);
         setLanguages(fetchedLanguages);
@@ -68,6 +71,10 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
           <p>
             Github Pull Requests:
             {PRCount}
+          </p>
+          <p>
+            Github Issues:
+            {issueCount}
           </p>
           <h2>Top 5 languages</h2>
           {languages.map((language) => (
