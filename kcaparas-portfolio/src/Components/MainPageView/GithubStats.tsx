@@ -57,7 +57,10 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
             src={userStats.avatar_url}
             alt="Github Avatar"
           />
-          <p>{commitCount}</p>
+          <p>
+            Github Commits:
+            {commitCount}
+          </p>
           <h2>Top 5 languages</h2>
           {languages.map((language) => (
             <div key={language}>
