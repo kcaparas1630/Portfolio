@@ -3,6 +3,7 @@ import Repository from '../src/Interface/Repository';
 import LanguageResponse from '../src/Interface/LanguageInterface';
 import GITHUBLANGUAGES from '../src/Constants/GithubLanguages';
 import CommitResponse from '../src/Interface/CommitResponse';
+import PullRequestResponse from '../src/Interface/PullRequestResponse';
 
 const BASE_URL_GITHUB = 'https://api.github.com';
 const { GITHUB_TOKEN } = import.meta.env;
@@ -134,6 +135,24 @@ const getCommitCount = async (username: string): Promise<number> => {
   }
 };
 
+const getTotalPRs = async (username: string): Promise<number> => {
+  try {
+    const PRResponse: AxiosResponse<PullRequestResponse> = await axios.get(
+      'https://api.github.com/search/issues',
+      {
+        params: {
+          q: `author:${username} is:pr`,
+          per_page: 1,
+        },
+        headers: GITHUB_TOKEN ? { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: 'application/vnd.github.v3+json' } : {},
+      },
+    );
+    return PRResponse.data.total_count;
+  } catch (error) {
+    console.error(error);
+    throw new Error();
+  }
+};
 // identify return type later.
 const getLanguages = async (username: string) => {
   const cacheData = getCachedData('GithubLanguages');
@@ -181,4 +200,4 @@ const getLanguages = async (username: string) => {
   }
 };
 
-export { getUserStats, getRepos, getLanguages, getCommitCount };
+export { getUserStats, getRepos, getLanguages, getCommitCount, getTotalPRs };

@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, useRef } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import {
   AvatarUrl,
@@ -7,14 +7,16 @@ import {
   StatsHeader2,
 } from './Styled-components/GithubStats';
 import ComponentProps from '../../Types/ComponentProps';
-import { getUserStats, getCommitCount, getLanguages, getRepos } from '../../../api/GithubStats';
+import { getUserStats, getCommitCount, getLanguages, getTotalPRs } from '../../../api/GithubStats';
 
 const GITHUBUSERNAME: string = 'kcaparas1630';
 
 const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
+  // Put all states into userStats soon once done. Will create an interface for it.
   const [userStats, setUserStats] = useState<any>(null);
   const [languages, setLanguages] = useState<string[]>([]);
   const [commitCount, setCommitCount] = useState<number>(0);
+  const [PRCount, setPRCount] = useState<number>(0);
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.1,
@@ -28,6 +30,8 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
         const userLanguages = await getLanguages(GITHUBUSERNAME);
         const userCommits = await getCommitCount(GITHUBUSERNAME);
         setCommitCount(userCommits);
+        const userPR = await getTotalPRs(GITHUBUSERNAME);
+        setPRCount(userPR);
         const iterator = userLanguages.keys();
         const fetchedLanguages = Array.from(iterator).slice(0, 5);
         setLanguages(fetchedLanguages);
@@ -60,6 +64,10 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
           <p>
             Github Commits:
             {commitCount}
+          </p>
+          <p>
+            Github Pull Requests:
+            {PRCount}
           </p>
           <h2>Top 5 languages</h2>
           {languages.map((language) => (
