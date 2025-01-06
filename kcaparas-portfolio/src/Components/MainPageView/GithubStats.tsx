@@ -7,13 +7,14 @@ import {
   StatsHeader2,
 } from './Styled-components/GithubStats';
 import ComponentProps from '../../Types/ComponentProps';
-import { getUserStats, getRepos, getLanguages } from '../../../api/GithubStats';
+import { getUserStats, getCommitCount, getLanguages } from '../../../api/GithubStats';
 
 const GITHUBUSERNAME: string = 'kcaparas1630';
 
 const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
   const [userStats, setUserStats] = useState<any>(null);
   const [languages, setLanguages] = useState<string[]>([]);
+  const [commitCount, setCommitCount] = useState<number>(0);
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.1,
@@ -25,6 +26,8 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
         const userStatsResponse = await getUserStats(GITHUBUSERNAME);
         setUserStats(userStatsResponse);
         const userLanguages = await getLanguages(GITHUBUSERNAME);
+        const userCommits = await getCommitCount(GITHUBUSERNAME);
+        setCommitCount(userCommits);
         const iterator = userLanguages.keys();
         const fetchedLanguages = Array.from(iterator).slice(0, 5);
         setLanguages(fetchedLanguages);
@@ -54,6 +57,7 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
             src={userStats.avatar_url}
             alt="Github Avatar"
           />
+          <p>{commitCount}</p>
           <h2>Top 5 languages</h2>
           {languages.map((language) => (
             <div key={language}>

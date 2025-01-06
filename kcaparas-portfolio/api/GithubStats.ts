@@ -1,7 +1,8 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import Repository from '../src/Interface/Repository';
 import LanguageResponse from '../src/Interface/LanguageInterface';
 import GITHUBLANGUAGES from '../src/Constants/GithubLanguages';
+import CommitResponse from '../src/Interface/CommitResponse';
 
 const BASE_URL_GITHUB = 'https://api.github.com';
 const { GITHUB_TOKEN } = import.meta.env;
@@ -82,6 +83,47 @@ const getRepos = async (username: string): Promise<Repository[]> => {
   return repos;
 };
 
+const getCommitCount = async (username: string): Promise<number> => {
+  let totalCommits = 0;
+  try {
+    const repositoryData = await getRepos(username);
+    const commitsResponses = await Promise.all(
+      repositoryData.map(async (repoItem) => {
+        const response: AxiosResponse<CommitResponse[]> = await axios.get(
+          `https://api.github.com/repos/${repoItem.full_name}/commits`,
+          {
+            params: {
+              author: username,
+              per_page: 1,
+            },
+            headers: GITHUB_TOKEN ? { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: 'application/vnd.github.v3+json' } : {},
+          },
+        );
+        // Process the Link header for each response individually
+        const linkHeader = response.headers.link;
+        if (linkHeader && linkHeader.includes('rel="last"')) {
+          const matches = linkHeader.match(/page=(\d+)>; rel="last"/);
+          if (matches) {
+            return parseInt(matches[1], 10); // Changed to base 10
+          }
+        }
+        return response.data.length;
+      }),
+    );
+    // Sum up all the commit counts
+    totalCommits = commitsResponses.reduce((acc, count) => acc + count, 0);
+
+    // Add delay to avoid rate limits
+    await new Promise<void>((resolve) => {
+      setTimeout(resolve, 100);
+    });
+  } catch (error) {
+    console.error(error);
+    throw new Error('Failed to fetch commit count');
+  }
+  return totalCommits;
+};
+
 // identify return type later.
 const getLanguages = async (username: string) => {
   const cacheData = getCachedData('GithubLanguages');
@@ -129,4 +171,4 @@ const getLanguages = async (username: string) => {
   }
 };
 
-export { getUserStats, getRepos, getLanguages };
+export { getUserStats, getRepos, getLanguages, getCommitCount };
