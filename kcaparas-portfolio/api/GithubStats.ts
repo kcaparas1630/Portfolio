@@ -173,7 +173,7 @@ const getTotalIssues = async (
     throw new Error();
   }
 };
-
+// still fixing
 const getContributionsCount = async (username: string): Promise<number> => {
   try {
     const response = await axios.post(
