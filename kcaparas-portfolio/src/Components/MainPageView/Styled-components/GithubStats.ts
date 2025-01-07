@@ -43,6 +43,8 @@ const StatsHeader2 = styled.h2<GithubType>`
 const StatsContainer = styled.div`
   label: StatsContainer;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   gap: 24px;
   width: 100%;

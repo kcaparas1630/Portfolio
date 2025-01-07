@@ -7,17 +7,13 @@ import {
   StatsHeader2,
 } from './Styled-components/GithubStats';
 import ComponentProps from '../../Types/ComponentProps';
+import GithubStatsInterface from '../../Interface/GithubStats';
 import { getUserStats, getCommitCount, getLanguages, getTotalIssues, getContributionsCount } from '../../../api/GithubStats';
 
 const GITHUBUSERNAME: string = 'kcaparas1630';
 
 const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
-  // Put all states into userStats soon once done. Will create an interface for it.
-  const [userStats, setUserStats] = useState<any>(null);
-  const [languages, setLanguages] = useState<string[]>([]);
-  const [commitCount, setCommitCount] = useState<number>(0);
-  const [PRCount, setPRCount] = useState<number>(0);
-  const [issueCount, setIssueCount] = useState<number>(0);
+  const [userStats, setUserStats] = useState<GithubStatsInterface | null>(null);
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.1,
@@ -27,19 +23,21 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
     const fetchData = async () => {
       try {
         const userStatsResponse = await getUserStats(GITHUBUSERNAME);
-        setUserStats(userStatsResponse);
         const userLanguages = await getLanguages(GITHUBUSERNAME);
         const userCommits = await getCommitCount(GITHUBUSERNAME);
-        setCommitCount(userCommits);
         const userPRCount = await getTotalIssues(GITHUBUSERNAME, 'pr', 'GITHUBPR');
-        setPRCount(userPRCount);
         const userIssuesCount = await getTotalIssues(GITHUBUSERNAME, 'issue', 'GITHUBISSUE');
-        setIssueCount(userIssuesCount);
-        const userContributionsCount = await getContributionsCount(GITHUBUSERNAME);
-        console.log(userContributionsCount);
         const iterator = userLanguages.keys();
         const fetchedLanguages = Array.from(iterator).slice(0, 5);
-        setLanguages(fetchedLanguages);
+        const userObject: GithubStatsInterface = {
+          avatar_url: userStatsResponse.avatar_url,
+          full_name: userStatsResponse.full_name,
+          languages: fetchedLanguages,
+          commitCount: userCommits,
+          PRCount: userPRCount,
+          issueCount: userIssuesCount,
+        };
+        setUserStats(userObject);
       } catch (error) {
         console.error('Something went wrong.');
         throw error;
@@ -68,18 +66,18 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
           />
           <p>
             Github Commits:
-            {commitCount}
+            {userStats.commitCount}
           </p>
           <p>
             Github Pull Requests:
-            {PRCount}
+            {userStats.PRCount}
           </p>
           <p>
             Github Issues:
-            {issueCount}
+            {userStats.issueCount}
           </p>
           <h2>Top 5 languages</h2>
-          {languages.map((language) => (
+          {userStats.languages.map((language) => (
             <div key={language}>
               <i
                 className={`devicon-${language.toString().toLowerCase()}-plain`}
