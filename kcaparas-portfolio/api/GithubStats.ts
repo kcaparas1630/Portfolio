@@ -205,11 +205,11 @@ const getContributionsCount = async (username: string): Promise<number> => {
 
     const contributions = response.data.data.user.contributionsCollection;
     return (
-      contributions.totalCommitContributions +
-      contributions.totalIssueContributions +
-      contributions.totalPullRequestContributions +
-      contributions.totalPullRequestReviewContributions +
-      contributions.restrictedContributionsCount
+      contributions.totalCommitContributions
+      + contributions.totalIssueContributions
+      + contributions.totalPullRequestContributions
+      + contributions.totalPullRequestReviewContributions
+      + contributions.restrictedContributionsCount
     );
   } catch (error) {
     console.error('Error fetching total contributions:', error);
