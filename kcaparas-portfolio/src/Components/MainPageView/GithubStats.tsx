@@ -2,13 +2,24 @@ import { FC, useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import {
   AvatarUrl,
+  ContributionsContainer,
   GithubStatsContainer,
+  IntroductionContainer,
+  LanguagesContainer,
+  MainStatsContainer,
   StatsContainer,
   StatsHeader2,
+  LanguagesRow,
 } from './Styled-components/GithubStats';
 import ComponentProps from '../../Types/ComponentProps';
 import GithubStatsInterface from '../../Interface/GithubStats';
-import { getUserStats, getCommitCount, getLanguages, getTotalIssues, getContributionsCount } from '../../../api/GithubStats';
+import {
+  getUserStats,
+  getCommitCount,
+  getLanguages,
+  getTotalIssues,
+  getContributionsCount,
+} from '../../../api/GithubStats';
 
 const GITHUBUSERNAME: string = 'kcaparas1630';
 
@@ -23,6 +34,7 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
     const fetchData = async () => {
       try {
         const userStatsResponse = await getUserStats(GITHUBUSERNAME);
+        console.log(userStatsResponse);
         const userLanguages = await getLanguages(GITHUBUSERNAME);
         const userCommits = await getCommitCount(GITHUBUSERNAME);
         const userPRCount = await getTotalIssues(GITHUBUSERNAME, 'pr', 'GITHUBPR');
@@ -31,7 +43,7 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
         const fetchedLanguages = Array.from(iterator).slice(0, 5);
         const userObject: GithubStatsInterface = {
           avatar_url: userStatsResponse.avatar_url,
-          full_name: userStatsResponse.full_name,
+          name: userStatsResponse.name,
           languages: fetchedLanguages,
           commitCount: userCommits,
           PRCount: userPRCount,
@@ -60,34 +72,44 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
       </StatsHeader2>
       {userStats && (
         <StatsContainer>
-          <AvatarUrl
-            src={userStats.avatar_url}
-            alt="Github Avatar"
-          />
-          <p>
-            Github Commits:
-            {userStats.commitCount}
-          </p>
-          <p>
-            Github Pull Requests:
-            {userStats.PRCount}
-          </p>
-          <p>
-            Github Issues:
-            {userStats.issueCount}
-          </p>
-          <h2>Top 5 languages</h2>
-          {userStats.languages.map((language) => (
-            <div key={language}>
-              <i
-                className={`devicon-${language.toString().toLowerCase()}-plain`}
-                style={{ fontSize: '2rem' }}
-              />
+          <IntroductionContainer>
+            <AvatarUrl
+              src={userStats.avatar_url}
+              alt="Github Avatar"
+            />
+            <p>{userStats.name}</p>
+          </IntroductionContainer>
+          <MainStatsContainer>
+            <ContributionsContainer>
+              <p>{`${userStats.name}' Github Stats:`}</p>
               <p>
-                {language}
+                Github Commits:
+                {userStats.commitCount}
               </p>
-            </div>
-          ))}
+              <p>
+                Github Pull Requests:
+                {userStats.PRCount}
+              </p>
+              <p>
+                Github Issues:
+                {userStats.issueCount}
+              </p>
+            </ContributionsContainer>
+            <LanguagesContainer>
+              <h2>Top 5 languages</h2>
+              <LanguagesRow>
+                {userStats.languages.map((language) => (
+                  <div key={language}>
+                    <i
+                      className={`devicon-${language.toString().toLowerCase()}-plain`}
+                      style={{ fontSize: '2rem' }}
+                    />
+                    <p>{language}</p>
+                  </div>
+                ))}
+              </LanguagesRow>
+            </LanguagesContainer>
+          </MainStatsContainer>
         </StatsContainer>
       )}
     </GithubStatsContainer>

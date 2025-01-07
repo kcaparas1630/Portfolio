@@ -1,6 +1,6 @@
 interface GithubStatsInterface {
     avatar_url: string,
-    full_name: string,
+    name: string,
     languages: string[],
     commitCount: number,
     PRCount: number,

@@ -44,16 +44,66 @@ const StatsContainer = styled.div`
   label: StatsContainer;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   gap: 24px;
   width: 100%;
+  padding: 24px;
+`;
+const IntroductionContainer = styled.div`
+  label: IntroductionContainer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 24px;
+  margin-bottom: 24px;
 `;
 
+const MainStatsContainer = styled.div`
+  label: MainStatsContainer;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 24px;
+`;
+
+const ContributionsContainer = styled.div`
+  label: ContributionsContainer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 30%;
+  margin-left: 20%;
+`;
+
+const LanguagesContainer = styled.div`
+  label: LanguagesContainer;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 50%;
+`;
+const LanguagesRow = styled.div`
+  label: LanguagesRow;
+  display: flex;
+  gap: 24px;
+  width: 100%;
+`;
 const AvatarUrl = styled.img`
   width: 10%;
-  height: 20%;
+  height: 100%;
   border-radius: 5%;
 `;
 
-export { GithubStatsContainer, StatsContainer, AvatarUrl, StatsHeader2 };
+export {
+  GithubStatsContainer,
+  IntroductionContainer,
+  StatsContainer,
+  MainStatsContainer,
+  LanguagesContainer,
+  ContributionsContainer,
+  AvatarUrl,
+  StatsHeader2,
+  LanguagesRow,
+};
