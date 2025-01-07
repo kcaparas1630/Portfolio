@@ -7,7 +7,7 @@ import {
   StatsHeader2,
 } from './Styled-components/GithubStats';
 import ComponentProps from '../../Types/ComponentProps';
-import { getUserStats, getCommitCount, getLanguages, getTotalIssues } from '../../../api/GithubStats';
+import { getUserStats, getCommitCount, getLanguages, getTotalIssues, getContributionsCount } from '../../../api/GithubStats';
 
 const GITHUBUSERNAME: string = 'kcaparas1630';
 
@@ -35,6 +35,8 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
         setPRCount(userPRCount);
         const userIssuesCount = await getTotalIssues(GITHUBUSERNAME, 'issue', 'GITHUBISSUE');
         setIssueCount(userIssuesCount);
+        const userContributionsCount = await getContributionsCount(GITHUBUSERNAME);
+        console.log(userContributionsCount);
         const iterator = userLanguages.keys();
         const fetchedLanguages = Array.from(iterator).slice(0, 5);
         setLanguages(fetchedLanguages);

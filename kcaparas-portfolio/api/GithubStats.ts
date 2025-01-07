@@ -173,6 +173,49 @@ const getTotalIssues = async (
     throw new Error();
   }
 };
+
+const getContributionsCount = async (username: string): Promise<number> => {
+  try {
+    const response = await axios.post(
+      'https://api.github.com/graphql',
+      {
+        query: `
+          query($username: String!) {
+            user(login: $username) {
+              contributionsCollection(from: "2023-09-13T00:00:00Z") {
+                totalCommitContributions
+                totalIssueContributions
+                totalPullRequestContributions
+                totalPullRequestReviewContributions
+                restrictedContributionsCount
+              }
+            }
+          }
+        `,
+        variables: {
+          username,
+        },
+      },
+      {
+        headers: GITHUB_TOKEN
+          ? { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: 'application/vnd.github.v3+json' }
+          : {},
+      },
+    );
+
+    const contributions = response.data.data.user.contributionsCollection;
+    return (
+      contributions.totalCommitContributions +
+      contributions.totalIssueContributions +
+      contributions.totalPullRequestContributions +
+      contributions.totalPullRequestReviewContributions +
+      contributions.restrictedContributionsCount
+    );
+  } catch (error) {
+    console.error('Error fetching total contributions:', error);
+    throw new Error('Failed to fetch total contributions');
+  }
+};
 // identify return type later.
 const getLanguages = async (username: string) => {
   const cacheData = getCachedData('GithubLanguages');
@@ -220,4 +263,11 @@ const getLanguages = async (username: string) => {
   }
 };
 
-export { getUserStats, getRepos, getLanguages, getCommitCount, getTotalIssues };
+export {
+  getUserStats,
+  getRepos,
+  getLanguages,
+  getCommitCount,
+  getTotalIssues,
+  getContributionsCount,
+};
