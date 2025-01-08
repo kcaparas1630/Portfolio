@@ -34,9 +34,10 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
     const fetchData = async () => {
       try {
         const userStatsResponse = await getUserStats(GITHUBUSERNAME);
-        console.log(userStatsResponse);
         const userLanguages = await getLanguages(GITHUBUSERNAME);
         const userCommits = await getCommitCount(GITHUBUSERNAME);
+        const userContributions = await getContributionsCount(GITHUBUSERNAME);
+        console.log(userContributions);
         const userPRCount = await getTotalIssues(GITHUBUSERNAME, 'pr', 'GITHUBPR');
         const userIssuesCount = await getTotalIssues(GITHUBUSERNAME, 'issue', 'GITHUBISSUE');
         const iterator = userLanguages.keys();

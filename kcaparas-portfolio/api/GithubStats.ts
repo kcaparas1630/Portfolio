@@ -6,7 +6,7 @@ import CommitResponse from '../src/Interface/CommitResponse';
 import GithubIssuesResponse from '../src/Interface/PullRequestResponse';
 
 const BASE_URL_GITHUB = 'https://api.github.com';
-const { GITHUB_TOKEN } = import.meta.env;
+const { VITE_GITHUB_TOKEN } = import.meta.env;
 
 /** Function to cache data into the localstorage. Avoiding rate limiter of Github API */
 const getCachedData = (dataName: string) => {
@@ -40,7 +40,7 @@ const getUserStats = async (username: string) => {
   if (cacheData) return cacheData;
   try {
     const response = await axios.get(`${BASE_URL_GITHUB}/users/${username}`, {
-      headers: GITHUB_TOKEN ? { Authorization: `Bearer ${GITHUB_TOKEN}` } : {},
+      headers: VITE_GITHUB_TOKEN ? { Authorization: `Bearer ${VITE_GITHUB_TOKEN}` } : {},
     });
     localStorage.setItem(
       'GithubInfo',
@@ -99,9 +99,9 @@ const getCommitCount = async (username: string): Promise<number> => {
               author: username,
               per_page: 1,
             },
-            headers: GITHUB_TOKEN
+            headers: VITE_GITHUB_TOKEN
               ? {
-                Authorization: `Bearer ${GITHUB_TOKEN}`,
+                Authorization: `Bearer ${VITE_GITHUB_TOKEN}`,
                 Accept: 'application/vnd.github.v3+json',
               }
               : {},
@@ -155,8 +155,8 @@ const getTotalIssues = async (
           q: `author:${username} is:${issueType}`,
           per_page: 1,
         },
-        headers: GITHUB_TOKEN
-          ? { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: 'application/vnd.github.v3+json' }
+        headers: VITE_GITHUB_TOKEN
+          ? { Authorization: `Bearer ${VITE_GITHUB_TOKEN}`, Accept: 'application/vnd.github.v3+json' }
           : {},
       },
     );
@@ -176,44 +176,16 @@ const getTotalIssues = async (
 // still fixing
 const getContributionsCount = async (username: string): Promise<number> => {
   try {
-    const response = await axios.post(
-      'https://api.github.com/graphql',
-      {
-        query: `
-          query($username: String!) {
-            user(login: $username) {
-              contributionsCollection(from: "2023-09-13T00:00:00Z") {
-                totalCommitContributions
-                totalIssueContributions
-                totalPullRequestContributions
-                totalPullRequestReviewContributions
-                restrictedContributionsCount
-              }
-            }
-          }
-        `,
-        variables: {
-          username,
-        },
-      },
-      {
-        headers: GITHUB_TOKEN
-          ? { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: 'application/vnd.github.v3+json' }
-          : {},
-      },
-    );
+    const userCommitsCount = await getCommitCount(username);
+    const userPRCount = await getTotalIssues(username, 'pr', 'GITHUBPR');
+    const userIssuesCount = await getTotalIssues(username, 'issue', 'GITHUBISSUE');
 
-    const contributions = response.data.data.user.contributionsCollection;
-    return (
-      contributions.totalCommitContributions
-      + contributions.totalIssueContributions
-      + contributions.totalPullRequestContributions
-      + contributions.totalPullRequestReviewContributions
-      + contributions.restrictedContributionsCount
-    );
+    return userCommitsCount
+    + userPRCount
+    + userIssuesCount;
   } catch (error) {
-    console.error('Error fetching total contributions:', error);
-    throw new Error('Failed to fetch total contributions');
+    console.error(error);
+    throw new Error();
   }
 };
 // identify return type later.
