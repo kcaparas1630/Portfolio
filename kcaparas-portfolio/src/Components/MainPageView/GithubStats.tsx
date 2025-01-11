@@ -10,6 +10,11 @@ import {
   StatsContainer,
   StatsHeader2,
   LanguagesRow,
+  UserNameH3,
+  HeaderH4,
+  HeaderH5,
+  GithubItems,
+  LanguageItem,
 } from './Styled-components/GithubStats';
 import ComponentProps from '../../Types/ComponentProps';
 import GithubStatsInterface from '../../Interface/GithubStats';
@@ -73,40 +78,49 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
       </StatsHeader2>
       {userStats && (
         <StatsContainer>
-          <IntroductionContainer>
+          <IntroductionContainer
+            isDarkMode={isDarkMode}
+            inView={inView}
+          >
             <AvatarUrl
               src={userStats.avatar_url}
               alt="Github Avatar"
             />
-            <p>{userStats.name}</p>
+            <UserNameH3>{userStats.name}</UserNameH3>
           </IntroductionContainer>
           <MainStatsContainer>
-            <ContributionsContainer>
-              <p>{`${userStats.name}' Github Stats:`}</p>
-              <p>
+            <ContributionsContainer
+              isDarkMode={isDarkMode}
+              inView={inView}
+            >
+              <HeaderH4>{`${userStats.name}' Github Stats:`}</HeaderH4>
+              <GithubItems>
                 Github Commits:
                 {userStats.commitCount}
-              </p>
-              <p>
+              </GithubItems>
+              <GithubItems>
                 Github Pull Requests:
                 {userStats.PRCount}
-              </p>
-              <p>
+              </GithubItems>
+              <GithubItems>
                 Github Issues:
                 {userStats.issueCount}
-              </p>
+              </GithubItems>
             </ContributionsContainer>
-            <LanguagesContainer>
-              <h2>Top 5 languages</h2>
+            <LanguagesContainer
+              isDarkMode={isDarkMode}
+              inView={inView}
+            >
+              <HeaderH4>Top 5 languages:</HeaderH4>
               <LanguagesRow>
                 {userStats.languages.map((language) => (
-                  <div key={language}>
+                  <LanguageItem key={language}>
                     <i
                       className={`devicon-${language.toString().toLowerCase()}-plain`}
                       style={{ fontSize: '2rem' }}
                     />
-                    <p>{language}</p>
-                  </div>
+                    <GithubItems>{language}</GithubItems>
+                  </LanguageItem>
                 ))}
               </LanguagesRow>
             </LanguagesContainer>
