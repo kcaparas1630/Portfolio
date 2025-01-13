@@ -15,6 +15,7 @@ import {
   HeaderH5,
   GithubItems,
   LanguageItem,
+  StatsChangeParagraph,
 } from './Styled-components/GithubStats';
 import ComponentProps from '../../Types/ComponentProps';
 import GithubStatsInterface from '../../Interface/GithubStats';
@@ -76,6 +77,11 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
       >
         Github Stats Tracker
       </StatsHeader2>
+      <StatsChangeParagraph isDarkMode={isDarkMode} inView={inView}>
+        This is a simple Github Stats Tracker that I created using React, Typescript, and
+        emotion.sh. Changes in the data are made by fetching from the Github API. It will change
+        after branch is merged to main.
+      </StatsChangeParagraph>
       {userStats && (
         <StatsContainer>
           <IntroductionContainer
@@ -95,16 +101,16 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
             >
               <HeaderH4>{`${userStats.name}' Github Stats:`}</HeaderH4>
               <GithubItems>
-                Github Commits:
-                {userStats.commitCount}
+                <span>Github Commits:</span>
+                <span>{userStats.commitCount}</span>
               </GithubItems>
               <GithubItems>
-                Github Pull Requests:
-                {userStats.PRCount}
+                <span>Github Pull Requests:</span>
+                <span>{userStats.PRCount}</span>
               </GithubItems>
               <GithubItems>
-                Github Issues:
-                {userStats.issueCount}
+                <span>Github Issues:</span>
+                <span>{userStats.issueCount}</span>
               </GithubItems>
             </ContributionsContainer>
             <LanguagesContainer
