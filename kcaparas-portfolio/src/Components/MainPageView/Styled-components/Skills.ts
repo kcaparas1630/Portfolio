@@ -12,7 +12,8 @@ const SkillsContainer = styled.section<SkillType>`
   justify-content: center;
   width: 100%;
   min-height: 45vh;
-  background-color: ${(props) => (props.isDarkMode ? '#131842' : '#1C225F')};
+  background-color: ${(props) => (props.isDarkMode ? 'var(--native-dark-bg-color)' : '#fbf6e2')};
+  border-bottom: 2px solid ${(props) => (props.isDarkMode ? '#fbf6e2' : 'var(--native-dark-bg-color)')};
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -46,7 +47,7 @@ const SkillsHeader2 = styled.h2<SkillType>`
   font-weight: 700;
   width: 90%;
   margin: 24px 0;
-  color: white;
+  color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
   transform: translateX(${(props) => (props.inView ? '0' : '-100%')});
   opacity: ${(props) => (props.inView ? '0.8' : '0')};
   transition:
@@ -59,7 +60,7 @@ const SkillsHeader3 = styled.h3<SkillType>`
   font-weight: 700;
   width: 90%;
   margin: 12px 0 24px 0;
-  color: white;
+  color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
   transform: translateX(${(props) => (props.inView ? '0' : '-100%')});
   opacity: ${(props) => (props.inView ? '0.70' : '0')};
   transition:

@@ -16,7 +16,8 @@ const GithubStatsContainer = styled.section<GithubType>`
   min-height: 100vh;
   padding-top: 24px;
   padding-bottom: 24px;
-  background-color: ${(props) => (props.isDarkMode ? '#1C225F' : '#131842')};
+  background-color: ${(props) => (props.isDarkMode ? 'var(--native-dark-bg-color)' : '#fbf6e2')};
+  border-bottom: 2px solid ${(props) => (props.isDarkMode ? '#fbf6e2' : 'var(--native-dark-bg-color)')};
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -34,7 +35,7 @@ const StatsHeader2 = styled.h2<GithubType>`
   font-size: 2rem;
   font-weight: 700;
   margin-left: 24px;
-  color: white;
+  color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
   margin: 0;
   transform: translateX(${(props) => (props.inView ? '0' : '-100%')});
   opacity: ${(props) => (props.inView ? '0.8' : '0')};
@@ -69,15 +70,15 @@ const IntroductionContainer = styled.div<GithubType>`
     opacity 0.5s ease;
 `;
 
-const UserNameH3 = styled.h3`
-  color: white;
+const UserNameH3 = styled.h3<GithubType>`
+  color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
   font-size: 2rem;
   font-weight: 700;
 `;
 
-const HeaderH4 = styled.h4`
+const HeaderH4 = styled.h4<GithubType>`
   label: HeaderH4;
-  color: white;
+  color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
   font-size: 1.3rem;
   font-weight: 700;
   margin: 0 0 24px 0;
@@ -87,20 +88,19 @@ const HeaderH4 = styled.h4`
   }
 `;
 
-const HeaderH5 = styled.h5`
-  color: white;
+const HeaderH5 = styled.h5<GithubType>`
+  color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
   font-size: 1.2rem;
   font-weight: 700;
   margin: 0;
 `;
 
-const GithubItems = styled.div`
+const GithubItems = styled.div<GithubType>`
   display: table-row;
-  color: white;
+  color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
   font-size: 1.1rem;
   margin: 0;
   opacity: 0.8;
-  border-bottom: 1px solid white;
 
   span {
     display: table-cell;
@@ -168,7 +168,7 @@ const LanguagesRow = styled.div`
   align-items: center;
   flex-wrap: wrap;
 `;
-const LanguageItem = styled.div`
+const LanguageItem = styled.div<GithubType>`
   label: LanguageItem;
   display: flex;
   gap: 24px;
@@ -177,7 +177,7 @@ const LanguageItem = styled.div`
   flex-direction: column;
 
   i {
-    color: white;
+    color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
   }
 `;
 const AvatarUrl = styled.img`
@@ -191,7 +191,7 @@ const AvatarUrl = styled.img`
 `;
 
 const StatsChangeParagraph = styled.p<GithubType>`
-  color: white;
+  color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
   font-size: 0.8rem;
   margin: 0;
   text-align: center;

@@ -16,10 +16,12 @@ const zoomIn = keyframes`
   }
 `;
 
-const BannerView = styled.section`
+const BannerView = styled.section<BannerProps>`
   display: flex;
   flex-direction: column;
   width: 100%;
+  background-color: ${(props) => (props.isDarkMode ? 'var(--native-dark-bg-color)' : '#fbf6e2')};
+  border-bottom: 2px solid ${(props) => (props.isDarkMode ? '#fbf6e2' : 'var(--native-dark-bg-color)')};
   @media (min-width: 768px) {
     flex-direction: row;
     min-height: 100vh;
