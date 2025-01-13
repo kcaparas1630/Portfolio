@@ -21,7 +21,7 @@ import PythonWhite from '../Assets/Python/python-white.png';
 const SkillSetArray = (isDarkMode: boolean): SkillSetTypes[] => [
   {
     id: 0,
-    skillImage: isDarkMode ? reactWhite : reactBlack,
+    skillImage: isDarkMode ? reactBlack : reactWhite,
     skillText: 'React',
     skillAltImg: 'React-logo',
     skillDesc:
@@ -29,7 +29,7 @@ const SkillSetArray = (isDarkMode: boolean): SkillSetTypes[] => [
   },
   {
     id: 1,
-    skillImage: isDarkMode ? typeScriptWhite : typeScriptBlack,
+    skillImage: isDarkMode ? typeScriptBlack : typeScriptWhite,
     skillText: 'TypeScript',
     skillAltImg: 'TypeScript-logo',
     skillDesc:
@@ -37,7 +37,7 @@ const SkillSetArray = (isDarkMode: boolean): SkillSetTypes[] => [
   },
   {
     id: 2,
-    skillImage: isDarkMode ? CWhite : CBlack,
+    skillImage: isDarkMode ? CBlack : CWhite,
     skillText: 'C / C++ / C#',
     skillAltImg: 'C-logo',
     skillDesc:
@@ -45,7 +45,7 @@ const SkillSetArray = (isDarkMode: boolean): SkillSetTypes[] => [
   },
   {
     id: 3,
-    skillImage: isDarkMode ? UnityWhite : UnityBlack,
+    skillImage: isDarkMode ? UnityBlack : UnityWhite,
     skillText: 'Unity',
     skillAltImg: 'Unity-logo',
     skillDesc:
@@ -53,35 +53,35 @@ const SkillSetArray = (isDarkMode: boolean): SkillSetTypes[] => [
   },
   {
     id: 4,
-    skillImage: isDarkMode ? AWSWhite : AWSBlack,
+    skillImage: isDarkMode ? AWSBlack : AWSWhite,
     skillText: 'AWS',
     skillAltImg: 'AWS-logo',
     skillDesc: 'I`ve learnt AWS during my first semester of my second year in camosun college. We we`re using React, and AWS` tools such as EC2, Lambda for functions to fetch data from API Gateway. As part of our last laboratory activities, we were tasked to create a wordle, which lets you guess words and figure out the hidden word. I`ve used, Cognito for Authorization/Authentication, Lambda for functions, API Gateway for get and post methods, and S3 for static hosting. However, the AWS that we have is a sandbox prepared by our professor, so any tools used in the process were already terminated. However, I would be able to build it again, if I wouldn`t incur any costs. I`m broke atm.',
   },
   {
     id: 5,
-    skillImage: isDarkMode ? DockerWhite : DockerBlack,
+    skillImage: isDarkMode ? DockerBlack : DockerWhite,
     skillText: 'Docker',
     skillAltImg: 'Docker-logo',
     skillDesc: 'Docker is something I`ve learnt in my Capstone Project, we implemented it in Better Berries, so that we can orchestrate a communication between, frontend, backend, and our Postgres database, locally. With the help of a DevOps Engineer, we we`re able to create a docker-compose.yml, Dockerfiles, and deploy it into OpenShift Kubernetes. However, those work weren`t all ours as we we`re helped by someone. But I would like to gain more experience with Docker, so I`m planning to dig deeper on that on my future projects.',
   },
   {
     id: 6,
-    skillImage: isDarkMode ? SwiftWhite : SwiftBlack,
+    skillImage: isDarkMode ? SwiftBlack : SwiftWhite,
     skillText: 'Swift',
     skillAltImg: 'Swift-logo',
     skillDesc: 'I`ve learnt Swift as part of my second year in Camosun College, we tackled Augmented Reality, and the basics of Swift. As part of the course, we we`re tasked to create a Treasure Hunting Game using the knowledge that we`ve gained in the course.',
   },
   {
     id: 7,
-    skillImage: isDarkMode ? SQLWhite : SQLBlack,
+    skillImage: isDarkMode ? SQLBlack : SQLWhite,
     skillText: 'SQL',
     skillAltImg: 'SQL-logo',
     skillDesc: 'SQL is a part of the course in my Information and Computer Systems program in Camosun College. In my first year, we we`re dealing it on a Developer`s perspective, the basics, normalizations, and even creating chart data using the data from the database. On our second year, we are thinking in a database administrator`s perspective. I`ve gained experience in user management, maintaining, securing, and operating databases to ensure that data is properly stored and retrieved.',
   },
   {
     id: 8,
-    skillImage: isDarkMode ? PythonWhite : PythonBlack,
+    skillImage: isDarkMode ? PythonBlack : PythonWhite,
     skillText: 'Python',
     skillAltImg: 'Python-logo',
     skillDesc: 'Python is part of our second year course in Camosun College. I was able to create Treasure hunting board game in Python, and also used Python Django for Web Development.',

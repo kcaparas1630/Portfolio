@@ -4,6 +4,7 @@ import { StyledView } from './ViewStyles';
 import Banner from '../Components/MainPageView/Banner';
 import Skills from '../Components/MainPageView/Skills';
 import Projects from '../Components/MainPageView/Projects';
+import GithubStats from '../Components/MainPageView/GithubStats';
 
 const Homepage = () => {
   const [isDarkMode, setDarkMode] = useState<boolean>(() => {
@@ -47,6 +48,7 @@ const Homepage = () => {
         isHeaderVisible={isHeaderVisible}
       />
       <Banner isDarkMode={isDarkMode} />
+      <GithubStats isDarkMode={isDarkMode} />
       <Skills isDarkMode={isDarkMode} />
       <Projects isDarkMode={isDarkMode} />
     </StyledView>
