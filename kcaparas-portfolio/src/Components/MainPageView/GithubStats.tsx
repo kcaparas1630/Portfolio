@@ -92,23 +92,23 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
               src={userStats.avatar_url}
               alt="Github Avatar"
             />
-            <UserNameH3>{userStats.name}</UserNameH3>
+            <UserNameH3 isDarkMode={isDarkMode}>{userStats.name}</UserNameH3>
           </IntroductionContainer>
           <MainStatsContainer>
             <ContributionsContainer
               isDarkMode={isDarkMode}
               inView={inView}
             >
-              <HeaderH4>{`${userStats.name}' Github Stats:`}</HeaderH4>
-              <GithubItems>
+              <HeaderH4 isDarkMode={isDarkMode}>{`${userStats.name}' Github Stats:`}</HeaderH4>
+              <GithubItems isDarkMode={isDarkMode}>
                 <span>Github Commits:</span>
                 <span>{userStats.commitCount}</span>
               </GithubItems>
-              <GithubItems>
+              <GithubItems isDarkMode={isDarkMode}>
                 <span>Github Pull Requests:</span>
                 <span>{userStats.PRCount}</span>
               </GithubItems>
-              <GithubItems>
+              <GithubItems isDarkMode={isDarkMode}>
                 <span>Github Issues:</span>
                 <span>{userStats.issueCount}</span>
               </GithubItems>
@@ -117,15 +117,15 @@ const GithubStats: FC<ComponentProps> = ({ isDarkMode }) => {
               isDarkMode={isDarkMode}
               inView={inView}
             >
-              <HeaderH4>Top 5 languages:</HeaderH4>
+              <HeaderH4 isDarkMode={isDarkMode}>Top 5 languages:</HeaderH4>
               <LanguagesRow>
                 {userStats.languages.map((language) => (
-                  <LanguageItem key={language}>
+                  <LanguageItem isDarkMode={isDarkMode} key={language}>
                     <i
                       className={`devicon-${language.toString().toLowerCase()}-plain`}
                       style={{ fontSize: '2rem' }}
                     />
-                    <GithubItems>{language}</GithubItems>
+                    <GithubItems isDarkMode={isDarkMode}>{language}</GithubItems>
                   </LanguageItem>
                 ))}
               </LanguagesRow>

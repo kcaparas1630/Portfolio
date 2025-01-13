@@ -13,7 +13,8 @@ const ProjectSection = styled.section<ProjectsProps>`
   justify-content: center;
   padding: 80px 0;
   gap: 24px;
-  background-color: ${(props) => (props.isDarkMode ? '#1C225F' : '#131842')};
+  background-color: ${(props) => (props.isDarkMode ? 'var(--native-dark-bg-color)' : '#fbf6e2')};
+  border-bottom: 2px solid ${(props) => (props.isDarkMode ? '#fbf6e2' : 'var(--native-dark-bg-color)')};
 `;
 
 const ProjectContainer = styled.div`

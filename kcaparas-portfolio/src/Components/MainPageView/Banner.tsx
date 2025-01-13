@@ -20,7 +20,7 @@ import {
 } from './Styled-components/Banner';
 
 const Banner: FC<ComponentProps> = ({ isDarkMode }) => (
-  <BannerView>
+  <BannerView isDarkMode={isDarkMode}>
     <LeftView>
       <BoxReveal
         boxColor="#e68369"
