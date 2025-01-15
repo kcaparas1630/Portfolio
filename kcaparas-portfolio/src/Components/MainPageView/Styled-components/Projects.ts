@@ -83,7 +83,12 @@ const ProjectsCard = styled.div<ProjectsProps>`
 `;
 
 const DescriptionContainer = styled.div`
-  padding: 2px 16px;
+  padding: 0 16px;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 export {

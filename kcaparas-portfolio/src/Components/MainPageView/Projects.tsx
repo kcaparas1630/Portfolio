@@ -10,6 +10,7 @@ import {
 } from './Styled-components/Projects';
 import ProjectArray from '../../Constants/ProjectsArray';
 import ComponentProps from '../../Types/ComponentProps';
+import Button from '../../Commons/Button';
 
 const Projects: FC<ComponentProps> = ({ isDarkMode }) => {
   const getProjectArray = ProjectArray();
@@ -18,7 +19,10 @@ const Projects: FC<ComponentProps> = ({ isDarkMode }) => {
     threshold: 0.1,
   });
   return (
-    <ProjectSection isDarkMode={isDarkMode} ref={ref}>
+    <ProjectSection
+      isDarkMode={isDarkMode}
+      ref={ref}
+    >
       <ProjectHeader2Container>
         <ProjectHeader2
           isDarkMode={isDarkMode}
@@ -41,11 +45,22 @@ const Projects: FC<ComponentProps> = ({ isDarkMode }) => {
             <DescriptionContainer>
               <h4>{project.projectName}</h4>
               <p>{project.projectDescription}</p>
-              {/* <Button
-                text="Learn more"
-                type="button"
-                isDarkMode={isDarkMode}
-              /> */}
+              {project.projectLink && (
+                <Button
+                  text="Visit Website"
+                  type="button"
+                  isDarkMode={isDarkMode}
+                  handleClick={() => window.open(project.projectLink, '_blank')}
+                />
+              )}
+              {project.projectGithubLink && (
+                <Button
+                  text="Visit Github Repository"
+                  type="button"
+                  isDarkMode={isDarkMode}
+                  handleClick={() => window.open(project.projectGithubLink, '_blank')}
+                />
+              )}
             </DescriptionContainer>
           </ProjectsCard>
         ))}

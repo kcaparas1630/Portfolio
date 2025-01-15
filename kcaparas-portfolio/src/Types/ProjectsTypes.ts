@@ -4,6 +4,8 @@ type ProjectTypes = {
     projectImageAlt: string,
     projectName: string,
     projectDescription: string,
+    projectLink?: string,
+    projectGithubLink?: string,
 };
 
 export default ProjectTypes;
