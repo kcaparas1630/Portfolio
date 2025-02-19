@@ -3,7 +3,7 @@ import { useInView } from 'react-intersection-observer';
 import { LinkSection, Text, Line, ButtonContainer } from './Styled-components/LinkSection';
 import ComponentProps from '../../Types/ComponentProps';
 import Button from '../../Commons/Button';
-import Resume from '../../Assets/Docs/kent-caparas-resume.pdf';
+import Resume from '../../Assets/Docs/Kcaparas_UpdatedResume.pdf';
 
 const LinkSectionComponent: FC<ComponentProps> = ({ isDarkMode }) => {
   const [ref, inView] = useInView({
