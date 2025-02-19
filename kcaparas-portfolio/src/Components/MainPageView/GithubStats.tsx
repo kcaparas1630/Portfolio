@@ -12,7 +12,6 @@ import {
   LanguagesRow,
   UserNameH3,
   HeaderH4,
-  HeaderH5,
   GithubItems,
   LanguageItem,
   StatsChangeParagraph,
