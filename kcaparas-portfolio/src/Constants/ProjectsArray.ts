@@ -5,6 +5,8 @@ import Colliseum from '../Assets/Colliseum.png';
 import EscapeIntoAbyss from '../Assets/EscapeIntoAbyss.png';
 import TaskCLI from '../Assets/CLI-SAMPLE.png';
 import PawCity from '../Assets/PawCity.png';
+import MockMentor from '../Assets/mockmentor-sample.png';
+import NebulaChess from '../Assets/NebulaChes.png';
 
 const ProjectArray = (): ProjectTypes[] => [
   {
@@ -59,6 +61,22 @@ const ProjectArray = (): ProjectTypes[] => [
     projectDescription: 'PawCity is a website that I created for a beginner hackathon. It is currently under development, and I will update it as time goes on. It is a website that allows your dog to find their furry soulmate, it works like tinder, but for dogs.',
     projectLink: 'https://pawcity.web.app/',
     projectGithubLink: 'https://github.com/kcaparas1630/pawcity',
+  },
+  {
+    id: 6,
+    projectImage: MockMentor,
+    projectImageAlt: 'Not Available yet',
+    projectName: 'MockMentor - AI Powered Coach - Coming Soon!',
+    projectDescription: 'MockMentor is an AI-powered coach that helps you prepare for interviews. It uses AI to analyze your responses and provide feedback on how to improve your answers. It is currently under development, and I will update it as time goes on.',
+    projectGithubLink: 'https://github.com/kcaparas1630/MockMentor-Frontend',
+  },
+  {
+    id: 7,
+    projectImage: NebulaChess,
+    projectImageAlt: 'NebulaChess Image',
+    projectName: 'NebulaChess',
+    projectDescription: 'NebulaChess is a chess AI Coach that I created using React, Typescript, and emotion.sh. It is a Chess Coach that will assist you to decide on a better move in-game. It is currently only on Lichess website only, and it is made using React, TypeScript, and Chrome Extension tools. It is currently under development, and I will update it as time goes on.',
+    projectGithubLink: 'https://github.com/kcaparas1630/NebulaChess',
   },
 ];
 
