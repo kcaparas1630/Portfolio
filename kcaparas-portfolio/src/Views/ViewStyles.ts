@@ -8,9 +8,9 @@ const StyledView = styled.div<ViewProps>`
   flex-direction: column;
   position: relative;
   background-color: ${(props) =>
-    props.isDarkMode ? 'var(--native-dark-transparent-color)' : '#fbf6e2'};
-  width: 100vw;
-  height: 100%;
+    props.isDarkMode ? '#131842' : '#fbf6e2'};
+  width: 100%;
+  min-height: 100vh;
   transition: background-color 0.5s ease;
 
   @media (min-width: 768px) {
