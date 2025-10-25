@@ -32,7 +32,7 @@ const HeaderDesktop: React.FC<HeaderDesktopProps> = ({
     animate="animate"
     exit="exit"
   >
-    {menuItems.map((item) => (
+    {/* {menuItems.map((item) => (
       <StyledListItem
         key={item.to}
         isDarkMode={isDarkMode}
@@ -50,7 +50,7 @@ const HeaderDesktop: React.FC<HeaderDesktopProps> = ({
           {item.text}
         </NavLink>
       </StyledListItem>
-    ))}
+    ))} */}
     <StyledListItem
       isDarkMode={isDarkMode}
       variants={mobileLinkVariants}

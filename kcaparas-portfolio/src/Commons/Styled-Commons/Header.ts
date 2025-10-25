@@ -66,7 +66,7 @@ const StyledHeader = styled.div<HeaderProps>`
     }
 
     @media (min-width: 768px) {
-      padding: 0;
+      padding: 50px 0;
       justify-content: space-evenly;
     }
   }

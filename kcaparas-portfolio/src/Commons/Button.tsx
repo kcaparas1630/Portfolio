@@ -1,13 +1,12 @@
-import { FC } from 'react';
-import { OuterButton, InnerButton, GradientBackground } from './Styled-Commons/Button';
+import { FC, PropsWithChildren } from 'react';
+import StyledButton from './Styled-Commons/Button';
 import ComponentProps from '../Types/ComponentProps';
 
 interface ButtonType extends ComponentProps {
-  text: string;
   type: 'button' | 'submit' | 'reset';
   handleClick?: () => void;
 }
-const Button: FC<ButtonType> = ({ text, type = 'button', isDarkMode, handleClick }) => {
+const Button: FC<PropsWithChildren<ButtonType>> = ({ children, type = 'button', isDarkMode, handleClick }) => {
   const handleClickWrapper = () => {
     if (handleClick) {
       handleClick();
@@ -15,13 +14,13 @@ const Button: FC<ButtonType> = ({ text, type = 'button', isDarkMode, handleClick
   };
 
   return (
-    <OuterButton
+    <StyledButton
       type={type}
       onClick={handleClickWrapper}
+      isDarkMode={isDarkMode}
     >
-      <GradientBackground />
-      <InnerButton isDarkMode={isDarkMode}>{text}</InnerButton>
-    </OuterButton>
+      {children}
+    </StyledButton>
   );
 };
 

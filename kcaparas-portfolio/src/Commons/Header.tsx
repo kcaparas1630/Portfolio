@@ -51,48 +51,6 @@ const Header: FC<HeaderProps> = ({ isDarkMode, setDarkMode, isHeaderVisible = tr
       <h2>
         <NavLink to="/">Kcaparas</NavLink>
       </h2>
-      <HamburgerIcon
-        type="button"
-        onClick={toggleMenu}
-        isOpen={isMenuOpen}
-        isDarkMode={isDarkMode}
-      >
-        <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
-      </HamburgerIcon>
-      <AnimatePresence>
-        {/* Honestly the same thing but animation wouldn't work. */}
-        {isMenuOpen ? (
-          <HeaderMobile
-            isDarkMode={isDarkMode}
-            isMenuOpen={isMenuOpen}
-            toggleModeWrapper={toggleModeWrapper}
-            menuItems={menuItems}
-            setIsMenuOpen={setIsMenuOpen}
-          />
-        ) : (
-          <HeaderDesktop
-            isDarkMode={isDarkMode}
-            isMenuOpen={isMenuOpen}
-            toggleModeWrapper={toggleModeWrapper}
-            menuItems={menuItems}
-            setIsMenuOpen={setIsMenuOpen}
-          />
-        )}
-      </AnimatePresence>
-
-      <StyledIconButton
-        type="button"
-        isDarkMode={isDarkMode}
-        isMobile={false}
-        isRotating={isRotating}
-        onClick={handleClick}
-      >
-        <p>{isDarkMode ? 'Dark' : 'Light'}</p>
-        <FontAwesomeIcon
-          className="icon"
-          icon={isDarkMode ? faMoon : faSun}
-        />
-      </StyledIconButton>
     </StyledHeader>
   );
 };
