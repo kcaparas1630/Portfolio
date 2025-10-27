@@ -19,7 +19,7 @@ const HelloHeader = styled(motion.h2)`
     font-size: 2rem;
     font-weight: 900;
     margin: 0 auto;
-    line-height: 1.5;
+    line-height: 1.2;
     text-align: center;
     width: 100vw;
     word-wrap: break-word;
@@ -29,6 +29,7 @@ const HelloHeader = styled(motion.h2)`
         top: 40vh;
         font-size: 5rem;
         width: 60vw;
+        line-height: 1.15;
     }
 `;
 
