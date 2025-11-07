@@ -1,10 +1,16 @@
 import { useState, useEffect, useCallback } from 'react';
+import Lenis from 'lenis';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Header from '../Commons/Header';
 import { StyledView } from './ViewStyles';
 import Banner from '../Components/MainPageView/Banner';
 import Skills from '../Components/MainPageView/Skills';
 import Projects from '../Components/MainPageView/Projects';
 import GithubStats from '../Components/MainPageView/GithubStats';
+import HelloSection from '../Components/MainPageView/Hello';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Homepage = () => {
   const [isDarkMode, setDarkMode] = useState<boolean>(() => {
@@ -17,6 +23,31 @@ const Homepage = () => {
   useEffect(() => {
     localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode));
   }, [isDarkMode]);
+
+  // Initialize Lenis smooth scrolling
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 5,
+      easing: (t) => Math.min(1, 1.001 - 2 ** (-10 * t)),
+      smoothWheel: true,
+    });
+
+    // Integrate Lenis with GSAP ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    return () => {
+      lenis.destroy();
+      gsap.ticker.remove((time) => {
+        lenis.raf(time * 1000);
+      });
+    };
+  }, []);
 
   const scrollHeader = useCallback(() => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -48,9 +79,7 @@ const Homepage = () => {
         isHeaderVisible={isHeaderVisible}
       />
       <Banner isDarkMode={isDarkMode} />
-      <GithubStats isDarkMode={isDarkMode} />
-      <Skills isDarkMode={isDarkMode} />
-      <Projects isDarkMode={isDarkMode} />
+      <HelloSection />
     </StyledView>
   );
 };

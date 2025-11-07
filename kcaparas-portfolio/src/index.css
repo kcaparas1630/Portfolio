@@ -5,14 +5,18 @@
 :root {
   --native-dark-font-color: white;
   --native-light-font-color: black;
-  --native-dark-transparent-color: #131842;
-  --native-dark-bg-color: #131842;
+  --native-dark-transparent-color: #1c1c22;
+  --native-dark-bg-color: #1c1c22;
   --native-dark-box-shadow: #111;
   --native-dark-border-color: #e68369;
   --accent-color: #e68369;
 }
 
-html, body {
+html {
+  scroll-behavior: smooth;
+}
+
+body {
   margin: 0;
   width: 100%;
   height: 100%;
@@ -20,9 +24,9 @@ html, body {
 }
 
 h1,h2,h3,h4,h5,h6,label {
-  font-family: 'Playfair Display';
+  font-family: 'Urbanist', sans-serif;
 }
 
 p {
-  font-family: 'DM Serif Display';
+  font-family: 'Geist Sans', sans-serif;
 }

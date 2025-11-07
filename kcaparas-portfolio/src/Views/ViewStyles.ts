@@ -7,8 +7,18 @@ const StyledView = styled.div<ViewProps>`
   display: flex;
   flex-direction: column;
   position: relative;
-  background-color: ${(props) =>
-    props.isDarkMode ? '#131842' : '#fbf6e2'};
+  background-color: ${(props) => (props.isDarkMode ? '#1c1c22' : '#fbf6e2')};
+  background-image: linear-gradient(
+      ${(props) => (props.isDarkMode ? 'rgba(251, 246, 226, 0.1)' : 'rgba(19, 24, 66, 0.1)')} 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      ${(props) => (props.isDarkMode ? 'rgba(251, 246, 226, 0.1)' : 'rgba(19, 24, 66, 0.1)')} 1px,
+      transparent 1px
+    );
+  background-size: 50px 50px;
+
   width: 100%;
   min-height: 100vh;
   transition: background-color 0.5s ease;

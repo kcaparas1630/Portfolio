@@ -4,25 +4,23 @@ type StyledButtonProps = {
   isDarkMode?: boolean;
 }
 
-const StyledButton = styled.button<StyledButtonProps>`
-  label: StyledButton;
+const StyledIconButton = styled.button<StyledButtonProps>`
+  label: StyledIconButton;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   padding: 12px;
-  background-color: ${(props) => (props.isDarkMode ? '#131842' : '#fbf6e2')};
+  background-color: transparent;
   color: ${(props) => (props.isDarkMode ? 'white' : '#1B1212')};
-  font-weight: 700;
+  font-size: 18px;
   border: 3px solid #e68369;
   border-radius: 50%;
-  max-height: 60px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: transparent;
+    background-color: #e68369;
   }
 `;
 
-export default StyledButton;
+export default StyledIconButton;
