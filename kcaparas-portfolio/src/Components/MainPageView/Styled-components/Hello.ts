@@ -6,7 +6,7 @@ const HelloView = styled.section`
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 20vh 0;
+    padding-top: 20vh;
 `;
 
 const HelloContainer = styled(motion.div)`

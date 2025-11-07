@@ -64,6 +64,12 @@ const Banner: FC<ComponentProps> = ({ isDarkMode }) => {
           boxColor="#e68369"
           duration={0.5}
         >
+          <BannerDesignation isDarkMode={isDarkMode}>Portfolio currently getting revamped!</BannerDesignation>
+        </BoxReveal>
+        <BoxReveal
+          boxColor="#e68369"
+          duration={0.5}
+        >
           <IconContainer>
             <NavLink to="">
               <IconTextButton

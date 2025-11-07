@@ -27,7 +27,7 @@ const Homepage = () => {
   // Initialize Lenis smooth scrolling
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 2.5,
+      duration: 5,
       easing: (t) => Math.min(1, 1.001 - 2 ** (-10 * t)),
       smoothWheel: true,
     });
@@ -80,8 +80,6 @@ const Homepage = () => {
       />
       <Banner isDarkMode={isDarkMode} />
       <HelloSection />
-      <Skills isDarkMode={isDarkMode} />
-      <Projects isDarkMode={isDarkMode} />
     </StyledView>
   );
 };
